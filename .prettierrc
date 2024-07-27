@@ -1,0 +1,30 @@
+{
+  "jsxSingleQuote": false,
+  "singleQuote": false,
+  "semi": true,
+  "tabWidth": 4,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "bracketSameLine": false,
+  "useTabs": false,
+  "arrowParens": "always",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "singleQuote": true,
+        "tabWidth": 2,
+        "printWidth": 80
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": true,
+        "tabWidth": 2,
+        "printWidth": 80
+      }
+    }
+  ]
+}
