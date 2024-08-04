@@ -1,4 +1,7 @@
 .Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     color: var(--primary-color);
     padding: 6px 15px;
@@ -9,6 +12,7 @@
     border: none;
     background: none;
     outline: none;
+    color: var(--inverted-primary-color);
 }
 
 .outline {
