@@ -1,61 +1,73 @@
+/* Button.module.scss */
 .Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    color: var(--primary-color);
-    padding: 6px 15px;
+    border: none;
+    font: inherit;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.primary:hover,
+.primary:focus {
+    background-color: var(--primary-color-hover);
+    color: var(--inverted-text-color);
+}
+
+.secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.secondary:hover,
+.secondary:focus {
+    background-color: var(--secondary-color-hover);
+    color: var(--inverted-text-color);
+}
+
+.accent {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.accent:hover,
+.accent:focus {
+    background-color: var(--accent-color-hover);
+    color: var(--inverted-text-color);
+}
+
+.error {
+    background-color: var(--error-color);
+    color: var(--text-color);
+}
+
+.error:hover,
+.error:focus {
+    background-color: #c82333; /* Заменяем на фиксированный более темный оттенок */
+    color: var(--text-color);
 }
 
 .clear {
-    padding: 0;
-    border: none;
     background: none;
-    outline: none;
-}
-
-.outline {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background: none;
-}
-
-.background {
-    background: var(--bg-color);
-    color: var(--primary-color);
     border: none;
-}
-
-.backgroundInverted {
-    background: var(--inverted-bg-color);
-    color: var(--inverted-primary-color);
-    border: none;
-}
-
-.square {
     padding: 0;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
 }
-
-.square.size_m {
-    width: var(--font-line-m);
-    height: var(--font-line-m);
-}
-
-.square.size_l {
-    width: var(--font-line-l);
-    height: var(--font-line-l);
-}
-
-.square.size_xl {
-    width: var(--font-line-xl);
-    height: var(--font-line-xl);
-}
-
-.size_m {
-    font: var(--font-m);
-}
-
-.size_l {
-    font: var(--font-l);
-}
-
-.size_xl {
-    font: var(--font-xl);
+.clear:hover,
+.clear:focus {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
 }

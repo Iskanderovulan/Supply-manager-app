@@ -1,0 +1,8 @@
+.Sidebar {
+    box-shadow: var(--sidebar-shadow);
+    height: 100vh;
+    overflow-y: auto;
+    &.Sidebar .custom-menu {
+        border-inline-end: 1px solid var(--bg-color);
+    }
+}

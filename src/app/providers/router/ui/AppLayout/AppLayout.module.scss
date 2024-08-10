@@ -1,0 +1,20 @@
+.layout {
+    min-height: 100vh; /* Занимает всю высоту окна */
+    display: flex;
+}
+
+.siteLayout {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.content {
+    flex-grow: 1; /* Основное содержимое растягивается */
+    padding: var(--padding-container);
+}
+
+.footer {
+    text-align: center;
+    background-color: red;
+}
