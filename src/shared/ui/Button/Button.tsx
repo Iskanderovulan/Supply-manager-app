@@ -1,46 +1,28 @@
+// Button.tsx
+import React from "react";
+import { Button as AntdButton, ButtonProps as AntdButtonProps } from "antd";
 import { classNames } from "shared/lib/classNames/classNames";
-import { ButtonHTMLAttributes, FC } from "react";
 import cls from "./Button.module.scss";
 
-export enum ButtonTheme {
-    CLEAR = "clear",
-    OUTLINE = "outline",
-    BACKGROUND = "background",
-    BACKGROUND_INVERTED = "backgroundInverted",
-}
-
-export enum ButtonSize {
-    M = "size_m",
-    L = "size_l",
-    XL = "size_xl",
-}
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface CustomButtonProps extends AntdButtonProps {
     className?: string;
-    theme?: ButtonTheme;
-    square?: boolean;
-    size?: ButtonSize;
+    theme?: "primary" | "secondary" | "accent" | "error" | "clear";
 }
 
-export const Button: FC<ButtonProps> = (props) => {
-    const {
-        className = "",
-        children,
-        theme = ButtonTheme.CLEAR,
-        square,
-        size = ButtonSize.M,
-        ...otherProps
-    } = props;
+export const Button: React.FC<CustomButtonProps> = (props) => {
+    const { className = "", children, theme = "primary", ...otherProps } = props;
 
-    const mods: Record<string, boolean> = {
-        [cls[theme]]: !!theme,
-        [cls.square]: !!square,
-        [cls[size]]: !!size,
+    const mods: Record<string, boolean | string> = {
+        [cls.primary]: theme === "primary",
+        [cls.secondary]: theme === "secondary",
+        [cls.accent]: theme === "accent",
+        [cls.error]: theme === "error",
+        [cls.clear]: theme === "clear",
     };
 
     return (
-        <button type="button" className={classNames(cls.Button, mods, [className])} {...otherProps}>
+        <AntdButton className={classNames(cls.Button, mods, [className])} {...otherProps}>
             {children}
-        </button>
+        </AntdButton>
     );
 };

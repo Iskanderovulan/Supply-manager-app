@@ -14,11 +14,17 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "antd": "^5.20.0",
+        "i18next": "^23.12.2",
+        "i18next-browser-languagedetector": "^8.0.0",
+        "i18next-http-backend": "^2.5.2",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-i18next": "^15.0.0",
         "react-router-dom": "^6.25.1"
     },
     "devDependencies": {
+        "@svgr/rollup": "^8.1.0",
         "@types/node": "^22.0.0",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",

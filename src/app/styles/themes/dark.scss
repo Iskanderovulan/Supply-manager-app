@@ -1,10 +1,19 @@
 .app.dark {
-    --bg-color: #333333; /* Темный фон для ночного режима */
-    --inverted-bg-color: #ffffff; /* Белый фон для дневного режима */
-    --primary-color: #ffcc00; /* Желтый как основной цвет в ночном режиме */
-    --secondary-color: #f8f9fa; /* Светло-серый для вспомогательных элементов */
-    --accent-color: #17a2b8; /* Голубой для акцентов и информационных сообщений */
-    --error-color: #ff5733; /* Ярко-красный для ошибок и предупреждений */
-    --inverted-primary-color: #007bff; /* Синий как инвертированный основной цвет */
-    --inverted-secondary-color: #6c757d; /* Серый как инвертированный второстепенный цвет */
+    --bg-color: #1e1e1e;
+    --secondary-bg-color: #282c34;
+    --primary-color: #61dafb;
+    --primary-color-hover: #21a1f1;
+    --secondary-color: #282c34;
+    --secondary-color-hover: #1e1e1e;
+    --accent-color: #61dafb;
+    --accent-color-hover: #21a1f1;
+    --error-color: #e3342f;
+    --text-color: #ffffff;
+    --border-color: #e60099; /* Более насыщенный розовый для ночного режима */
+    --sidebar-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
+    --navbar-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --footer-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    --sidebar-selected-bg-color: #e60099; /* Насыщенный розовый фон выбранного элемента в темной теме */
+    --sidebar-selected-text-color: #ffffff;
+    --sidebar-hover-bg-color: #bf006d; /* Темный розовый для hover в темной теме */
 }
