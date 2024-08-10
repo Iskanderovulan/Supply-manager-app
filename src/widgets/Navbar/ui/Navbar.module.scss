@@ -1,28 +1,15 @@
-.Navbar {
-    width: 100%;
-    height: var(--navbar-height);
-    background: var(--inverted-bg-color);
-    display: flex;
-    align-items: center;
-    padding: 20px 40px;
-}
+.Header {
+    padding: 0 var(--padding-container);
+    box-shadow: var(--navbar-shadow);
 
-.links {
-    margin-left: auto;
-}
-
-.mainLink {
-    margin-right: 15px;
-}
-
-.switchers {
-    // position: absolute;
-    // bottom: 20px;
-    display: flex;
-    justify-content: center;
-    // width: 100%;
-}
-
-.lang {
-    margin-left: 20px;
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .switchers {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-middle);
+        }
+    }
 }

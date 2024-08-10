@@ -1,45 +1,47 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { FC, useState } from "react";
-import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
-import { useTranslation } from "react-i18next";
-import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { ReactComponent as MainIcon } from "shared/assets/icons/main-20-20.svg"; // Импорт как React компонент
+import { RadarChartOutlined, ApartmentOutlined, PieChartOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
+import { useCollapsed } from "app/providers/layout/CollapseProvider";
 import cls from "./Sidebar.module.scss";
 
-interface SidebarProps {
-    className?: string;
-}
+const { Sider } = Layout;
 
-export const Sidebar: FC<SidebarProps> = ({ className = "" }) => {
-    const [collapsed, setCollapsed] = useState(false);
-    const { t } = useTranslation();
-
-    const onToggle = () => {
-        setCollapsed((prev) => !prev);
-    };
+export const Sidebar = () => {
+    const { collapsed } = useCollapsed();
 
     return (
-        <div
-            data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+        <Sider
+            theme="light"
+            collapsible
+            collapsed={collapsed}
+            className={cls.Sidebar}
+            trigger={null}
         >
-            <Button
-                data-testid="sidebar-toggle"
-                onClick={onToggle}
-                className={cls.collapseBtn}
-                theme={ButtonTheme.BACKGROUND_INVERTED}
-                size={ButtonSize.L}
-                square
-            >
-                {collapsed ? ">" : "<"}
-            </Button>
-            <div className={cls.items}>
-                <AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.main} className={cls.item}>
-                    <MainIcon className={cls.icon} />
-                    <span className={cls.link}>{t("Main")}</span>
-                </AppLink>
-            </div>
-        </div>
+            <Menu
+                defaultSelectedKeys={["1"]}
+                mode="inline"
+                className={cls["custom-menu"]}
+                items={[
+                    {
+                        key: "1",
+                        icon: <PieChartOutlined />,
+                        label: "Tasks",
+                    },
+                    {
+                        key: "2",
+                        icon: <RadarChartOutlined />,
+                        label: "Stats",
+                    },
+                    {
+                        key: "sub1",
+                        icon: <ApartmentOutlined />,
+                        label: "Classificators",
+                        children: [
+                            { key: "3", label: "Categories" },
+                            { key: "4", label: "Tags" },
+                        ],
+                    },
+                ]}
+            />
+        </Sider>
     );
 };
