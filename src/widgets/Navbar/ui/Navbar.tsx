@@ -1,25 +1,27 @@
-import { FC } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import { useTranslation } from "react-i18next";
-import { ThemeSwitcher } from "widgets/ThemeSwitcher";
-import { LangSwitcher } from "widgets/LangSwitcher";
+import { Button, Layout } from "antd";
 import cls from "./Navbar.module.scss";
+import { LangSwitcher } from "widgets/LangSwitcher";
+import { ThemeSwitcher } from "widgets/ThemeSwitcher";
+import { useCollapsed } from "app/providers/layout/CollapseProvider";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
-interface NavbarProps {
-    className?: string;
-}
+const { Header } = Layout;
 
-export const Navbar: FC<NavbarProps> = ({ className = "" }) => {
-    const { t } = useTranslation();
+export const Navbar = () => {
+    const { collapsed, toggleCollapse } = useCollapsed();
 
     return (
-        <div className={classNames(cls.Navbar, {}, [className])}>
-            <div className={cls.links}>
+        <Header className={classNames(cls.Header, {}, [])}>
+            <nav className={cls.nav}>
+                <Button type="dashed" onClick={toggleCollapse}>
+                    {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                </Button>
                 <div className={cls.switchers}>
+                    <LangSwitcher />
                     <ThemeSwitcher />
-                    <LangSwitcher className={cls.lang} />
                 </div>
-            </div>
-        </div>
+            </nav>
+        </Header>
     );
 };

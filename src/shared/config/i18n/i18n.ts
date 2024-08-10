@@ -7,7 +7,6 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        lng: "en", // Язык по умолчанию
         fallbackLng: "en", // Резервный язык
         debug: __IS_DEV__,
         interpolation: {
@@ -15,6 +14,10 @@ i18n.use(Backend)
         },
         backend: {
             loadPath: "/locales/{{lng}}/{{ns}}.json",
+        },
+        detection: {
+            order: ["localStorage"],
+            caches: ["localStorage"],
         },
     });
 
