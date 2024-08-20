@@ -8,7 +8,7 @@ i18n.use(Backend)
     .use(initReactI18next)
     .init({
         fallbackLng: "en", // Резервный язык
-        debug: __IS_DEV__,
+        // debug: __IS_DEV__,
         interpolation: {
             escapeValue: false, // Не нужно для React, так как он экранирует значения по умолчанию
         },
