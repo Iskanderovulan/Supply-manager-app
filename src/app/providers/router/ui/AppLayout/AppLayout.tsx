@@ -1,6 +1,5 @@
 import Layout from "antd/es/layout/layout";
 import { classNames } from "shared/lib/classNames/classNames";
-import { useTheme } from "app/providers/theme/ThemeProvider";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "widgets/Sidebar";
 import { Navbar } from "widgets/Navbar";
@@ -10,10 +9,8 @@ import { Suspense } from "react";
 import cls from "./AppLayout.module.scss";
 
 const AppLayout = () => {
-    const { theme } = useTheme();
-
     return (
-        <div className={classNames("app", {}, [theme])}>
+        <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
                 <Layout className={cls.layout}>
                     <Sidebar />

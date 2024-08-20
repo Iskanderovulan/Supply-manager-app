@@ -32,6 +32,7 @@ export const lightTheme = {
             itemHoverBg: "var(--sidebar-hover-bg-color)", // Фон при наведении
             itemColor: "var(--text-color)", // Цвет текста
             itemHoverColor: "var(--text-color)", // Цвет текста при наведении
+            popupBg: "var(--secondary-bg-color)",
         },
     },
 };
@@ -65,6 +66,7 @@ export const darkTheme = {
             itemHoverBg: "var(--sidebar-hover-bg-color)", // Фон при наведении
             itemColor: "var(--text-color)", // Цвет текста
             itemHoverColor: "var(--text-color)", // Цвет текста при наведении
+            popupBg: "var(--secondary-bg-color)",
         },
     },
 };
