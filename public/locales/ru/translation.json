@@ -1,4 +1,9 @@
 {
     "switcher.label": "RU",
-    "Main": "Главная"
+    "Products": "Товары",
+    "Сhart": "Графики",
+    "Classificators": "Классификаторы",
+    "Material": "Материал",
+    "Color": "Цвет",
+    "Pack Type": "Тип Упаковки"
 }

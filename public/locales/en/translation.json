@@ -1,4 +1,9 @@
 {
     "switcher.label": "EN",
-    "Main":"Main"
+    "Products": "Products",
+    "Сhart":"Сhart",
+    "Classificators":"Classificators",
+    "Material": "Material",
+    "Color": "Color",
+    "Pack Type": "Pack Type"
 }

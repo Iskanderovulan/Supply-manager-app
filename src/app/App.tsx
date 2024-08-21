@@ -1,8 +1,8 @@
 import "./styles/index.scss";
-import { AppLayout } from "app/providers/router";
+import { AppRouter } from "app/providers/router";
 
 function App() {
-    return <AppLayout />;
+    return <AppRouter />;
 }
 
 export default App;
