@@ -1,15 +1,27 @@
-import { RadarChartOutlined, ApartmentOutlined, PieChartOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { useCollapsed } from "app/providers/layout/CollapseProvider";
+import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
+import { authActions, selectIsAuthenticated } from "src/entities/Auth";
+import { getMenuItems } from "../config/menuItems";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import cls from "./Sidebar.module.scss";
 
 const { Sider } = Layout;
 
 export const Sidebar = () => {
-    const { collapsed } = useCollapsed();
     const { t } = useTranslation();
+    const { collapsed } = useCollapsed();
+    const isAuthenticated = useAppSelector(selectIsAuthenticated);
+    const dispatch = useAppDispatch()
 
+    const logout = () =>{
+        dispatch(authActions.clearToken())
+    }
+
+    const { authItems, guestItems } = getMenuItems({t,logout});
+
+    const items = isAuthenticated ? authItems : guestItems;
     return (
         <Sider
             width={250}
@@ -23,28 +35,7 @@ export const Sidebar = () => {
                 defaultSelectedKeys={["1"]}
                 mode="inline"
                 className={cls["custom-menu"]}
-                items={[
-                    {
-                        key: "1",
-                        icon: <PieChartOutlined />,
-                        label: t("Products"),
-                    },
-                    {
-                        key: "2",
-                        icon: <RadarChartOutlined />,
-                        label: t("Сhart"),
-                    },
-                    {
-                        key: "sub1",
-                        icon: <ApartmentOutlined />,
-                        label: t("Classificators"),
-                        children: [
-                            { key: "3", label: t("Material") },
-                            { key: "4", label: t("Color") },
-                            { key: "5", label: t("Pack Type") },
-                        ],
-                    },
-                ]}
+                items={items}
             />
         </Sider>
     );

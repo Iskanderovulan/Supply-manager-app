@@ -1,39 +1,39 @@
+import {
+    AppRoutes,
+    getRouteMain,
+    getRouteLogin,
+    getRouteRegister,
+    getRouteNotFound,
+} from "shared/const/router";
 import { RouteProps } from "react-router-dom";
 import { MainPage } from "pages/MainPage";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { LoginPage } from "pages/LoginPage";
 import { RegisterPage } from "pages/RegisterPage";
-// import ProtectedRoute from "shared/lib/ProtectedRoute/ProtectedRoute"; // Компонент защищенного маршрута
 
-export enum AppRoutes {
-    MAIN = "main",
-    LOGIN = "login",
-    REGISTER = "register",
-    NOT_FOUND = "not_found",
-}
+type CustomRouteProps = {
+    isProtected?: boolean;
+} & RouteProps;
 
-export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.MAIN]: "/",
-    [AppRoutes.LOGIN]: "/login",
-    [AppRoutes.REGISTER]: "/register",
-    [AppRoutes.NOT_FOUND]: "*",
-};
-
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, CustomRouteProps> = {
     [AppRoutes.MAIN]: {
-        path: RoutePath.main,
+        path: getRouteMain(),
         element: <MainPage />,
+        isProtected: true,
     },
     [AppRoutes.LOGIN]: {
-        path: RoutePath.login,
+        path: getRouteLogin(),
         element: <LoginPage />,
+        isProtected: false,
     },
     [AppRoutes.REGISTER]: {
-        path: RoutePath.register,
+        path: getRouteRegister(),
         element: <RegisterPage />,
+        isProtected: false,
     },
     [AppRoutes.NOT_FOUND]: {
-        path: RoutePath.not_found,
+        path: getRouteNotFound(),
         element: <NotFoundPage />,
+        isProtected: false,
     },
 };
