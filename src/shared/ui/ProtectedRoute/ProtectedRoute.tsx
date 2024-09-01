@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
-import { selectIsAuthenticated } from "src/entities/Auth";
+import { selectIsAuthenticated } from "entities/Auth";
 
 interface ProtectedRouteProps {
     children: JSX.Element;

@@ -1,18 +1,14 @@
 // AntdThemeProvider.tsx
 import React, { ReactNode } from "react";
 import { ConfigProvider } from "antd";
-import { lightTheme, darkTheme } from "../lib/antdTheme";
-import { useTheme, Theme } from "app/providers/theme/ThemeProvider";
+import { defaultTheme } from "../lib/antdTheme";
 
 interface AntdThemeProviderProps {
     children: ReactNode;
 }
 
 const AntdThemeProvider: React.FC<AntdThemeProviderProps> = ({ children }) => {
-    const { theme } = useTheme();
-
-    const antdTheme = theme === Theme.DARK ? darkTheme : lightTheme;
-    return <ConfigProvider theme={antdTheme}>{children}</ConfigProvider>;
+    return <ConfigProvider theme={defaultTheme}>{children}</ConfigProvider>;
 };
 
 export default AntdThemeProvider;

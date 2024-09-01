@@ -1,11 +1,11 @@
 import { Layout, Menu } from "antd";
 import { useCollapsed } from "app/providers/layout/CollapseProvider";
 import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
-import { authActions, selectIsAuthenticated } from "src/entities/Auth";
+import { selectIsAuthenticated } from "entities/Auth";
 import { getMenuItems } from "../config/menuItems";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import cls from "./Sidebar.module.scss";
+import { useLocation } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -13,13 +13,9 @@ export const Sidebar = () => {
     const { t } = useTranslation();
     const { collapsed } = useCollapsed();
     const isAuthenticated = useAppSelector(selectIsAuthenticated);
-    const dispatch = useAppDispatch()
+    const location = useLocation();
 
-    const logout = () =>{
-        dispatch(authActions.clearToken())
-    }
-
-    const { authItems, guestItems } = getMenuItems({t,logout});
+    const { authItems, guestItems } = getMenuItems({ t });
 
     const items = isAuthenticated ? authItems : guestItems;
     return (
@@ -33,6 +29,7 @@ export const Sidebar = () => {
         >
             <Menu
                 defaultSelectedKeys={["1"]}
+                selectedKeys={[location.pathname]}
                 mode="inline"
                 className={cls["custom-menu"]}
                 items={items}

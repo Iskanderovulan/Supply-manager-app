@@ -1,19 +1,21 @@
 body[data-theme="light"] {
     --bg-color: #eaeaea;
     --secondary-bg-color: #ffffff;
-    --primary-color: #20232a;
-    --primary-color-hover: #373940;
+    --primary-color: #6d27e8;
+    --primary-color-hover: #7a38f1;
+    --primary-color-active: #5b22c1;
     --secondary-color: #61dafb;
     --secondary-color-hover: #c4d7e0;
     --accent-color: #61dafb;
     --accent-color-hover: #21a1f1;
     --error-color: #dc3545;
     --text-color: #20232a;
-    --border-color: #ffc1cc; /* Мягкий розовый для дневного режима */
-    --sidebar-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+    --border-color: #ffc1cc;
+    --layout-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
     --navbar-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     --footer-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-    --sidebar-selected-bg-color: #ffc1cc; /* Мягкий розовый фон для выбранного элемента в светлой теме */
+    --sidebar-selected-bg-color: #ffc1cc;
     --sidebar-selected-text-color: #20232a;
-    --sidebar-hover-bg-color: #ff99aa; /* Более насыщенный розовый для hover в светлой теме */
+    --sidebar-hover-bg-color: #ff99aa;
+    --input-placeholder-color: #a8a8a8;
 }

@@ -1,0 +1,23 @@
+.ant-input {
+    &:focus {
+        border-color: var(--primary-color);
+    }
+}
+.ant-input-affix-wrapper-focused,
+.ant-picker-focused,
+.ant-select-focused .ant-select-selector {
+    border-color: var(--primary-color) !important;
+}
+
+.ant-input-clear-icon svg {
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+.ant-input-clear-icon svg:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+.ant-input-password-icon svg {
+    color: var(--text-color);
+}
