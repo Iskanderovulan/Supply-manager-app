@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
 import { Button } from "antd";
+import { LOCAL_STORAGE_LANG_KEY } from "shared/const/localstorage";
 
 interface LangSwitcherProps {
     className?: string;
@@ -11,7 +12,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className = "" }) => {
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
-        const savedLanguage = localStorage.getItem("i18nextLng");
+        const savedLanguage = localStorage.getItem(LOCAL_STORAGE_LANG_KEY);
         if (savedLanguage && savedLanguage !== i18n.language) {
             i18n.changeLanguage(savedLanguage);
         }
@@ -20,7 +21,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className = "" }) => {
     const toggle = async () => {
         const newLanguage = i18n.language === "ru" ? "en" : "ru";
         await i18n.changeLanguage(newLanguage);
-        localStorage.setItem("i18nextLng", newLanguage);
+        localStorage.setItem(LOCAL_STORAGE_LANG_KEY, newLanguage);
     };
 
     return (

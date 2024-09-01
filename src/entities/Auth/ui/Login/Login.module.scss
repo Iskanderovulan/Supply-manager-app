@@ -1,0 +1,3 @@
+.login {
+    composes: authContainer from "app/styles/modules/auth.module.scss";
+}

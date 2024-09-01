@@ -1,7 +1,7 @@
-import React from "react";
+import { Register } from "entities/Auth";
 
 const RegisterPage = () => {
-    return <div>Register Page</div>;
+    return <Register />;
 };
 
 export default RegisterPage;

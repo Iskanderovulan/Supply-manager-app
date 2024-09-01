@@ -1,0 +1,10 @@
+{
+    "emailLabel": "Электронная почта",
+    "emailPlaceholder": "Введите электронную почту",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "loginButton": "Войти",
+    "emailRequired": "Пожалуйста, введите электронную почту!",
+    "passwordRequired": "Пожалуйста, введите пароль!",
+    "resetButton": "Сбросить"
+}

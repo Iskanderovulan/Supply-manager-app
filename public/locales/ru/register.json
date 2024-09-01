@@ -1,0 +1,15 @@
+{
+    "nameLabel": "Имя пользователя",
+    "namePlaceholder": "Введитe имя пользователя",
+    "nameRequired": "Пожалуйста, введите имя пользователя!",
+    "emailLabel": "Электронная почта",
+    "emailPlaceholder": "Введите адрес электронной почты",
+    "emailRequired": "Пожалуйста, введите адрес электронной почты!",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "passwordRequired": "Пожалуйста, введите  пароль!",
+    "confirmPasswordLabel": "Подтверждение пароля",
+    "confirmPasswordPlaceholder": "Подтвердите пароль",
+    "confirmPasswordRequired": "Пожалуйста, подтвердите  пароль!",
+    "registerButton": "Зарегистрироваться"
+}

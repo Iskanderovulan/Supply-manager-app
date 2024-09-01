@@ -3,17 +3,19 @@ body[data-theme="dark"] {
     --secondary-bg-color: #282c34;
     --primary-color: #61dafb;
     --primary-color-hover: #21a1f1;
+    --primary-color-active: #1b8ecf;
     --secondary-color: #282c34;
     --secondary-color-hover: #1e1e1e;
     --accent-color: #61dafb;
     --accent-color-hover: #21a1f1;
     --error-color: #e3342f;
     --text-color: #ffffff;
-    --border-color: #e60099; /* Более насыщенный розовый для ночного режима */
-    --sidebar-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
+    --border-color: #e60099;
+    --layout-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
     --navbar-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     --footer-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    --sidebar-selected-bg-color: #e60099; /* Насыщенный розовый фон выбранного элемента в темной теме */
+    --sidebar-selected-bg-color: #e60099;
     --sidebar-selected-text-color: #ffffff;
-    --sidebar-hover-bg-color: #bf006d; /* Темный розовый для hover в темной теме */
+    --sidebar-hover-bg-color: #bf006d;
+    --input-placeholder-color: #6e7a86;
 }

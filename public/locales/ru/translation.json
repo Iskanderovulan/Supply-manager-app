@@ -1,9 +1,11 @@
 {
-    "switcher.label": "RU",
-    "Products": "Товары",
-    "Сhart": "Графики",
+    "switcher.label": "РУ",
+    "Products": "Продукты",
+    "Сhart": "Диаграмма",
     "Classificators": "Классификаторы",
     "Material": "Материал",
     "Color": "Цвет",
-    "Pack Type": "Тип Упаковки"
+    "Pack Type": "Тип упаковки",
+    "Login": "Вход",
+    "Register": "Регистрация"
 }

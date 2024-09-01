@@ -5,5 +5,7 @@
     "Classificators":"Classificators",
     "Material": "Material",
     "Color": "Color",
-    "Pack Type": "Pack Type"
+    "Pack Type": "Pack Type",
+    "Login":"Login",
+    "Register":"Register"
 }

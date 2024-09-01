@@ -1,7 +1,10 @@
 @import "reset";
 @import "variables/global";
+@import "themes/default.scss";
 @import "themes/light";
 @import "themes/dark";
+@import "antd/input";
+@import "antd/notification";
 
 .app {
     font: var(--font-m);

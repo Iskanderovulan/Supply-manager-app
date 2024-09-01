@@ -3,22 +3,21 @@ import {
     ApartmentOutlined,
     PieChartOutlined,
     LoginOutlined,
-    LogoutOutlined,
+    UserAddOutlined,
 } from "@ant-design/icons";
-import { getRouteMain, getRouteLogin } from "shared/const/router";
+import { getRouteMain, getRouteLogin, getRouteRegister } from "shared/const/router";
 import { Link } from "react-router-dom";
 import { TFunction } from "i18next";
 
 interface MenuItemsArgs {
     t: TFunction;
-    logout: () => void;
 }
 
 export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
-    const { t, logout } = menuItemsArgs;
+    const { t } = menuItemsArgs;
     const authItems = [
         {
-            key: "1",
+            key: getRouteMain(),
             icon: <PieChartOutlined />,
             label: <Link to={getRouteMain()}>{t("Products")}</Link>,
         },
@@ -37,18 +36,18 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
                 { key: "5", label: <Link to="/pack-type">{t("Pack Type")}</Link> },
             ],
         },
-        {
-            key: "logout",
-            icon: <LogoutOutlined />,
-            label: <p onClick={logout}>{t("Logout")}</p>,
-        },
     ];
 
     const guestItems = [
         {
-            key: "login",
+            key: getRouteLogin(),
             icon: <LoginOutlined />,
             label: <Link to={getRouteLogin()}>{t("Login")}</Link>,
+        },
+        {
+            key: getRouteRegister(),
+            icon: <UserAddOutlined />,
+            label: <Link to={getRouteRegister()}>{t("Register")}</Link>,
         },
     ];
 

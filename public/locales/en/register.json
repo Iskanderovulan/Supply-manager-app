@@ -1,0 +1,15 @@
+{
+    "nameLabel": "Username",
+    "namePlaceholder": "Enter your username",
+    "nameRequired": "Please enter your username!",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "emailRequired": "Please enter your email!",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "passwordRequired": "Please enter your password!",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "confirmPasswordRequired": "Please confirm your password!",
+    "registerButton": "Register"
+}
