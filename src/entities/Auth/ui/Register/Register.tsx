@@ -5,10 +5,13 @@ import { registerFormConfig } from "entities/Auth/model/config/registerFormConfi
 import { TranslationId } from "shared/const/translation";
 import { useRegisterMutation } from "entities/Auth/model/api/registerApi";
 import { RegisterSchema } from "entities/Auth/model/types/registerSchema";
+import { App as AntApp } from "antd";
+import { authError } from "shared/types/auth";
 import cls from "./Register.module.scss";
 
 export const Register = () => {
     const dispatch = useAppDispatch();
+    const { notification } = AntApp.useApp();
 
     const [register, { isLoading }] = useRegisterMutation();
 
@@ -17,7 +20,11 @@ export const Register = () => {
             const data = await register(values).unwrap();
             dispatch(authActions.setCredentials({ tokens: data.tokens, user: data.user }));
         } catch (error) {
-            console.error("Failed to login:", error);
+            const customError = error as authError;
+            notification.error({
+                message: "Ошибка при входе",
+                description: customError.data?.message || "Произошла неожиданная ошибка",
+            });
         }
     };
 
@@ -26,7 +33,7 @@ export const Register = () => {
             className={cls.register}
             config={registerFormConfig}
             onFinish={handleRegister}
-            translation={TranslationId.REGISTER}
+            translation={TranslationId.AUTH}
             loading={isLoading}
         />
     );
