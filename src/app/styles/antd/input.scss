@@ -11,12 +11,12 @@
 
 .ant-input-clear-icon svg {
     color: var(--text-color);
-    opacity: 0.5;
+    opacity: var(--default-opacity);
 }
 
 .ant-input-clear-icon svg:hover {
     color: var(--text-color);
-    opacity: 1;
+    opacity: var(--hover-opacity);
 }
 .ant-input-password-icon svg {
     color: var(--text-color);

@@ -33,7 +33,7 @@ export const Login = () => {
             className={cls.login}
             config={loginFormConfig}
             onFinish={handleLogin}
-            translation={TranslationId.LOGIN}
+            translation={TranslationId.AUTH}
             loading={isLoading}
         />
     );

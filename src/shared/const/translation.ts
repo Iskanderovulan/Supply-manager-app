@@ -1,5 +1,4 @@
 export enum TranslationId {
-    LOGIN = "login",
-    REGISTER = "register",
+    AUTH = "auth",
     MAIN = "main",
 }

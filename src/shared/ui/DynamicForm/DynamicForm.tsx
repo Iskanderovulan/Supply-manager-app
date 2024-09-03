@@ -11,7 +11,7 @@ interface DynamicFormProps<T> {
     config: {
         fields: {
             label: string;
-            name: string;
+            name: T[keyof T];
             type: string;
             placeholder: string;
             rules: FormRecord[];
@@ -41,7 +41,6 @@ export const DynamicForm = <T,>({
     loading,
     className = "",
 }: DynamicFormProps<T>) => {
-    
     const { t } = useTranslation(translation);
     const [form] = Form.useForm<T>();
 
