@@ -27,7 +27,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
         const refreshResult = await baseQuery(
             {
-                url: "/auth/refresh-token",
+                url: "/auth/refresh-tokens",
                 method: "POST",
                 body: { refreshToken },
             },
@@ -48,9 +48,9 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     return result;
 };
 
-// Создание API с учетом обновления токенов
 export const baseApi = createApi({
     reducerPath: "api",
     baseQuery: baseQueryWithReauth,
+    tagTypes: ["Materials"],
     endpoints: () => ({}),
 });

@@ -4,12 +4,14 @@ import {
     getRouteLogin,
     getRouteRegister,
     getRouteNotFound,
+    getRouteMaterial,
 } from "shared/const/router";
 import { RouteProps } from "react-router-dom";
 import { MainPage } from "pages/MainPage";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { LoginPage } from "pages/LoginPage";
 import { RegisterPage } from "pages/RegisterPage";
+import { MaterialPage } from "pages/MaterialPage";
 
 type CustomRouteProps = {
     isProtected?: boolean;
@@ -35,5 +37,10 @@ export const routeConfig: Record<AppRoutes, CustomRouteProps> = {
         path: getRouteNotFound(),
         element: <NotFoundPage />,
         isProtected: false,
+    },
+    [AppRoutes.MATERIAL]: {
+        path: getRouteMaterial(),
+        element: <MaterialPage />,
+        isProtected: true,
     },
 };

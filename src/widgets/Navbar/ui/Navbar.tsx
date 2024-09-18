@@ -1,4 +1,4 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import classNames from "classnames";
 import { Button, Layout } from "antd";
 import cls from "./Navbar.module.scss";
 import { LangSwitcher } from "features/LangSwitcher";
@@ -16,7 +16,7 @@ export const Navbar = () => {
     const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
     return (
-        <Header className={classNames(cls.Header, {}, [])}>
+        <Header className={classNames(cls.Header)}>
             <nav className={cls.nav}>
                 <Button type="dashed" onClick={toggleCollapse}>
                     {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

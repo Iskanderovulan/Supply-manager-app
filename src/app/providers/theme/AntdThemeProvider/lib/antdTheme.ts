@@ -43,8 +43,33 @@ export const defaultTheme = {
             colorBgContainer: "var(--secondary-bg-color)", // Фон инпута
             colorBorder: "var(--border-color)", // Цвет границы инпута
             colorPlaceholder: "var(--text-color)", // Цвет плейсхолдера
-            hoverBorderColor: "var(--primary-color)",
+            hoverBorderColor: "var(--border-selected-color)",
+            activeShadow: "var(--active-shadow)",
             colorTextPlaceholder: "var(--input-placeholder-color)",
+        },
+        Modal: {
+            contentBg: "var(--secondary-bg-color)",
+            headerBg: "var(--secondary-bg-color)",
+            titleColor: "var(--text-color)",
+            colorIcon: "var(--text-color)",
+        },
+        Select: {
+            colorBorder: "var(--border-color)",
+            hoverBorderColor: "var(--border-selected-color)",
+            optionSelectedColor: "var(--text-color)",
+            optionSelectedBg: "var(--select-selected-bg)",
+            colorText: "var(--text-color)",
+            colorBgElevated: "var(--select-dropdown-bg)",
+            optionActiveBg: "var(--select-active-bg)",
+            colorTextPlaceholder: "var(--border-color)",
+        },
+        Table: {
+            headerColor: "var(--text-color)",
+            colorText: "var(--table-text)",
+            headerBg: "var(--table-header-bg)",
+            borderColor: "var(--table-border)",
+            rowHoverBg: "var(--table-row-hover)",
+            colorBgContainer: "var(--table-bg)",
         },
     },
 };

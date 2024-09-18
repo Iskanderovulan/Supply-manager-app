@@ -1,0 +1,15 @@
+{
+    "registrationSuccess": "Регистрация прошла успешно.",
+    "loginSuccess": "Вход выполнен успешно.",
+    "createSuccess": "Создание прошло успешно.",
+    "updateSuccess": "Изменения успешно сохранены.",
+    "deleteSuccess": "Удаление прошло успешно.",
+    "defaultMessage": "Операция выполнена успешно.",
+
+    "registrationSuccessDescription": "Ваш аккаунт был успешно создан.",
+    "loginSuccessDescription": "Вы успешно вошли в систему.",
+    "createSuccessDescription": "Элемент был добавлен в список.",
+    "updateSuccessDescription": "Изменения были успешно сохранены.",
+    "deleteSuccessDescription": "Элемент был удален из списка.",
+    "defaultDescription": "Действие выполнено успешно."
+}

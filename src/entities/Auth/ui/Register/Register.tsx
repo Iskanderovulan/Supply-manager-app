@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { authActions } from "entities/Auth";
 import { DynamicForm } from "shared/ui/DynamicForm/DynamicForm";
@@ -5,27 +6,25 @@ import { registerFormConfig } from "entities/Auth/model/config/registerFormConfi
 import { TranslationId } from "shared/const/translation";
 import { useRegisterMutation } from "entities/Auth/model/api/registerApi";
 import { RegisterSchema } from "entities/Auth/model/types/registerSchema";
-import { App as AntApp } from "antd";
-import { authError } from "shared/types/auth";
+import { useNotification } from "shared/lib/hooks/useNotification/useNotification";
+import { NotificationData } from "shared/const/notifications";
 import cls from "./Register.module.scss";
 
 export const Register = () => {
     const dispatch = useAppDispatch();
-    const { notification } = AntApp.useApp();
 
-    const [register, { isLoading }] = useRegisterMutation();
+    const [register, { isLoading, error, isSuccess, data, reset }] = useRegisterMutation();
+
+    useNotification(error, isSuccess, NotificationData.registrationSuccess.key, reset);
+
+    useEffect(() => {
+        if (isSuccess && data) {
+            dispatch(authActions.setCredentials({ tokens: data.tokens, user: data.user }));
+        }
+    }, [isSuccess, data, dispatch]);
 
     const handleRegister = async (values: RegisterSchema) => {
-        try {
-            const data = await register(values).unwrap();
-            dispatch(authActions.setCredentials({ tokens: data.tokens, user: data.user }));
-        } catch (error) {
-            const customError = error as authError;
-            notification.error({
-                message: "Ошибка при входе",
-                description: customError.data?.message || "Произошла неожиданная ошибка",
-            });
-        }
+        await register(values).unwrap();
     };
 
     return (

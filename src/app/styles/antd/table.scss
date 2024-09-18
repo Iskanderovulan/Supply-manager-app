@@ -1,0 +1,9 @@
+body .ant-table-thead > tr > th {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}

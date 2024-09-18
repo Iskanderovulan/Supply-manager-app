@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Button } from "antd";
 import { LOCAL_STORAGE_LANG_KEY } from "shared/const/localstorage";
@@ -25,7 +25,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className = "" }) => {
     };
 
     return (
-        <Button className={classNames("", {}, [className])} onClick={toggle}>
+        <Button className={classNames(className)} onClick={toggle}>
             {t("switcher.label")}
         </Button>
     );
