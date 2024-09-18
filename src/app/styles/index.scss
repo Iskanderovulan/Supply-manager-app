@@ -1,18 +1,22 @@
 @import "reset";
 @import "variables/global";
-@import "themes/default.scss";
 @import "themes/light";
 @import "themes/dark";
 @import "antd/input";
 @import "antd/notification";
-
+@import "antd/select";
+@import "antd/table";
 .app {
     font: var(--font-m);
     background: var(--bg-color);
-    color: var(--primary-color);
+    color: var(--text-color);
     min-height: 100vh;
 }
 
 .content-page {
     display: flex;
+}
+
+.ant-spin-dot {
+    color: red; // Используйте вашу переменную для фона
 }

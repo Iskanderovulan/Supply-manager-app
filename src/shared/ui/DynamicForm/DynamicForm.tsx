@@ -1,6 +1,6 @@
-import { useCallback } from "react";
-import { Form, Input, Button, ButtonProps } from "antd";
-import { classNames } from "shared/lib/classNames/classNames";
+import React, { useCallback } from "react";
+import { Form, Input, Button, ButtonProps, Select } from "antd";
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "shared/const/translation";
 import cls from "./DynamicForm.module.scss";
@@ -15,6 +15,7 @@ interface DynamicFormProps<T> {
             type: string;
             placeholder: string;
             rules: FormRecord[];
+            options?: { label: string; value: string | number }[];
         }[];
         buttons: {
             label: string;
@@ -47,12 +48,10 @@ export const DynamicForm = <T,>({
     const handleButtonClick = useCallback(
         (handlerKey?: string) => {
             if (handlerKey && handlers) {
-                const values = form.getFieldsValue();
-                console.log(values);
-                handlers[handlerKey]?.(values);
+                handlers[handlerKey]?.();
             }
         },
-        [form, handlers],
+        [handlers],
     );
 
     return (
@@ -68,7 +67,15 @@ export const DynamicForm = <T,>({
                             message: t(rule.message as string),
                         }))}
                     >
-                        {field.type === "password" ? (
+                        {field.type === "select" ? (
+                            <Select className="custom-select" placeholder={t(field.placeholder)}>
+                                {field.options?.map((option) => (
+                                    <Select.Option key={option.value} value={option.value}>
+                                        {t(option.label)}
+                                    </Select.Option>
+                                ))}
+                            </Select>
+                        ) : field.type === "password" ? (
                             <Input.Password allowClear placeholder={t(field.placeholder)} />
                         ) : (
                             <Input

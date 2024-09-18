@@ -1,0 +1,15 @@
+{
+    "registrationSuccess": "Registration was successful.",
+    "loginSuccess": "Login successful.",
+    "createSuccess": "Creation was successful.",
+    "updateSuccess": "Update completed successfully.",
+    "deleteSuccess": "Deletion completed successfully.",
+    "defaultMessage": "Operation was successful.",
+
+    "registrationSuccessDescription": "Your account has been created successfully.",
+    "loginSuccessDescription": "You have logged in successfully.",
+    "createSuccessDescription": "The item has been added to the list.",
+    "updateSuccessDescription": "Changes have been saved successfully.",
+    "deleteSuccessDescription": "The item has been deleted from the list.",
+    "defaultDescription": "The action completed successfully."
+}

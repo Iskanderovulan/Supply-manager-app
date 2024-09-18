@@ -5,7 +5,12 @@ import {
     LoginOutlined,
     UserAddOutlined,
 } from "@ant-design/icons";
-import { getRouteMain, getRouteLogin, getRouteRegister } from "shared/const/router";
+import {
+    getRouteMain,
+    getRouteLogin,
+    getRouteRegister,
+    getRouteMaterial,
+} from "shared/const/router";
 import { Link } from "react-router-dom";
 import { TFunction } from "i18next";
 
@@ -31,7 +36,7 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
             icon: <ApartmentOutlined />,
             label: t("Classificators"),
             children: [
-                { key: "3", label: <Link to="/material">{t("Material")}</Link> },
+                { key: "3", label: <Link to={getRouteMaterial()}>{t("Material")}</Link> },
                 { key: "4", label: <Link to="/color">{t("Color")}</Link> },
                 { key: "5", label: <Link to="/pack-type">{t("Pack Type")}</Link> },
             ],
