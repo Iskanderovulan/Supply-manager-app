@@ -1,4 +1,5 @@
 {
+    "logoutSuccess": "Выход выполнен успешно.",
     "registrationSuccess": "Регистрация прошла успешно.",
     "loginSuccess": "Вход выполнен успешно.",
     "createSuccess": "Создание прошло успешно.",
@@ -6,10 +7,17 @@
     "deleteSuccess": "Удаление прошло успешно.",
     "defaultMessage": "Операция выполнена успешно.",
 
+    "logoutSuccessDescription": "Вы успешно вышли из системы.",
     "registrationSuccessDescription": "Ваш аккаунт был успешно создан.",
     "loginSuccessDescription": "Вы успешно вошли в систему.",
     "createSuccessDescription": "Элемент был добавлен в список.",
     "updateSuccessDescription": "Изменения были успешно сохранены.",
     "deleteSuccessDescription": "Элемент был удален из списка.",
-    "defaultDescription": "Действие выполнено успешно."
+    "defaultDescription": "Действие выполнено успешно.",
+
+    "errorOccurred": "Произошла неизвестная ошибка. Попробуйте еще раз.",
+    "errorCode": "Код ошибки: код не предоставлен",
+
+    "error": "Ошибка",
+    "unexpectedError": "Произошла неизвестная ошибка. Попробуйте еще раз."
 }

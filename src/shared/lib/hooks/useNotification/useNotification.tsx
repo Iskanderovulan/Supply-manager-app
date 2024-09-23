@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { App as AntApp } from "antd";
@@ -7,38 +6,46 @@ import { useTranslation } from "react-i18next";
 import { NotificationData } from "shared/const/notifications";
 import { TranslationId } from "shared/const/translation";
 
-export const useNotification = (
-    error: FetchBaseQueryError | SerializedError | undefined,
-    isSuccess: boolean,
-    notificationKey: keyof typeof NotificationData = NotificationData.default.key,
-    reset: () => void,
-) => {
+interface NotificationProps {
+    isError: boolean;
+    isSuccess: boolean;
+    error: FetchBaseQueryError | SerializedError | undefined;
+    notificationKey?: keyof typeof NotificationData;
+    reset: () => void;
+}
+
+export const useNotification = ({
+    isError,
+    isSuccess,
+    error,
+    reset,
+    notificationKey = NotificationData.default.message,
+}: NotificationProps) => {
     const { notification } = AntApp.useApp();
     const { t } = useTranslation(TranslationId.NOTIFICATION);
-    console.log(isSuccess);
-    useEffect(() => {
-        console.log(isSuccess);
 
-        if (error) {
+    useEffect(() => {
+        if (isError && error) {
             const errorMessage =
                 "data" in error && error.data
                     ? (error.data as { message?: string })?.message
-                    : t("unexpectedError");
+                    : t(NotificationData.error.description);
             notification.error({
-                message: t("error"),
+                message: t(NotificationData.error.message),
                 description: errorMessage,
+                duration: 2,
             });
             reset();
         }
 
         if (isSuccess) {
             const { message, description } = NotificationData[notificationKey];
-
             notification.success({
                 message: t(message),
                 description: t(description),
+                duration: 2,
             });
             reset();
         }
-    }, [error, isSuccess, notificationKey, notification, t, reset]);
+    }, [isError, isSuccess, error, notificationKey, notification, t, reset]);
 };

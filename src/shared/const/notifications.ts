@@ -1,32 +1,34 @@
 export const NotificationData = {
     registrationSuccess: {
-        key: "registrationSuccess",
         message: "registrationSuccess",
         description: "registrationSuccessDescription",
     },
     loginSuccess: {
-        key: "loginSuccess",
         message: "loginSuccess",
         description: "loginSuccessDescription",
     },
+    logoutSuccess: {
+        message: "logoutSuccess",
+        description: "logoutSuccessDescription",
+    },
     createSuccess: {
-        key: "createSuccess",
         message: "createSuccess",
         description: "createSuccessDescription",
     },
     updateSuccess: {
-        key: "updateSuccess",
         message: "updateSuccess",
         description: "updateSuccessDescription",
     },
     deleteSuccess: {
-        key: "deleteSuccess",
         message: "deleteSuccess",
         description: "deleteSuccessDescription",
     },
     default: {
-        key: "default",
-        message: "defaultMessage",
+        message: "default",
         description: "defaultDescription",
+    },
+    error: {
+        message: "error",
+        description: "unexpectedError",
     },
 } as const;

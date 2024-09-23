@@ -4,25 +4,26 @@ import { useModal } from "shared/lib/hooks/useModal/useModal";
 import { DynamicForm } from "shared/ui/DynamicForm/DynamicForm";
 import { createMaterialFormConfig } from "entities/Material/model/config/createMaterialFormConfig";
 import { MaterialSchema } from "entities/Material/model/types/materialSchema";
-import { useCreateMaterialMutation } from "entities/Material/model/api/materialApi"; // RTK Query хук
+import { useCreateMaterialMutation } from "entities/Material/model/api/materialApi";
 import { useNotification } from "shared/lib/hooks/useNotification/useNotification";
 import { NotificationData } from "shared/const/notifications";
 
 export const CreateMaterial: React.FC = () => {
     const { isModalOpen, showModal, hideModal } = useModal();
 
-    const [createMaterial, { error, isLoading, isSuccess, reset }] = useCreateMaterialMutation();
-    console.log(isSuccess);
+    const [createMaterial, { error, isError, isLoading, isSuccess, reset }] =
+        useCreateMaterialMutation();
 
-    useNotification(error, isSuccess, NotificationData.createSuccess.key, reset);
+    useNotification({
+        isError,
+        isSuccess,
+        error,
+        reset,
+        notificationKey: NotificationData.createSuccess.message,
+    });
 
-    const handleCreateMaterial = async (values: MaterialSchema) => {
-        try {
-            const data = await createMaterial(values).unwrap();
-            console.log(data);
-        } catch (err) {
-            console.error("Ошибка при создании материала:", err);
-        }
+    const handleCreateMaterial = (values: MaterialSchema) => {
+        createMaterial(values);
     };
 
     return (
@@ -34,7 +35,7 @@ export const CreateMaterial: React.FC = () => {
                 <DynamicForm<MaterialSchema>
                     config={createMaterialFormConfig}
                     onFinish={handleCreateMaterial}
-                    loading={isLoading} // Индикатор загрузки
+                    loading={isLoading}
                 />
             </Modal>
         </>
