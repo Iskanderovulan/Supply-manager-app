@@ -1,12 +1,13 @@
-import { baseApi } from "shared/api/rtkApi";
+import { authApi } from "shared/api/authApi";
 import { LoginSchema } from "../types/loginSchema";
 import { UserData } from "../types/authSchema";
+import { API_ENDPOINTS } from "shared/config/apiConfig/apiConfig";
 
-export const loginApi = baseApi.injectEndpoints({
+export const loginApi = authApi.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation<UserData, LoginSchema>({
             query: (credentials) => ({
-                url: "auth/login",
+                url: API_ENDPOINTS.LOGIN,
                 method: "POST",
                 body: credentials,
             }),

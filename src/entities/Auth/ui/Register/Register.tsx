@@ -13,9 +13,15 @@ import cls from "./Register.module.scss";
 export const Register = () => {
     const dispatch = useAppDispatch();
 
-    const [register, { isLoading, error, isSuccess, data, reset }] = useRegisterMutation();
+    const [register, { isLoading, isError, error, isSuccess, data, reset }] = useRegisterMutation();
 
-    useNotification(error, isSuccess, NotificationData.registrationSuccess.key, reset);
+    useNotification({
+        isError,
+        isSuccess,
+        error,
+        reset,
+        notificationKey: NotificationData.registrationSuccess.message,
+    });
 
     useEffect(() => {
         if (isSuccess && data) {
@@ -23,8 +29,8 @@ export const Register = () => {
         }
     }, [isSuccess, data, dispatch]);
 
-    const handleRegister = async (values: RegisterSchema) => {
-        await register(values).unwrap();
+    const handleRegister = (values: RegisterSchema) => {
+        register(values);
     };
 
     return (

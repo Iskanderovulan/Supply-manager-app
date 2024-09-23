@@ -3,9 +3,11 @@ import { RootState } from "app/store/store";
 import { authActions } from "entities/Auth";
 import { BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query";
 import { Tokens, User } from "shared/types/auth";
-// Базовый запрос с учетом обновления токена
+import { TagTypes } from "shared/const/tagTypes";
+import { BASE_URL, API_ENDPOINTS } from "shared/config/apiConfig/apiConfig";
+
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:5050/v1/",
+    baseUrl: BASE_URL,
     prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).auth.token;
         if (token) {
@@ -27,7 +29,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
         const refreshResult = await baseQuery(
             {
-                url: "/auth/refresh-tokens",
+                url: API_ENDPOINTS.REFRESH_TOKEN,
                 method: "POST",
                 body: { refreshToken },
             },
@@ -41,6 +43,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
             );
             result = await baseQuery(args, api, extraOptions);
         } else {
+            api.dispatch(baseApi.util.resetApiState());
             api.dispatch(authActions.clearToken());
         }
     }
@@ -51,6 +54,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 export const baseApi = createApi({
     reducerPath: "api",
     baseQuery: baseQueryWithReauth,
-    tagTypes: ["Materials"],
+    tagTypes: [TagTypes.MATERIALS],
     endpoints: () => ({}),
 });

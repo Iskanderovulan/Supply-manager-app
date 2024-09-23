@@ -1,56 +1,60 @@
 import { baseApi } from "shared/api/rtkApi";
 import { MaterialSchema } from "../types/materialSchema";
+import { TagTypes } from "shared/const/tagTypes";
+import { API_ENDPOINTS } from "shared/config/apiConfig/apiConfig";
 
 export const materialApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getMaterials: builder.query<{ results: MaterialSchema[] }, void>({
-            query: () => "materials",
+            query: () => API_ENDPOINTS.MATERIALS,
             providesTags: (result) =>
                 result?.results
                     ? [
-                          ...result.results.map(({ id }) => ({ type: "Materials" as const, id })),
-                          { type: "Materials", id: "LIST" },
+                          ...result.results.map(({ id }) => ({
+                              type: TagTypes.MATERIALS as const,
+                              id,
+                          })),
+                          { type: TagTypes.MATERIALS, id: TagTypes.LIST },
                       ]
-                    : [{ type: "Materials", id: "LIST" }],
+                    : [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
         }),
         createMaterial: builder.mutation<MaterialSchema, Partial<MaterialSchema>>({
             query: (newMaterial) => ({
-                url: "materials",
+                url: API_ENDPOINTS.MATERIALS,
                 method: "POST",
                 body: newMaterial,
             }),
-            invalidatesTags: [{ type: "Materials", id: "LIST" }],
+            invalidatesTags: [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
         }),
         updateMaterial: builder.mutation<MaterialSchema, Partial<MaterialSchema>>({
             query: ({ id, ...patch }) => ({
-                url: `materials/${id}`,
+                url: API_ENDPOINTS.MATERIALS,
                 method: "PATCH",
                 body: patch,
+                params: { id },
             }),
-            // Обрабатываем результат и ошибку
             invalidatesTags: (result, error, { id }) => {
                 if (result) {
-                    return [{ type: "Materials", id }];
+                    return [{ type: TagTypes.MATERIALS, id }];
                 } else if (error) {
-                    console.error("Ошибка обновления материала:", error);
-                    return [{ type: "Materials", id: "LIST" }];
+                    return [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }];
                 }
-                return [{ type: "Materials", id: "LIST" }];
+                return [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }];
             },
         }),
         deleteMaterial: builder.mutation<MaterialSchema, string>({
             query: (id) => ({
-                url: `materials/${id}`,
+                url: API_ENDPOINTS.MATERIALS,
                 method: "DELETE",
+                params: { id },
             }),
             invalidatesTags: (result, error, id) => {
                 if (result) {
-                    return [{ type: "Materials", id }];
+                    return [{ type: TagTypes.MATERIALS, id }];
                 } else if (error) {
-                    console.error("Ошибка удаления материала:", error);
-                    return [{ type: "Materials", id: "LIST" }];
+                    return [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }];
                 }
-                return [{ type: "Materials", id: "LIST" }];
+                return [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }];
             },
         }),
     }),

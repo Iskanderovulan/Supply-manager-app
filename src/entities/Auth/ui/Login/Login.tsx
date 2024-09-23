@@ -13,9 +13,15 @@ import cls from "./Login.module.scss";
 export const Login = () => {
     const dispatch = useAppDispatch();
 
-    const [login, { isLoading, error, isSuccess, data, reset }] = useLoginMutation();
+    const [login, { isLoading, isError, error, isSuccess, data, reset }] = useLoginMutation();
 
-    useNotification(error, isSuccess, NotificationData.loginSuccess.key,reset);
+    useNotification({
+        isError,
+        isSuccess,
+        error,
+        reset,
+        notificationKey: NotificationData.loginSuccess.message,
+    });
 
     useEffect(() => {
         if (isSuccess && data) {
@@ -23,10 +29,9 @@ export const Login = () => {
         }
     }, [isSuccess, data, dispatch]);
 
-    const handleLogin = async (values: LoginSchema) => {
-        await login(values).unwrap();
+    const handleLogin = (values: LoginSchema) => {
+        login(values);
     };
-
     return (
         <DynamicForm<LoginSchema>
             className={cls.login}

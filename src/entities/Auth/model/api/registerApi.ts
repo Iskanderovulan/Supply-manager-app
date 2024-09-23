@@ -1,12 +1,13 @@
-import { baseApi } from "shared/api/rtkApi";
+import { authApi } from "shared/api/authApi";
 import { RegisterSchema } from "../types/registerSchema";
 import { UserData } from "../types/authSchema";
+import { API_ENDPOINTS } from "shared/config/apiConfig/apiConfig";
 
-export const registerApi = baseApi.injectEndpoints({
+export const registerApi = authApi.injectEndpoints({
     endpoints: (builder) => ({
         register: builder.mutation<UserData, RegisterSchema>({
             query: (data) => ({
-                url: "auth/register",
+                url: API_ENDPOINTS.REGISTER,
                 method: "POST",
                 body: data,
             }),

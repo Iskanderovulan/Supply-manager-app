@@ -19,8 +19,6 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children, reverseRedir
 
     // If reverseRedirect is false, this route is for authenticated pages
     if (!reverseRedirect && !isAuthenticated) {
-        console.log(!reverseRedirect);
-        console.log("TRIGGER");
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 

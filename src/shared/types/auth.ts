@@ -16,12 +16,3 @@ export interface User {
     email: string;
     id: string;
 }
-
-export interface authError {
-    status: number;
-    data: {
-        code: number;
-        message: string;
-        stack?: string;
-    };
-}
