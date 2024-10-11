@@ -1,8 +1,8 @@
 import React from "react";
 import { Alert } from "antd";
 import { useTranslation } from "react-i18next";
-import { CustomError } from "shared/types/error";
-import { TranslationId } from "shared/const/translation";
+import { CustomError } from "@shared/types/error";
+import { TranslationId } from "@shared/const/translation";
 
 interface ErrorMessageProps {
     error: unknown;

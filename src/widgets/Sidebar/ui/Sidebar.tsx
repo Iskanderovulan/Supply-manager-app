@@ -1,7 +1,7 @@
 import { Layout, Menu } from "antd";
-import { useCollapsed } from "app/providers/layout/CollapseProvider";
-import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
-import { selectIsAuthenticated } from "entities/Auth";
+import { useCollapsed } from "@app/providers/layout/CollapseProvider";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector/useAppSelector";
+import { selectIsAuthenticated } from "@features/Auth";
 import { getMenuItems } from "../config/menuItems";
 import { useTranslation } from "react-i18next";
 import cls from "./Sidebar.module.scss";

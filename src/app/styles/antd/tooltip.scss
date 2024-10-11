@@ -1,0 +1,11 @@
+.ant-tooltip .ant-tooltip-inner a {
+    color: var(--text-color);
+}
+
+.ant-tooltip .ant-tooltip-inner {
+    background-color: var(--accent-color);
+}
+
+.ant-tooltip .ant-tooltip-arrow::after {
+    background-color: var(--accent-color);
+}

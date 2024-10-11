@@ -6,6 +6,14 @@
 @import "antd/notification";
 @import "antd/select";
 @import "antd/table";
+@import "antd/pagination";
+@import "antd/tooltip";
+@import "antd/confirm";
+@import "antd/collapse";
+@import "antd/drawer";
+@import "antd/date-picker";
+@import "antd/checkbox.scss";
+
 .app {
     font: var(--font-m);
     background: var(--bg-color);
@@ -16,5 +24,3 @@
 .content-page {
     display: flex;
 }
-
-

@@ -1,4 +1,5 @@
 .custom-select:hover .ant-select-selector {
+    // Very specific override required to change Ant Design's styles
     border-color: var(--border-selected-color) !important;
 }
 
@@ -6,6 +7,7 @@
         .ant-select-customize-input
     )
     .ant-select-selector {
+    // Very specific override required to change Ant Design's styles
     box-shadow: var(--active-shadow) !important;
 }
 
@@ -15,4 +17,11 @@
 
 .custom-select .ant-select-arrow {
     color: var(--text-color);
+}
+
+.custom-select .ant-input-affix-wrapper-focused,
+.ant-picker-focused,
+.ant-select-focused .ant-select-selector {
+    // Very specific override required to change Ant Design's styles
+    border-color: var(--border-selected-color) !important;
 }

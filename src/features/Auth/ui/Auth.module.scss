@@ -1,0 +1,19 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--padding-middle);
+    background-color: var(--bg-color);
+    margin-top:var(--margin-large)
+}
+
+.authContainer > div {
+    background-color: var(--secondary-bg-color);
+    padding: var(--padding-extra-large);
+    box-shadow: var(--layout-shadow);
+    width: 100%;
+    max-width: 400px;
+    input {
+        margin: 0;
+    }
+}

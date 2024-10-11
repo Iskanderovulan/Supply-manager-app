@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
-import { RootState } from "app/store/store";
-import { authActions } from "entities/Auth";
+import { RootState } from "@app/store/store";
+import { authActions } from "@features/Auth";
 import { BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query";
-import { Tokens, User } from "shared/types/auth";
-import { TagTypes } from "shared/const/tagTypes";
-import { BASE_URL, API_ENDPOINTS } from "shared/config/apiConfig/apiConfig";
+import { Tokens } from "@shared/types/auth";
+import { TagTypes } from "@shared/const/tagTypes";
+import { BASE_URL, API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,
@@ -24,25 +24,42 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 ) => {
     let result = await baseQuery(args, api, extraOptions);
 
+    // Если возникает ошибка 401, то обновляем токен
     if (result.error && result.error.status === 401) {
         const refreshToken = (api.getState() as RootState).auth.refreshToken;
 
-        const refreshResult = await baseQuery(
-            {
-                url: API_ENDPOINTS.REFRESH_TOKEN,
-                method: "POST",
-                body: { refreshToken },
-            },
-            api,
-            extraOptions,
-        );
-
-        if (refreshResult.data) {
-            api.dispatch(
-                authActions.setCredentials(refreshResult.data as { tokens: Tokens; user: User }),
+        if (refreshToken) {
+            // Отправляем запрос на обновление токена
+            const refreshResult = await baseQuery(
+                {
+                    url: API_ENDPOINTS.REFRESH_TOKEN,
+                    method: "POST",
+                    body: { refreshToken },
+                },
+                api,
+                extraOptions,
             );
-            result = await baseQuery(args, api, extraOptions);
+            console.log(refreshResult);
+
+            if (refreshResult.data) {
+                const tokens = refreshResult.data as Tokens;
+
+                // Обновляем токены в хранилище
+                api.dispatch(
+                    authActions.setCredentials({
+                        tokens,
+                    }),
+                );
+
+                // Повторяем исходный запрос с обновленным токеном
+                result = await baseQuery(args, api, extraOptions);
+            } else {
+                // Если обновление не удалось, очищаем данные пользователя
+                api.dispatch(baseApi.util.resetApiState());
+                api.dispatch(authActions.clearToken());
+            }
         } else {
+            // Если refreshToken отсутствует, очищаем данные пользователя
             api.dispatch(baseApi.util.resetApiState());
             api.dispatch(authActions.clearToken());
         }

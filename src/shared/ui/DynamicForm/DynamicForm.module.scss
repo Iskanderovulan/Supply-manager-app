@@ -2,3 +2,9 @@
     display: grid;
     gap: var(--gap-small);
 }
+.title {
+    font: var( --font-l);
+    margin-bottom: var(--margin-large);
+    position: relative;
+    text-align: center;
+}

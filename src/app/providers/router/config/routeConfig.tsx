@@ -5,13 +5,13 @@ import {
     getRouteRegister,
     getRouteNotFound,
     getRouteMaterial,
-} from "shared/const/router";
+} from "@shared/const/router";
 import { RouteProps } from "react-router-dom";
-import { MainPage } from "pages/MainPage";
-import { NotFoundPage } from "pages/NotFoundPage";
-import { LoginPage } from "pages/LoginPage";
-import { RegisterPage } from "pages/RegisterPage";
-import { MaterialPage } from "pages/MaterialPage";
+import { MainPage } from "@pages/MainPage";
+import { NotFoundPage } from "@pages/NotFoundPage";
+import { LoginPage } from "@pages/LoginPage";
+import { RegisterPage } from "@pages/RegisterPage";
+import { MaterialPage } from "@pages/MaterialPage";
 
 type CustomRouteProps = {
     isProtected?: boolean;

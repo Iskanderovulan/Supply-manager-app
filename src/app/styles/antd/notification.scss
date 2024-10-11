@@ -1,29 +1,25 @@
-@mixin text-color {
-    color: var(--text-color);
-}
-
 .ant-notification {
-    &-notice-wrapper {
+    .ant-notification-notice-wrapper {
         .ant-notification-notice {
             background-color: var(--secondary-bg-color);
             border: 1px solid var(--border-color);
+        }
 
-            .ant-notification-notice-message {
-                @include text-color;
-            }
+        .ant-notification-notice-message {
+            color: var(--text-color);
+        }
 
-            .ant-notification-notice-description {
-                @include text-color;
-            }
+        .ant-notification-notice-description {
+            color: var(--text-color);
+        }
 
-            .ant-notification-notice-close {
-                @include text-color;
+        .ant-notification-notice-close {
+            color: var(--text-color);
+        }
 
-                &:hover {
-                    @include text-color;
-                    opacity: 0.8;
-                }
-            }
+        .ant-notification-notice-close:hover {
+            color: var(--text-color);
+            opacity: 0.8;
         }
     }
 }

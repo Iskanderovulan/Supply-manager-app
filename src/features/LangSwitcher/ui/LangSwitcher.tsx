@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Button } from "antd";
-import { LOCAL_STORAGE_LANG_KEY } from "shared/const/localstorage";
+import { LOCAL_STORAGE_LANG_KEY } from "@shared/const/localstorage";
 
 interface LangSwitcherProps {
     className?: string;

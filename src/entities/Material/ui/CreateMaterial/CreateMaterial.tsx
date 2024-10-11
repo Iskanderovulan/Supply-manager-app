@@ -1,15 +1,18 @@
 import React from "react";
 import { Modal, Button } from "antd";
-import { useModal } from "shared/lib/hooks/useModal/useModal";
-import { DynamicForm } from "shared/ui/DynamicForm/DynamicForm";
-import { createMaterialFormConfig } from "entities/Material/model/config/createMaterialFormConfig";
-import { MaterialSchema } from "entities/Material/model/types/materialSchema";
-import { useCreateMaterialMutation } from "entities/Material/model/api/materialApi";
-import { useNotification } from "shared/lib/hooks/useNotification/useNotification";
-import { NotificationData } from "shared/const/notifications";
+import { useModal } from "@shared/lib/hooks/useModal/useModal";
+import { DynamicForm } from "@shared/ui/DynamicForm";
+import { materialFormConfig } from "@entities/Material/model/config/materialFormConfig";
+import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
+import { useCreateMaterialMutation } from "@entities/Material/model/api/materialApi";
+import { useNotification } from "@shared/lib/hooks/useNotification/useNotification";
+import { NotificationData } from "@shared/const/notifications";
+import { TranslationId } from "@shared/const/translation";
+import { useTranslation } from "react-i18next";
 
 export const CreateMaterial: React.FC = () => {
     const { isModalOpen, showModal, hideModal } = useModal();
+    const { t } = useTranslation(TranslationId.MATERIAL);
 
     const [createMaterial, { error, isError, isLoading, isSuccess, reset }] =
         useCreateMaterialMutation();
@@ -29,13 +32,20 @@ export const CreateMaterial: React.FC = () => {
     return (
         <>
             <Button type="primary" onClick={showModal}>
-                Create Material
+                {t("createMaterial")}
             </Button>
-            <Modal title="Create Material" open={isModalOpen} onCancel={hideModal}>
+            <Modal
+                title={t("createMaterial")}
+                open={isModalOpen}
+                onCancel={hideModal}
+                cancelText={t("cancel")}
+                okText={t("ok")}
+            >
                 <DynamicForm<MaterialSchema>
-                    config={createMaterialFormConfig}
+                    config={materialFormConfig}
                     onFinish={handleCreateMaterial}
                     loading={isLoading}
+                    translation={TranslationId.MATERIAL}
                 />
             </Modal>
         </>
