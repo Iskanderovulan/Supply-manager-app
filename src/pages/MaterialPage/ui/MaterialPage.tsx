@@ -1,4 +1,4 @@
-import { Material } from "entities/Material";
+import { Material } from "@entities/Material";
 
 const MaterialPage = () => {
     return (

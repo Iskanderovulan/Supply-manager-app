@@ -3,8 +3,8 @@ import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { App as AntApp } from "antd";
 import { useTranslation } from "react-i18next";
-import { NotificationData } from "shared/const/notifications";
-import { TranslationId } from "shared/const/translation";
+import { NotificationData } from "@shared/const/notifications";
+import { TranslationId } from "@shared/const/translation";
 
 interface NotificationProps {
     isError: boolean;

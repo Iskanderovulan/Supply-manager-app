@@ -1,48 +1,70 @@
-import { useGetMaterialsQuery } from "entities/Material/model/api/materialApi";
-import { MaterialSchema } from "entities/Material/model/types/materialSchema";
-import { generateColumns } from "shared/lib/helpers/fixedColumnsHeader";
-import { hardnessOptions } from "entities/Material/model/const/material";
-import { generateDate } from "shared/lib/helpers/generateDate";
-import { TableComponent } from "shared/ui/TableComponent/TableComponent";
+import { FC } from "react";
+import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
+import { generateColumns } from "@shared/lib/helpers/fixedColumnsHeader";
+import { hardnessOptions } from "@entities/Material/model/const/hardnessOptions";
+import { generateDate } from "@shared/lib/helpers/generateDate";
+import { TableComponent } from "@shared/ui/TableComponent";
+import { EditMaterial } from "../EditMaterial/EditMaterial";
+import { useTranslation } from "react-i18next";
+import { TranslationId } from "@shared/const/translation";
+import { DeleteMaterial } from "../DeleteMaterial/DeleteMaterial";
+import { Flex } from "antd";
 
-export const MaterialsTable: React.FC = () => {
-    const { data: materials, isLoading, error } = useGetMaterialsQuery();
+interface MaterialsTableProps {
+    dataSource: MaterialSchema[];
+    isLoading: boolean;
+    error: unknown;
+}
+
+export const MaterialsTable: FC<MaterialsTableProps> = (props) => {
+    const { dataSource, isLoading, error } = props;
+
+    const { t } = useTranslation(TranslationId.MATERIAL);
 
     const columns = generateColumns<MaterialSchema>([
         {
-            title: "ID",
+            title: t("id"),
             dataIndex: "id",
             key: "id",
         },
         {
-            title: "Name",
+            title: t("name"),
             dataIndex: "name",
             key: "name",
         },
         {
-            title: "Hardness",
+            title: t("hardness"),
             dataIndex: "hardness",
             key: "hardness",
             render: (_, record) => (
-                <span>{hardnessOptions.find((el) => el.value === record.hardness)?.label}</span>
+                <span>
+                    {t(hardnessOptions.find((el) => el.value === record.hardness)?.label || "")}
+                </span>
             ),
         },
         {
-            title: "Created At",
+            title: t("createdAt"),
             dataIndex: "createdAt",
             key: "createdAt",
             render: (date) => <span>{generateDate(date)}</span>,
         },
         {
-            title: "Updated At",
+            title: t("updatedAt"),
             dataIndex: "updatedAt",
             key: "updatedAt",
             render: (date) => <span>{generateDate(date)}</span>,
         },
         {
-            title: "Actions",
+            title: t("actions"),
             key: "actions",
-            render: () => <span>Edit</span>,
+            render: (_, record) => (
+                <>
+                    <Flex gap={12}>
+                        <EditMaterial material={record} />
+                        <DeleteMaterial material={record} />
+                    </Flex>
+                </>
+            ),
         },
     ]);
 
@@ -50,7 +72,7 @@ export const MaterialsTable: React.FC = () => {
         <>
             <TableComponent<MaterialSchema>
                 columns={columns}
-                dataSource={materials?.results}
+                dataSource={dataSource}
                 isLoading={isLoading}
                 error={error}
                 rowKey="id"

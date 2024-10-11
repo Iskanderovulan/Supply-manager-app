@@ -1,4 +1,4 @@
-import { Login } from "entities/Auth";
+import { Login } from "@features/Auth";
 
 const LoginPage = () => {
     return <Login />;

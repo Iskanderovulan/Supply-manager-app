@@ -1,0 +1,24 @@
+.ant-picker {
+    color: var(--text-color);
+}
+.ant-picker svg {
+    color: var(--text-color);
+}
+
+.ant-picker .ant-picker-suffix {
+    color: var(--text-color);
+}
+.ant-picker-outlined {
+    border-color: var(--border-color);
+}
+.ant-picker-outlined:hover {
+    border-color: var(--border-selected-color);
+    box-shadow: var(--active-shadow);
+}
+.ant-picker .ant-picker-outlined:focus {
+    border-color: var(--border-selected-color);
+    box-shadow: var(--active-shadow);
+}
+.ant-picker .ant-picker-active-bar {
+    background-color: var(--text-color);
+}

@@ -10,7 +10,7 @@ import {
     getRouteLogin,
     getRouteRegister,
     getRouteMaterial,
-} from "shared/const/router";
+} from "@shared/const/router";
 import { Link } from "react-router-dom";
 import { TFunction } from "i18next";
 

@@ -1,11 +1,13 @@
 {
     "switcher.label": "EN",
     "Products": "Products",
-    "Сhart":"Сhart",
-    "Classificators":"Classificators",
+    "Сhart": "Сhart",
+    "Classificators": "Classificators",
     "Material": "Material",
     "Color": "Color",
     "Pack Type": "Pack Type",
-    "Login":"Login",
-    "Register":"Register"
+    "Login": "Login",
+    "Register": "Register",
+    "searchByName": "Search by name",
+    "items": "items"
 }

@@ -1,9 +1,9 @@
 import Layout from "antd/es/layout/layout";
 import classNames from "classnames";
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "widgets/Sidebar";
-import { Navbar } from "widgets/Navbar";
-import { AppFooter } from "widgets/AppFooter";
+import { Sidebar } from "@widgets/Sidebar";
+import { Navbar } from "@widgets/Navbar";
+import { AppFooter } from "@widgets/AppFooter";
 import { Suspense } from "react";
 import cls from "./AppLayout.module.scss";
 

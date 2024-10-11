@@ -4,9 +4,9 @@ import cls from "./AppFooter.module.scss";
 const { Footer } = Layout;
 
 export const AppFooter = () => {
+    console.log("rerender");
+
     return (
-        <Footer className={classNames(cls.AppFooter)}>
-            CRM SYSTEM {new Date().getFullYear()}
-        </Footer>
+        <Footer className={classNames(cls.AppFooter)}>CRM SYSTEM {new Date().getFullYear()}</Footer>
     );
 };

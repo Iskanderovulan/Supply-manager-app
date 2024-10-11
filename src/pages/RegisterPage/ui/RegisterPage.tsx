@@ -1,4 +1,4 @@
-import { Register } from "entities/Auth";
+import { Register } from "@features/Auth";
 
 const RegisterPage = () => {
     return <Register />;

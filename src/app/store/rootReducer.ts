@@ -1,8 +1,8 @@
 // rootReducer.ts
 import { combineReducers } from "@reduxjs/toolkit";
-import { authReducer } from "entities/Auth";
-import { baseApi } from "shared/api/rtkApi";
-import { authApi } from "shared/api/authApi";
+import { authReducer } from "@features/Auth";
+import { baseApi } from "@shared/api/rtkApi";
+import { authApi } from "@shared/api/authApi";
 
 export const rootReducer = combineReducers({
     auth: authReducer,

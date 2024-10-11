@@ -1,9 +1,9 @@
-import React from "react";
 import classNames from "classnames";
 import { Table, TableProps } from "antd";
-import { Loader } from "shared/ui/Loader/Loader";
+import { Loader } from "@shared/ui/Loader";
 import cls from "./TableComponent.module.scss";
-import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
+import { ErrorMessage } from "../ErrorMessage";
+import { Title } from "../Title";
 
 interface TableComponentProps<T extends object> extends TableProps<T> {
     isLoading: boolean;
@@ -25,7 +25,7 @@ export const TableComponent = <T extends object>({
     }
 
     if (!dataSource || dataSource.length === 0) {
-        return <div>No data available.</div>;
+        return <Title text="No data available" marginBottom="none" />;
     }
 
     return (
