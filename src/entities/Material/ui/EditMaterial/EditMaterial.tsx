@@ -46,11 +46,10 @@ export const EditMaterial: React.FC<EditMaterialProps> = ({ material }) => {
                 okText={t("ok")}
             >
                 <DynamicForm<MaterialSchema>
-                    config={editMaterialFormConfig}
+                    config={editMaterialFormConfig(t)}
                     onFinish={handleEditMaterial}
                     loading={isLoading}
                     updateValues={material}
-                    translation={TranslationId.MATERIAL}
                 />
             </Modal>
         </>

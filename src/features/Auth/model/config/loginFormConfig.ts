@@ -1,37 +1,37 @@
-import { emailPattern } from "@shared/lib/validators/authValidators";
-import { passwordPattern } from "@shared/lib/validators/authValidators";
+import { emailPattern, passwordPattern } from "@shared/lib/validators/authValidators";
+import { TFunction } from "i18next";
 
-export const loginFormConfig = {
+export const loginFormConfig = (t: TFunction) => ({
     fields: [
         {
-            label: "emailLabel",
+            label: t("emailLabel"),
             name: "email",
             type: "email",
-            placeholder: "emailPlaceholder",
+            placeholder: t("emailPlaceholder"),
             rules: [
-                { required: true, message: "emailRequired" },
-                { pattern: emailPattern, message: "emailInvalid" },
+                { required: true, message: t("emailRequired") },
+                { pattern: emailPattern, message: t("emailInvalid") },
             ],
         },
         {
-            label: "passwordLabel",
+            label: t("passwordLabel"),
             name: "password",
             type: "password",
-            placeholder: "passwordPlaceholder",
+            placeholder: t("passwordPlaceholder"),
             rules: [
-                { required: true, message: "passwordRequired" },
+                { required: true, message: t("passwordRequired") },
                 {
                     pattern: passwordPattern,
-                    message: "passwordInvalid",
+                    message: t("passwordInvalid"),
                 },
             ],
         },
     ],
     buttons: [
         {
-            label: "loginButton",
+            label: t("loginButton"),
             type: "primary",
             htmlType: "submit",
         },
     ],
-};
+});

@@ -1,16 +1,17 @@
 import { hardnessOptions } from "../const/hardnessOptions";
 import { FilterConfig } from "@features/Filter";
+import { TFunction } from "i18next";
 
-export const filterConfig: FilterConfig[] = [
+export const filterConfig = (t: TFunction): FilterConfig[] => [
     {
         type: "checkbox",
-        label: "Filter by Material",
+        label: t("filterByMaterial"),
         key: "materials",
-        options: hardnessOptions,
+        options: hardnessOptions.map((el) => ({ ...el, label: t(el.label) })),
     },
     {
         type: "datePicker",
-        label: "Filter by Date",
+        label: t("filterByDate"),
         key: "dateRange",
     },
 ];

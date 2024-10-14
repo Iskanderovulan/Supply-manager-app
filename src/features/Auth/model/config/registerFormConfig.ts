@@ -1,48 +1,44 @@
-import { emailPattern } from "@shared/lib/validators/authValidators";
-import { passwordPattern } from "@shared/lib/validators/authValidators";
-import { namePattern } from "@shared/lib/validators/authValidators";
+import { emailPattern, passwordPattern, namePattern } from "@shared/lib/validators/authValidators";
+import { TFunction } from "i18next";
 
-export const registerFormConfig = {
+export const registerFormConfig = (t: TFunction) => ({
     fields: [
         {
-            label: "nameLabel",
+            label: t("nameLabel"),
             name: "name",
             type: "text",
-            placeholder: "namePlaceholder",
+            placeholder: t("namePlaceholder"),
             rules: [
-                { required: true, message: "nameRequired" },
-                { pattern: namePattern, message: "nameInvalid" },
+                { required: true, message: t("nameRequired") },
+                { pattern: namePattern, message: t("nameInvalid") },
             ],
         },
         {
-            label: "emailLabel",
+            label: t("emailLabel"),
             name: "email",
             type: "email",
-            placeholder: "emailPlaceholder",
+            placeholder: t("emailPlaceholder"),
             rules: [
-                { required: true, message: "emailRequired" },
-                { pattern: emailPattern, message: "emailInvalid" },
+                { required: true, message: t("emailRequired") },
+                { pattern: emailPattern, message: t("emailInvalid") },
             ],
         },
         {
-            label: "passwordLabel",
+            label: t("passwordLabel"),
             name: "password",
             type: "password",
-            placeholder: "passwordPlaceholder",
+            placeholder: t("passwordPlaceholder"),
             rules: [
-                { required: true, message: "passwordRequired" },
-                {
-                    pattern: passwordPattern,
-                    message: "passwordInvalid",
-                },
+                { required: true, message: t("passwordRequired") },
+                { pattern: passwordPattern, message: t("passwordInvalid") },
             ],
         },
     ],
     buttons: [
         {
-            label: "registerButton",
+            label: t("registerButton"),
             type: "primary",
             htmlType: "submit",
         },
     ],
-};
+});

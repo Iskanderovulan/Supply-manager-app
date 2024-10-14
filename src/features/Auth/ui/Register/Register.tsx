@@ -8,10 +8,12 @@ import { useRegisterMutation } from "@features/Auth/model/api/registerApi";
 import { RegisterSchema } from "@features/Auth/model/types/registerSchema";
 import { useNotification } from "@shared/lib/hooks/useNotification/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import cls from "./Register.module.scss";
 import { Title } from "@shared/ui/Title";
+import { useTranslation } from "react-i18next";
+import cls from "./Register.module.scss";
 
 export const Register = () => {
+    const { t } = useTranslation(TranslationId.AUTH);
     const dispatch = useAppDispatch();
 
     const [register, { isLoading, isError, error, isSuccess, data, reset }] = useRegisterMutation();
@@ -38,11 +40,10 @@ export const Register = () => {
         <>
             <DynamicForm<RegisterSchema>
                 className={cls.register}
-                config={registerFormConfig}
+                config={registerFormConfig(t)}
                 onFinish={handleRegister}
-                translation={TranslationId.AUTH}
                 loading={isLoading}
-                header={<Title text="Register new account" align="center" />}
+                header={<Title text={t("registerNewAccount")} align="center" />}
             />
         </>
     );
