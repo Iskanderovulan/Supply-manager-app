@@ -1,8 +1,6 @@
 import { useCallback, useEffect, ReactNode } from "react";
 import { Form, Input, Button, ButtonProps, Select } from "antd";
 import classNames from "classnames";
-import { useTranslation } from "react-i18next";
-import { TranslationId } from "@shared/const/translation";
 import cls from "./DynamicForm.module.scss";
 
 type FormRecord = Record<string, unknown>;
@@ -38,7 +36,6 @@ interface DynamicFormProps<T> {
     };
     loading?: boolean;
     className?: string;
-    translation?: TranslationId;
     header?: ReactNode;
     updateValues?: RecursivePartial<T>;
 }
@@ -47,13 +44,11 @@ export const DynamicForm = <T,>({
     config,
     onFinish,
     handlers,
-    translation,
     loading,
     header,
     className = "",
     updateValues,
 }: DynamicFormProps<T>) => {
-    const { t } = useTranslation(translation);
     const [form] = Form.useForm<T>();
 
     useEffect(() => {
@@ -79,31 +74,25 @@ export const DynamicForm = <T,>({
                     {config.fields.map((field, index) => (
                         <Form.Item
                             key={index}
-                            label={t(field.label)}
+                            label={field.label}
                             name={field.name as string}
-                            rules={field.rules.map((rule) => ({
-                                ...rule,
-                                message: t(rule.message as string),
-                            }))}
+                            rules={field.rules}
                         >
                             {field.type === "select" ? (
-                                <Select
-                                    className="custom-select"
-                                    placeholder={t(field.placeholder)}
-                                >
+                                <Select className="custom-select" placeholder={field.placeholder}>
                                     {field.options?.map((option) => (
                                         <Select.Option key={option.value} value={option.value}>
-                                            {t(option.label)}
+                                            {option.label}
                                         </Select.Option>
                                     ))}
                                 </Select>
                             ) : field.type === "password" ? (
-                                <Input.Password allowClear placeholder={t(field.placeholder)} />
+                                <Input.Password allowClear placeholder={field.placeholder} />
                             ) : (
                                 <Input
                                     allowClear
                                     type={field.type}
-                                    placeholder={t(field.placeholder)}
+                                    placeholder={field.placeholder}
                                 />
                             )}
                         </Form.Item>
@@ -117,7 +106,7 @@ export const DynamicForm = <T,>({
                                 loading={loading}
                                 onClick={() => handleButtonClick(button.onClick)}
                             >
-                                {t(button.label)}
+                                {button.label}
                             </Button>
                         ))}
                     </div>

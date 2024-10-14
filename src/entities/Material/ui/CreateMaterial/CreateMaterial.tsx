@@ -42,10 +42,9 @@ export const CreateMaterial: React.FC = () => {
                 okText={t("ok")}
             >
                 <DynamicForm<MaterialSchema>
-                    config={materialFormConfig}
+                    config={materialFormConfig(t)}
                     onFinish={handleCreateMaterial}
                     loading={isLoading}
-                    translation={TranslationId.MATERIAL}
                 />
             </Modal>
         </>

@@ -59,7 +59,7 @@ export const MaterialsTable: FC<MaterialsTableProps> = (props) => {
             key: "actions",
             render: (_, record) => (
                 <>
-                    <Flex gap={12}>
+                    <Flex gap="middle">
                         <EditMaterial material={record} />
                         <DeleteMaterial material={record} />
                     </Flex>
