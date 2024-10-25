@@ -4,13 +4,15 @@ import { filterConfig } from "@entities/Material/model/config/filterConfig";
 import { UpdateSearchParamsFunc } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
 
 interface MaterialFilterProps {
     updateSearchParams: UpdateSearchParamsFunc;
+    initialFilters: MaterialFiltersSchema;
 }
 
 export const MaterialFilter: FC<MaterialFilterProps> = (props) => {
-    const { updateSearchParams } = props;
+    const { updateSearchParams, initialFilters } = props;
     const { t } = useTranslation(TranslationId.MATERIAL);
 
     const onApply = (selectedFilters: Record<string, unknown>) => {
@@ -37,5 +39,12 @@ export const MaterialFilter: FC<MaterialFilterProps> = (props) => {
         });
     };
 
-    return <Filter filters={filterConfig(t)} onApply={onApply} onReset={onReset} />;
+    return (
+        <Filter<MaterialFiltersSchema>
+            filters={filterConfig(t)}
+            onApply={onApply}
+            onReset={onReset}
+            initialFilters={initialFilters}
+        />
+    );
 };

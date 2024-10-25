@@ -1,4 +1,4 @@
-import { Collapse, theme } from "antd";
+import { theme } from "antd";
 
 const { defaultAlgorithm } = theme;
 

@@ -8,7 +8,8 @@ interface ProtectedRouteProps {
     reverseRedirect?: boolean; // Optional prop for reversing the redirect logic
 }
 
-export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children, reverseRedirect = false }) => {
+export const ProtectedRoute: FC<ProtectedRouteProps> = (props) => {
+    const { children, reverseRedirect = false } = props;
     const isAuthenticated = useAppSelector(selectIsAuthenticated);
     const location = useLocation();
 

@@ -8,7 +8,8 @@ interface ItemsPerPageProps {
     onLimitChange: (newLimit: number) => void;
 }
 
-export const ItemsPerPage: FC<ItemsPerPageProps> = ({ limit, onLimitChange }) => {
+export const ItemsPerPage: FC<ItemsPerPageProps> = (props) => {
+    const { limit, onLimitChange } = props;
     const { t } = useTranslation();
     return (
         <Select

@@ -10,9 +10,9 @@
     "logoutSuccessDescription": "Вы успешно вышли из системы.",
     "registrationSuccessDescription": "Ваш аккаунт был успешно создан.",
     "loginSuccessDescription": "Вы успешно вошли в систему.",
-    "createSuccessDescription": "Элемент был добавлен в список.",
+    "createSuccessDescription": "Сущность была добавлена в список.",
     "updateSuccessDescription": "Изменения были успешно сохранены.",
-    "deleteSuccessDescription": "Элемент был удален из списка.",
+    "deleteSuccessDescription": "Сущность была удалена из списка.",
     "defaultDescription": "Действие выполнено успешно.",
 
     "errorOccurred": "Произошла неизвестная ошибка. Попробуйте еще раз.",

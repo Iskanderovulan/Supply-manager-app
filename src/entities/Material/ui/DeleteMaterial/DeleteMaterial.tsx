@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Modal, Button } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
@@ -12,7 +12,7 @@ interface DeleteMaterialProps {
     material: MaterialSchema;
 }
 
-export const DeleteMaterial: React.FC<DeleteMaterialProps> = ({ material }) => {
+export const DeleteMaterial: FC<DeleteMaterialProps> = ({ material }) => {
     const { t } = useTranslation(TranslationId.MATERIAL);
 
     const [deleteMaterial, { isError, isLoading, isSuccess, error, reset }] =

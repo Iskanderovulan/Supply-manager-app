@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Alert } from "antd";
 import { useTranslation } from "react-i18next";
 import { CustomError } from "@shared/types/error";
@@ -8,7 +8,7 @@ interface ErrorMessageProps {
     error: unknown;
 }
 
-export const ErrorMessage: React.FC<ErrorMessageProps> = ({ error }) => {
+export const ErrorMessage: FC<ErrorMessageProps> = ({ error }) => {
     const { t } = useTranslation(TranslationId.NOTIFICATION);
     const customError = error as CustomError;
     const message = customError?.data?.message || t("errorOccurred");

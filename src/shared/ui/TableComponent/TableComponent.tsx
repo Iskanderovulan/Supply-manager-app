@@ -10,13 +10,9 @@ interface TableComponentProps<T extends object> extends TableProps<T> {
     error: unknown;
 }
 
-export const TableComponent = <T extends object>({
-    columns,
-    dataSource,
-    isLoading,
-    error,
-    ...rest
-}: TableComponentProps<T>) => {
+export const TableComponent = <T extends object>(props: TableComponentProps<T>) => {
+    const { columns, dataSource, isLoading, error, ...rest } = props;
+
     if (isLoading) {
         return <Loader />;
     }

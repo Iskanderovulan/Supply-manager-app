@@ -1,4 +1,8 @@
 .checkbox {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
+}
+
+.flex {
+    margin-top: var(--margin-small);
 }

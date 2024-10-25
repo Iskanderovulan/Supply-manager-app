@@ -1,18 +1,23 @@
-import React from "react";
+import { FC } from "react";
 import { Button, Flex } from "antd";
+import { TFunction } from "i18next";
 
 interface FilterFooterProps {
     onApply: () => void;
     onReset: () => void;
+    t: TFunction;
 }
 
-export const FilterFooter: React.FC<FilterFooterProps> = ({ onApply, onReset }) => (
-    <div>
-        <Flex gap="middle" justify="end" align="center">
-            <Button onClick={onReset}>Reset</Button>
-            <Button type="primary" onClick={onApply}>
-                Apply Filters
-            </Button>
-        </Flex>
-    </div>
-);
+export const FilterFooter: FC<FilterFooterProps> = (props) => {
+    const { onApply, onReset, t } = props;
+    return (
+        <div>
+            <Flex gap="middle" justify="end" align="center">
+                <Button onClick={onReset}>{t("reset")}</Button>
+                <Button type="primary" onClick={onApply}>
+                    {t("applyFilters")}
+                </Button>
+            </Flex>
+        </div>
+    );
+};
