@@ -1,14 +1,9 @@
-import { FC, useEffect } from "react";
-import classNames from "classnames";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "antd";
 import { LOCAL_STORAGE_LANG_KEY } from "@shared/const/localstorage";
 
-interface LangSwitcherProps {
-    className?: string;
-}
-
-export const LangSwitcher: FC<LangSwitcherProps> = ({ className = "" }) => {
+export const LangSwitcher = () => {
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
@@ -24,9 +19,5 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className = "" }) => {
         localStorage.setItem(LOCAL_STORAGE_LANG_KEY, newLanguage);
     };
 
-    return (
-        <Button className={classNames(className)} onClick={toggle}>
-            {t("switcher.label")}
-        </Button>
-    );
+    return <Button onClick={toggle}>{t("switcher.label")}</Button>;
 };

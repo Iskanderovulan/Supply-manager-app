@@ -25,7 +25,6 @@ export const Login = () => {
         reset,
         notificationKey: NotificationData.loginSuccess.message,
     });
-    console.log(data);
 
     useEffect(() => {
         if (isSuccess && data) {

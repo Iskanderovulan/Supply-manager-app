@@ -39,7 +39,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
                 api,
                 extraOptions,
             );
-            console.log(refreshResult);
 
             if (refreshResult.data) {
                 const tokens = refreshResult.data as Tokens;

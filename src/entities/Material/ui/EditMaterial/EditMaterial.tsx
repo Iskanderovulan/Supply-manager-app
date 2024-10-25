@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Modal, Button } from "antd";
 import { useModal } from "@shared/lib/hooks/useModal/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
@@ -14,7 +14,7 @@ interface EditMaterialProps {
     material: MaterialSchema;
 }
 
-export const EditMaterial: React.FC<EditMaterialProps> = ({ material }) => {
+export const EditMaterial: FC<EditMaterialProps> = ({ material }) => {
     const { isModalOpen, showModal, hideModal } = useModal();
     const { t } = useTranslation(TranslationId.MATERIAL);
 

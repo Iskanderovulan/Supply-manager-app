@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { useLogoutMutation } from "@features/Auth/model/api/logoutApi";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector/useAppSelector";
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -11,7 +11,7 @@ import { authActions } from "@features/Auth";
 import { selectRefreshToken } from "@features/Auth";
 import { TranslationId } from "@shared/const/translation";
 
-export const Logout: React.FC = () => {
+export const Logout: FC = () => {
     const [logout, { isLoading, isError, isSuccess, error, reset }] = useLogoutMutation();
     const refreshToken = useAppSelector(selectRefreshToken);
     const dispatch = useAppDispatch();

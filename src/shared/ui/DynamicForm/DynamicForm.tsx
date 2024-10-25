@@ -40,15 +40,9 @@ interface DynamicFormProps<T> {
     updateValues?: RecursivePartial<T>;
 }
 
-export const DynamicForm = <T,>({
-    config,
-    onFinish,
-    handlers,
-    loading,
-    header,
-    className = "",
-    updateValues,
-}: DynamicFormProps<T>) => {
+export const DynamicForm = <T,>(props: DynamicFormProps<T>) => {
+    const { config, onFinish, handlers, loading, header, className = "", updateValues } = props;
+
     const [form] = Form.useForm<T>();
 
     useEffect(() => {

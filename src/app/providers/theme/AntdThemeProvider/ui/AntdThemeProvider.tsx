@@ -1,5 +1,5 @@
 // AntdThemeProvider.tsx
-import React, { ReactNode } from "react";
+import { ReactNode, FC } from "react";
 import { ConfigProvider } from "antd";
 import { defaultTheme } from "../lib/antdTheme";
 
@@ -7,7 +7,7 @@ interface AntdThemeProviderProps {
     children: ReactNode;
 }
 
-const AntdThemeProvider: React.FC<AntdThemeProviderProps> = ({ children }) => {
+const AntdThemeProvider: FC<AntdThemeProviderProps> = ({ children }) => {
     return <ConfigProvider theme={defaultTheme}>{children}</ConfigProvider>;
 };
 

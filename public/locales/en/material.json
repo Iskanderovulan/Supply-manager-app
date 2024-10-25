@@ -19,9 +19,11 @@
     "actions": "Actions",
     "delete": "Delete",
     "cancel": "Cancel",
-    "ok":"OK",
+    "ok": "OK",
     "deleteConfirmation": "Delete this material?",
     "deleteConfirmationMessage": "This action cannot be undone",
     "deleteSuccess": "Material has been successfully deleted.",
-    "deleteError": "Failed to delete material. Please try again."
+    "deleteError": "Failed to delete material. Please try again.",
+    "filterByMaterialHardness": "Filter by material hardness",
+    "filterByDate": "Filter by date"
 }

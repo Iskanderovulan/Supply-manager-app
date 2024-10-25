@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Modal, Button } from "antd";
 import { useModal } from "@shared/lib/hooks/useModal/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
@@ -10,7 +10,7 @@ import { NotificationData } from "@shared/const/notifications";
 import { TranslationId } from "@shared/const/translation";
 import { useTranslation } from "react-i18next";
 
-export const CreateMaterial: React.FC = () => {
+export const CreateMaterial: FC = () => {
     const { isModalOpen, showModal, hideModal } = useModal();
     const { t } = useTranslation(TranslationId.MATERIAL);
 

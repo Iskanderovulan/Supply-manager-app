@@ -5,7 +5,7 @@ import { TFunction } from "i18next";
 export const filterConfig = (t: TFunction): FilterConfig[] => [
     {
         type: "checkbox",
-        label: t("filterByMaterial"),
+        label: t("filterByMaterialHardness"),
         key: "materials",
         options: hardnessOptions.map((el) => ({ ...el, label: t(el.label) })),
     },

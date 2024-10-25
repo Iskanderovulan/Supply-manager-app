@@ -14,13 +14,14 @@ interface NotificationProps {
     reset: () => void;
 }
 
-export const useNotification = ({
-    isError,
-    isSuccess,
-    error,
-    reset,
-    notificationKey = NotificationData.default.message,
-}: NotificationProps) => {
+export const useNotification = (props: NotificationProps) => {
+    const {
+        isError,
+        isSuccess,
+        error,
+        reset,
+        notificationKey = NotificationData.default.message,
+    } = props;
     const { notification } = AntApp.useApp();
     const { t } = useTranslation(TranslationId.NOTIFICATION);
 
