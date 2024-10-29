@@ -12,12 +12,13 @@
 @import "antd/collapse";
 @import "antd/drawer";
 @import "antd/date-picker";
-@import "antd/checkbox.scss";
+@import "antd/checkbox";
+@import "antd/button";
 
 .app {
     font: var(--font-m);
     background: var(--bg-color);
-    color: var(--text-color);
+    color: var(--inverse-color);
     min-height: 100vh;
 }
 

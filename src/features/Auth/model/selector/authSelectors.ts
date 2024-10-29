@@ -1,4 +1,4 @@
-import { RootState } from "app/store/store";
+import { RootState } from "@app/store/store";
 
 export const selectAuthToken = (state: RootState) => state.auth.token;
 

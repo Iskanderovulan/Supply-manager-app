@@ -1,5 +1,5 @@
 .ant-tooltip .ant-tooltip-inner a {
-    color: var(--text-color);
+    color: var(--inverse-color);
 }
 
 .ant-tooltip .ant-tooltip-inner {
@@ -8,4 +8,8 @@
 
 .ant-tooltip .ant-tooltip-arrow::after {
     background-color: var(--accent-color);
+}
+
+.ant-tooltip .ant-tooltip-inner {
+    color: var(--inverse-color);
 }

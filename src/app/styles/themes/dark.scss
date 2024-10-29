@@ -11,7 +11,7 @@ body[data-theme="dark"] {
     --accent-color-hover: rgb(191, 151, 83);
     --error-color: #ff4d4f;
     --error-color-hover: #ffa39e;
-    --text-color: #ffffff;
+    --inverse-color: #ffffff;
     --border-color: #e60099;
     --border-selected-color: #bf006d;
     --active-shadow: 0px 0px 6px rgba(222, 13, 76, 0.7);
@@ -35,5 +35,5 @@ body[data-theme="dark"] {
     --table-row-hover: #333354;
 
     --pagination-active-color: #e60099;
-    --checkbox-color:#ffffff;
+    --checkbox-color: #ffffff;
 }

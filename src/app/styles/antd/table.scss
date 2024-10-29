@@ -3,3 +3,28 @@ body .ant-table-thead > tr > th {
     word-break: keep-all;
 }
 
+.ant-table-wrapper
+    .ant-table-row-expand-icon-cell
+    .ant-table-row-expand-icon:hover {
+    border-color: var(--border-color);
+}
+
+.ant-table-wrapper
+    .ant-table-row-expand-icon-cell
+    .ant-table-row-expand-icon:focus {
+    border-color: var(--border-color);
+}
+
+.ant-table-wrapper .ant-table-row-expand-icon-collapsed::before,
+.ant-table-wrapper .ant-table-row-expand-icon-collapsed::after {
+    color: var(--inverse-color);
+}
+
+.ant-table-wrapper .ant-table-row-expand-icon::before,
+.ant-table-wrapper .ant-table-row-expand-icon::after {
+    color: var(--inverse-color);
+}
+
+.ant-empty .ant-empty-description {
+    color: var(--inverse-color);
+}

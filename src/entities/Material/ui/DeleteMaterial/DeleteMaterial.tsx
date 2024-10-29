@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { Modal, Button } from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons"; // Импортируем иконки
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
 import { useDeleteMaterialMutation } from "@entities/Material/model/api/materialApi";
 import { useNotification } from "@shared/lib/hooks/useNotification/useNotification";
@@ -26,7 +26,11 @@ export const DeleteMaterial: FC<DeleteMaterialProps> = ({ material }) => {
         notificationKey: NotificationData.deleteSuccess.message,
     });
 
-    const showDeleteConfirm = () => {
+    const handleDelete = useCallback(() => {
+        deleteMaterial(material.id);
+    }, [deleteMaterial, material.id]);
+
+    const showDeleteConfirm = useCallback(() => {
         Modal.confirm({
             title: t("deleteConfirmation"),
             icon: <ExclamationCircleOutlined />,
@@ -35,18 +39,12 @@ export const DeleteMaterial: FC<DeleteMaterialProps> = ({ material }) => {
             okType: "danger",
             cancelText: t("cancel"),
             className: "modal-custom",
-            onOk() {
-                handleDelete();
-            },
+            onOk: handleDelete,
         });
-    };
-
-    const handleDelete = () => {
-        deleteMaterial(material.id);
-    };
+    }, [t, handleDelete]);
 
     return (
-        <Button danger onClick={showDeleteConfirm} loading={isLoading}>
+        <Button danger icon={<DeleteOutlined />} onClick={showDeleteConfirm} loading={isLoading}>
             {t("delete")}
         </Button>
     );

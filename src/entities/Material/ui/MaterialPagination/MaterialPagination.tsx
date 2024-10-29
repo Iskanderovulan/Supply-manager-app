@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { CustomPagination } from "@shared/ui/CustomPagination";
-import { UpdateSearchParamsFunc } from "@shared/lib/hooks/useFilterSearchParams";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { getUpdatedValue } from "@shared/lib/helpers/getUpdatedValue";
 
 interface MaterialPaginationProps {
     totalPages?: number;
-    updateSearchParams: UpdateSearchParamsFunc;
+    updateSearchParams: UpdateSearchParamsType;
     totalResults: number;
     currentPage: number;
     pageSize: number;
@@ -14,15 +14,18 @@ interface MaterialPaginationProps {
 export const MaterialPagination: FC<MaterialPaginationProps> = (props) => {
     const { totalPages, updateSearchParams, ...rest } = props;
 
-    const onPageChange = (newPage: number) => {
-        updateSearchParams({
-            page: getUpdatedValue(newPage, 1),
-        });
-    };
+    const onPageChange = useCallback(
+        (newPage: number) => {
+            updateSearchParams({
+                page: getUpdatedValue(newPage, 1),
+            });
+        },
+        [updateSearchParams],
+    );
 
     return (
         <>
-            {totalPages && totalPages > 1 && (
+            {!!totalPages && totalPages > 1 && (
                 <CustomPagination onPageChange={onPageChange} {...rest} />
             )}
         </>

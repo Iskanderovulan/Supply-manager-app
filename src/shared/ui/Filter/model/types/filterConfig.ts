@@ -1,5 +1,10 @@
+export enum FilterType {
+    Checkbox = "checkbox",
+    DatePicker = "datePicker",
+}
+
 export interface FilterConfig {
-    type: "checkbox" | "datePicker";
+    type: FilterType;
     label: string;
     key: string;
     options?: { label: string; value: string | number }[];

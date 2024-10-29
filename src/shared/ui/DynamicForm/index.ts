@@ -1,1 +1,1 @@
-export * from "./DynamicForm.tsx";
+export * from "./ui/DynamicForm/DynamicForm.tsx";

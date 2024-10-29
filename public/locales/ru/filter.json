@@ -1,9 +1,10 @@
 {
     "openFilters": "Фильтры",
     "reset": "Сбросить",
-    "applyFilters": "Применить фильтры",
+    "exit": "Выйти",
+    "applyFilters": "Применить",
     "selectAll": "Выбрать все",
-    "FilterOptions": "Опции фильтра",
+    "filterOptions": "Опции фильтра",
     "startDate": "Начало даты",
     "endDate": "Конец даты"
 }

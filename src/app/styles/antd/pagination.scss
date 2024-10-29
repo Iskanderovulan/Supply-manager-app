@@ -2,11 +2,11 @@
     border: 2px solid var(--border-color);
 }
 .ant-pagination .ant-pagination-item-active a {
-    color: var(--text-color);
+    color: var(--inverse-color);
 }
 .ant-pagination-item-link {
     // Very specific override required to change Ant Design's styles
-    color: var(--text-color) !important;
+    color: var(--inverse-color) !important;
 }
 
 .ant-pagination .ant-pagination-item:hover {
@@ -28,5 +28,5 @@
     .ant-pagination-jump-next
     .ant-pagination-item-container
     .ant-pagination-item-ellipsis {
-    color: var(--text-color);
+    color: var(--inverse-color);
 }
