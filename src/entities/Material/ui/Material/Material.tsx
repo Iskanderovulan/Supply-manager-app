@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { useGetMaterialsQuery } from "@entities/Material/model/api/materialApi";
+import { useGetMaterialsQuery } from "@entities/Material/model/api";
 import { Flex } from "antd";
 import { CreateMaterial } from "../CreateMaterial/CreateMaterial";
 import { MaterialsTable } from "../MaterialTable/MaterialTable";

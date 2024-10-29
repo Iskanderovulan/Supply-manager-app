@@ -2,7 +2,7 @@ import { FC, useCallback } from "react";
 import { Modal, Button } from "antd";
 import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons"; // Импортируем иконки
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
-import { useDeleteMaterialMutation } from "@entities/Material/model/api/materialApi";
+import { useDeleteMaterialMutation } from "@entities/Material/model/api";
 import { useNotification } from "@shared/lib/hooks/useNotification/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { useTranslation } from "react-i18next";

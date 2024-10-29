@@ -16,6 +16,11 @@ interface FilterProps<TFilters> {
     initialFilters: TFilters;
 }
 
+const convertDateRange = (dateRange: DayjsType) => ({
+    createdAfter: dateRange[0] ? dateRange[0].toISOString() : null,
+    createdBefore: dateRange[1] ? dateRange[1].toISOString() : null,
+});
+
 export const Filter = <TFilters extends Record<string, unknown>>(props: FilterProps<TFilters>) => {
     const { filters, onApply, onReset, initialFilters } = props;
     const { t } = useTranslation(TranslationId.FILTER);
@@ -32,11 +37,6 @@ export const Filter = <TFilters extends Record<string, unknown>>(props: FilterPr
             }));
         }
     }, [initialFilters]);
-
-    const convertDateRange = (dateRange: DayjsType) => ({
-        createdAfter: dateRange[0] ? dateRange[0].toISOString() : null,
-        createdBefore: dateRange[1] ? dateRange[1].toISOString() : null,
-    });
 
     const handleFilterChange = useCallback((key: string, value: ValueGroup) => {
         setSelectedFilters((prevFilters) => ({ ...prevFilters, [key]: value }));
