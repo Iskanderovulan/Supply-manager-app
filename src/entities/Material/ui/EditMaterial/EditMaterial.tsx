@@ -4,7 +4,7 @@ import { EditOutlined } from "@ant-design/icons";
 import { useModal } from "@shared/lib/hooks/useModal/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
-import { useUpdateMaterialMutation } from "@entities/Material/model/api/materialApi";
+import { useUpdateMaterialMutation } from "@entities/Material/model/api";
 import { useNotification } from "@shared/lib/hooks/useNotification/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { editMaterialFormConfig } from "@entities/Material/model/config/editMaterialFormConfig";

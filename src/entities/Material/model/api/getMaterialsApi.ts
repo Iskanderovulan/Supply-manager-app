@@ -44,8 +44,7 @@ const getMaterialQueryConfig = ({
     return { url: API_ENDPOINTS.MATERIALS, params };
 };
 
-// API для работы с материалами
-export const materialApi = baseApi.injectEndpoints({
+export const getMaterialsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getMaterials: builder.query<GetMaterialsResponse, GetMaterialsParams>({
             query: getMaterialQueryConfig,
@@ -60,46 +59,8 @@ export const materialApi = baseApi.injectEndpoints({
                       ]
                     : [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
         }),
-        createMaterial: builder.mutation<MaterialSchema, Partial<MaterialSchema>>({
-            query: (newMaterial) => ({
-                url: API_ENDPOINTS.MATERIALS,
-                method: "POST",
-                body: newMaterial,
-            }),
-            invalidatesTags: [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
-        }),
-        updateMaterial: builder.mutation<MaterialSchema, Partial<MaterialSchema>>({
-            query: ({ id, ...patch }) => ({
-                url: `${API_ENDPOINTS.MATERIALS}/${id}`,
-                method: "PATCH",
-                body: patch,
-            }),
-            invalidatesTags: (result, error, { id }) =>
-                result
-                    ? [{ type: TagTypes.MATERIALS, id }]
-                    : error
-                    ? [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }]
-                    : [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
-        }),
-        deleteMaterial: builder.mutation<MaterialSchema, string>({
-            query: (id) => ({
-                url: `${API_ENDPOINTS.MATERIALS}/${id}`,
-                method: "DELETE",
-            }),
-            invalidatesTags: (result, error, id) =>
-                result
-                    ? [{ type: TagTypes.MATERIALS, id }]
-                    : error
-                    ? [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }]
-                    : [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
-        }),
     }),
     overrideExisting: false,
 });
 
-export const {
-    useGetMaterialsQuery,
-    useCreateMaterialMutation,
-    useUpdateMaterialMutation,
-    useDeleteMaterialMutation,
-} = materialApi;
+export const { useGetMaterialsQuery } = getMaterialsApi;

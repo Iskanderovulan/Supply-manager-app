@@ -78,7 +78,6 @@ export const MaterialsTable: FC<MaterialsTableProps> = ({ dataSource, isLoading,
         </span>
     );
 
-    // Скрываем expand-иконку, если колонка 'actions' не выбрана
     const showExpandIcon = visibleColumns.includes("actions");
 
     return (
