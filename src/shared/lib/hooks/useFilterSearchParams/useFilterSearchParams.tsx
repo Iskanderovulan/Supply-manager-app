@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 type UpdateSearchParams = Record<string, string | number | (string | number)[] | undefined | null>;
-export type UpdateSearchParamsFunc = (
+export type UpdateSearchParamsType = (
     updates: UpdateSearchParams,
     options?: { replace?: boolean },
 ) => void;
@@ -9,13 +9,12 @@ export type UpdateSearchParamsFunc = (
 interface UseFilterSearchParamsReturn {
     getSearchParam(paramKey: string): string;
     getSearchParam(paramKey: string, isArray: true): string[];
-    updateSearchParams: UpdateSearchParamsFunc;
+    updateSearchParams: UpdateSearchParamsType;
 }
 
 export function useFilterSearchParams(): UseFilterSearchParamsReturn {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    // Перегрузка функции для возврата либо строки, либо массива строк
     function getSearchParam(paramKey: string): string;
     function getSearchParam(paramKey: string, isArray: true): string[];
 
@@ -32,14 +31,20 @@ export function useFilterSearchParams(): UseFilterSearchParamsReturn {
             return;
         }
 
+        // Если updates пустой, создаем пустой URLSearchParams для очистки всех параметров
+        if (Object.keys(updates).length === 0) {
+            setSearchParams(new URLSearchParams(), { replace });
+            return;
+        }
+
         const newSearchParams = new URLSearchParams(searchParams);
 
         Object.keys(updates).forEach((key) => {
             const value = updates[key];
             if (Array.isArray(value)) {
-                newSearchParams.delete(key); // Удаляем старые значения ключа
+                newSearchParams.delete(key);
                 value.forEach((v) => {
-                    newSearchParams.append(key, String(v)); // Добавляем новые значения
+                    newSearchParams.append(key, String(v));
                 });
             } else if (value !== undefined && value !== null) {
                 newSearchParams.set(key, String(value));

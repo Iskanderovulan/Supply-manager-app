@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { useGetMaterialsQuery } from "@entities/Material/model/api/materialApi";
 import { Flex } from "antd";
 import { CreateMaterial } from "../CreateMaterial/CreateMaterial";
@@ -10,6 +10,7 @@ import { MaterialPagination } from "../MaterialPagination/MaterialPagination";
 import { MaterialPerPage } from "../MaterialPerPage/MaterialPerPage";
 import { MaterialFilter } from "../MaterialFilter/MaterialFilter";
 import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
+import { MaterialReset } from "../MaterialReset/MaterialReset";
 
 export const Material: FC = () => {
     const { getSearchParam, updateSearchParams } = useFilterSearchParams();
@@ -17,7 +18,8 @@ export const Material: FC = () => {
     const page = Number(getSearchParam("page")) || 1;
     const limit = Number(getSearchParam("limit")) || defaultPageSizeOption;
     const name = getSearchParam("name") || "";
-    const hardness = getSearchParam("hardness", true) || [];
+
+    const hardness = useMemo(() => getSearchParam("hardness", true) || [], [getSearchParam]);
     const createdBefore = getSearchParam("createdBefore");
     const createdAfter = getSearchParam("createdAfter");
 
@@ -38,37 +40,39 @@ export const Material: FC = () => {
     const totalResults = materials?.totalResults || 0;
     const results = materials?.results || [];
 
-    const initialFilters: MaterialFiltersSchema = {
-        materials: hardness,
-        dateRange: createdBefore && createdAfter ? [createdBefore, createdAfter] : null,
-    };
+    const initialFilters = useMemo<MaterialFiltersSchema>(
+        () => ({
+            materials: hardness,
+            dateRange: createdBefore && createdAfter ? [createdBefore, createdAfter] : null,
+        }),
+        [hardness, createdBefore, createdAfter],
+    );
 
     return (
-        <>
-            <Flex gap="middle" vertical>
-                <Flex justify="space-between" gap="middle">
-                    <Flex gap="middle">
-                        <CreateMaterial />
-                        <MaterialSearch updateSearchParams={updateSearchParams} searchTerm={name} />
-                    </Flex>
-                    <MaterialFilter
-                        updateSearchParams={updateSearchParams}
-                        initialFilters={initialFilters}
-                    />
+        <Flex gap="middle" vertical>
+            <Flex justify="space-between" gap="middle">
+                <Flex gap="middle">
+                    <CreateMaterial />
+                    <MaterialSearch updateSearchParams={updateSearchParams} searchTerm={name} />
+                    <MaterialReset updateSearchParams={updateSearchParams} />
                 </Flex>
-
-                <MaterialsTable dataSource={results} isLoading={isLoading} error={error} />
-                <Flex align="center" gap="middle">
-                    <MaterialPagination
-                        totalResults={totalResults}
-                        currentPage={page}
-                        pageSize={limit}
-                        totalPages={totalPages}
-                        updateSearchParams={updateSearchParams}
-                    />
-                    <MaterialPerPage limit={limit} updateSearchParams={updateSearchParams} />
-                </Flex>
+                <MaterialFilter
+                    updateSearchParams={updateSearchParams}
+                    initialFilters={initialFilters}
+                />
             </Flex>
-        </>
+
+            <MaterialsTable dataSource={results} isLoading={isLoading} error={error} />
+            <Flex align="center" gap="middle">
+                <MaterialPagination
+                    totalResults={totalResults}
+                    currentPage={page}
+                    pageSize={limit}
+                    totalPages={totalPages}
+                    updateSearchParams={updateSearchParams}
+                />
+                <MaterialPerPage limit={limit} updateSearchParams={updateSearchParams} />
+            </Flex>
+        </Flex>
     );
 };

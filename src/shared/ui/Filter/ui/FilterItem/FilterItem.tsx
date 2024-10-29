@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { FilterConfig } from "../../model/types/filterConfig";
-import { ValueGroup, DayjsType, Value } from "@features/Filter/model/types/valueGroup";
+import { FilterConfig, FilterType } from "../../model/types/filterConfig";
+import { ValueGroup, DayjsType, Value } from "../../model/types/valueGroup";
 import { CheckboxFilter } from "../CheckboxFilter/CheckboxFilter";
 import { DatePickerFilter } from "../DatePickerFilter/DatePickerFilter";
 import { TFunction } from "i18next";
@@ -15,7 +15,7 @@ interface FilterItemProps {
 export const FilterItem: FC<FilterItemProps> = (props) => {
     const { filter, selectedValue, onChange, t } = props;
     switch (filter.type) {
-        case "checkbox":
+        case FilterType.Checkbox:
             return (
                 <CheckboxFilter
                     filter={filter}
@@ -25,7 +25,7 @@ export const FilterItem: FC<FilterItemProps> = (props) => {
                 />
             );
 
-        case "datePicker":
+        case FilterType.DatePicker:
             return (
                 <DatePickerFilter
                     selectedValue={selectedValue as DayjsType}

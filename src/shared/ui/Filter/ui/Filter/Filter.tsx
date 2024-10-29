@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "antd";
+import { FilterOutlined } from "@ant-design/icons";
 import { FilterDrawer } from "../FilterDrawer/FilterDrawer";
 import { FilterConfig } from "../../model/types/filterConfig";
-import { ValueGroup, DayjsType } from "@features/Filter/model/types/valueGroup";
+import { ValueGroup, DayjsType, RecordValueGroup } from "../../model/types/valueGroup";
 import { useModal } from "@shared/lib/hooks/useModal/useModal";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
@@ -10,20 +11,18 @@ import dayjs from "dayjs";
 
 interface FilterProps<TFilters> {
     filters: FilterConfig[];
-    onApply: (selectedFilters: Record<string, ValueGroup>) => void;
+    onApply: (selectedFilters: RecordValueGroup) => void;
     onReset: () => void;
     initialFilters: TFilters;
 }
 
 export const Filter = <TFilters extends Record<string, unknown>>(props: FilterProps<TFilters>) => {
     const { filters, onApply, onReset, initialFilters } = props;
-
     const { t } = useTranslation(TranslationId.FILTER);
     const { isModalOpen, showModal, hideModal } = useModal();
 
-    const [selectedFilters, setSelectedFilters] = useState<Record<string, ValueGroup>>(
-        initialFilters as Record<string, ValueGroup>,
-    );
+    const [selectedFilters, setSelectedFilters] = useState(initialFilters as RecordValueGroup);
+
     useEffect(() => {
         if (Array.isArray(initialFilters.dateRange)) {
             const [start, end] = initialFilters.dateRange as [string | null, string | null];
@@ -62,7 +61,7 @@ export const Filter = <TFilters extends Record<string, unknown>>(props: FilterPr
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
+            <Button type="primary" onClick={showModal} icon={<FilterOutlined />}>
                 {t("openFilters")}
             </Button>
             <FilterDrawer

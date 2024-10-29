@@ -1,9 +1,10 @@
 {
     "openFilters": "Filters",
     "reset": "Reset",
-    "applyFilters": "Apply filters",
+    "exit": "Exit",
+    "applyFilters": "Apply",
     "selectAll": "Select all",
-    "FilterOptions": "Filter options",
+    "filterOptions": "Filter options",
     "startDate": "Start date",
     "endDate": "End date"
 }

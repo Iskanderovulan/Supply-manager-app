@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { Modal, Button } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import { useModal } from "@shared/lib/hooks/useModal/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
 import { materialFormConfig } from "@entities/Material/model/config/materialFormConfig";
@@ -25,21 +26,31 @@ export const CreateMaterial: FC = () => {
         notificationKey: NotificationData.createSuccess.message,
     });
 
-    const handleCreateMaterial = (values: MaterialSchema) => {
-        createMaterial(values);
-    };
+    const handleCreateMaterial = useCallback(
+        (values: MaterialSchema) => {
+            createMaterial(values);
+        },
+        [createMaterial],
+    );
+
+    useEffect(() => {
+        if (isSuccess) hideModal();
+    }, [isSuccess, hideModal]);
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
+            <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
                 {t("createMaterial")}
             </Button>
             <Modal
                 title={t("createMaterial")}
                 open={isModalOpen}
                 onCancel={hideModal}
-                cancelText={t("cancel")}
-                okText={t("ok")}
+                footer={[
+                    <Button key="cancel" onClick={hideModal}>
+                        {t("cancel")}
+                    </Button>,
+                ]}
             >
                 <DynamicForm<MaterialSchema>
                     config={materialFormConfig(t)}

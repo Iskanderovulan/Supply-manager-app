@@ -4,15 +4,15 @@
     }
 
     .ant-modal-confirm-title {
-        color: var(--text-color);
+        color: var(--inverse-color);
     }
 
     .ant-modal-confirm-content {
-        color: var(--text-color);
+        color: var(--inverse-color);
     }
 
     .ant-btn-default {
-        color: var(--text-color);
+        color: var(--inverse-color);
         border-color: var(--border-color);
         background-color: transparent;
         &:hover {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "antd";
+import { GlobalOutlined } from "@ant-design/icons";
 import { LOCAL_STORAGE_LANG_KEY } from "@shared/const/localstorage";
 
 export const LangSwitcher = () => {
@@ -19,5 +20,9 @@ export const LangSwitcher = () => {
         localStorage.setItem(LOCAL_STORAGE_LANG_KEY, newLanguage);
     };
 
-    return <Button onClick={toggle}>{t("switcher.label")}</Button>;
+    return (
+        <Button onClick={toggle} icon={<GlobalOutlined />}>
+            {t("switcher")}
+        </Button>
+    );
 };

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Checkbox, Button, Flex } from "antd";
 import { FilterConfig } from "../../model/types/filterConfig";
-import { Value } from "@features/Filter/model/types/valueGroup";
+import { Value } from "../../model/types/valueGroup";
 import cls from "./CheckboxFilter.module.scss";
 import { TFunction } from "i18next";
 

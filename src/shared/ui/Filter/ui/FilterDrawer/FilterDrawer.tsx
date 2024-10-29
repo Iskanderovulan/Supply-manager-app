@@ -3,14 +3,14 @@ import { Drawer, Collapse } from "antd";
 import { FilterFooter } from "../FilterFooter/FilterFooter";
 import { FilterItem } from "../FilterItem/FilterItem";
 import { FilterConfig } from "../..//model/types/filterConfig";
-import { ValueGroup } from "@features/Filter/model/types/valueGroup";
+import { ValueGroup, RecordValueGroup } from "../../model/types/valueGroup";
 import { TFunction } from "i18next";
 
 interface FilterDrawerProps {
     visible: boolean;
     closeDrawer: () => void;
     filters: FilterConfig[];
-    selectedFilters: Record<string, ValueGroup>;
+    selectedFilters: RecordValueGroup;
     onFilterChange: (key: string, value: ValueGroup) => void;
     onApply: () => void;
     onReset: () => void;
@@ -35,12 +35,20 @@ export const FilterDrawer: FC<FilterDrawerProps> = (props) => {
 
     return (
         <Drawer
-            title={t("FilterOptions")}
+            title={t("filterOptions")}
             placement="right"
             onClose={closeDrawer}
             open={visible}
             width={400}
-            footer={<FilterFooter onApply={onApply} onReset={onReset} t={t} />}
+            footer={
+                <FilterFooter
+                    selectedFilters={selectedFilters}
+                    onExit={closeDrawer}
+                    onApply={onApply}
+                    onReset={onReset}
+                    t={t}
+                />
+            }
         >
             <Collapse
                 className="custom-collpase"

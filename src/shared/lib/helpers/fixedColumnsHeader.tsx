@@ -1,13 +1,5 @@
-import { ReactNode } from "react";
+import { Column } from "@shared/types/column";
 
-interface Column<T> {
-    title: string;
-    dataIndex?: keyof T | string;
-    key: string;
-    render?: (text: T[keyof T], record: T, index: number) => ReactNode;
-}
-
-// Функция для добавления заголовка в первую строку
 const fixedColumnsHeader = <T,>(columns: Column<T>[]): Column<T>[] => {
     return columns.map((column) => {
         const originalRender = column.render;
@@ -31,7 +23,6 @@ const fixedColumnsHeader = <T,>(columns: Column<T>[]): Column<T>[] => {
     });
 };
 
-// Генерация колонок с использованием типизации
 export const generateColumns = <T,>(columns: Column<T>[]) => {
     columns = fixedColumnsHeader(columns);
     return columns;

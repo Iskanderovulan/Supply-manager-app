@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { Modal, Button } from "antd";
+import { EditOutlined } from "@ant-design/icons";
 import { useModal } from "@shared/lib/hooks/useModal/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
@@ -29,21 +30,32 @@ export const EditMaterial: FC<EditMaterialProps> = ({ material }) => {
         notificationKey: NotificationData.updateSuccess.message,
     });
 
-    const handleEditMaterial = (values: Partial<MaterialSchema>) => {
-        updateMaterial({ id: material.id, ...values });
-    };
+    const handleEditMaterial = useCallback(
+        (values: Partial<MaterialSchema>) => {
+            updateMaterial({ id: material.id, ...values });
+        },
+        [updateMaterial, material.id],
+    );
+
+    // Закрытие модального окна после успешного обновления
+    useEffect(() => {
+        if (isSuccess) hideModal();
+    }, [isSuccess, hideModal]);
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
+            <Button type="primary" icon={<EditOutlined />} onClick={showModal}>
                 {t("edit")}
             </Button>
             <Modal
                 title={t("updateMaterial")}
                 open={isModalOpen}
                 onCancel={hideModal}
-                cancelText={t("cancel")}
-                okText={t("ok")}
+                footer={[
+                    <Button key="cancel" onClick={hideModal}>
+                        {t("cancel")}
+                    </Button>,
+                ]}
             >
                 <DynamicForm<MaterialSchema>
                     config={editMaterialFormConfig(t)}

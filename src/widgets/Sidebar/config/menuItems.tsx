@@ -1,11 +1,4 @@
 import {
-    RadarChartOutlined,
-    ApartmentOutlined,
-    PieChartOutlined,
-    LoginOutlined,
-    UserAddOutlined,
-} from "@ant-design/icons";
-import {
     getRouteMain,
     getRouteLogin,
     getRouteRegister,
@@ -13,6 +6,16 @@ import {
 } from "@shared/const/router";
 import { Link } from "react-router-dom";
 import { TFunction } from "i18next";
+import {
+    RadarChartOutlined,
+    ApartmentOutlined,
+    PieChartOutlined,
+    LoginOutlined,
+    UserAddOutlined,
+    InboxOutlined,
+    BgColorsOutlined,
+    AppstoreOutlined,
+} from "@ant-design/icons";
 
 interface MenuItemsArgs {
     t: TFunction;
@@ -24,21 +27,33 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
         {
             key: getRouteMain(),
             icon: <PieChartOutlined />,
-            label: <Link to={getRouteMain()}>{t("Products")}</Link>,
+            label: <Link to={getRouteMain()}>{t("products")}</Link>,
         },
         {
             key: "2",
             icon: <RadarChartOutlined />,
-            label: <Link to="/charts">{t("Сhart")}</Link>,
+            label: <Link to="/charts">{t("chart")}</Link>,
         },
         {
             key: "sub1",
             icon: <ApartmentOutlined />,
-            label: t("Classificators"),
+            label: t("classificators"),
             children: [
-                { key: "3", label: <Link to={getRouteMaterial()}>{t("Material")}</Link> },
-                { key: "4", label: <Link to="/color">{t("Color")}</Link> },
-                { key: "5", label: <Link to="/pack-type">{t("Pack Type")}</Link> },
+                {
+                    key: "3",
+                    icon: <InboxOutlined />,
+                    label: <Link to={getRouteMaterial()}>{t("material")}</Link>,
+                },
+                {
+                    key: "4",
+                    icon: <BgColorsOutlined />,
+                    label: <Link to="/color">{t("color")}</Link>,
+                },
+                {
+                    key: "5",
+                    icon: <AppstoreOutlined />,
+                    label: <Link to="/pack-type">{t("packType")}</Link>,
+                },
             ],
         },
     ];
@@ -47,12 +62,12 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
         {
             key: getRouteLogin(),
             icon: <LoginOutlined />,
-            label: <Link to={getRouteLogin()}>{t("Login")}</Link>,
+            label: <Link to={getRouteLogin()}>{t("login")}</Link>,
         },
         {
             key: getRouteRegister(),
             icon: <UserAddOutlined />,
-            label: <Link to={getRouteRegister()}>{t("Register")}</Link>,
+            label: <Link to={getRouteRegister()}>{t("register")}</Link>,
         },
     ];
 
