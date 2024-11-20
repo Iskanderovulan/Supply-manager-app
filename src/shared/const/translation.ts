@@ -4,4 +4,7 @@ export enum TranslationId {
     NOTIFICATION = "notification",
     MATERIAL = "material",
     FILTER = "filter",
+    COLOR = "color",
+    PACK = "pack",
+    PRODUCT = "product",
 }

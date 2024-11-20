@@ -27,4 +27,6 @@ declare module "*.svg" {
     export default src;
 }
 
+declare module "file-saver";
+
 declare const __IS_DEV__: boolean;

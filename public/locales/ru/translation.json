@@ -5,7 +5,7 @@
     "classificators": "Классификаторы",
     "material": "Материал",
     "color": "Цвет",
-    "packType": "Тип упаковки",
+    "pack": "Упаковка",
     "login": "Вход",
     "register": "Регистрация",
     "searchByName": "Поиск по названию",
@@ -15,5 +15,17 @@
     "manageColumns": "Управлять колонками",
     "reset": "Сбросить",
     "selectAll": "Выбрать все",
-    "deselectAll": "Очистить выбор"
+    "deselectAll": "Очистить выбор",
+    "errorCode": "404",
+    "message": "Страница не найдена",
+    "returnButton": "Вернуться на главную страницу",
+    "delete": "Удалить",
+    "resetAll": "Сбросить всё",
+    "edit": "Редактировать",
+    "sortByDate": "Сортировка по дате",
+    "sort": "Сортировка",
+    "rowDensity": "Плотность строк",
+    "condensed": "58 сжатый",
+    "regular": "74 обычный",
+    "relaxed": "90 свободный"
 }

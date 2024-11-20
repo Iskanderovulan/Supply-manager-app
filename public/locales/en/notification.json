@@ -6,18 +6,9 @@
     "updateSuccess": "Update completed successfully.",
     "deleteSuccess": "Deletion completed successfully.",
     "defaultMessage": "Operation was successful.",
-
-    "logoutSuccessDescription": "You have logged out successfully.",
-    "registrationSuccessDescription": "Your account has been created successfully.",
-    "loginSuccessDescription": "You have logged in successfully.",
-    "createSuccessDescription": "The item has been added to the list.",
-    "updateSuccessDescription": "Changes have been saved successfully.",
-    "deleteSuccessDescription": "The item has been deleted from the list.",
-    "defaultDescription": "The action completed successfully.",
-
     "errorOccurred": "An unknown error occurred. Please try again.",
     "errorCode": "Error code: No code provided",
-
     "error": "Error",
-    "unexpectedError": "An unknown error occurred. Please try again."
+    "unexpectedError": "An unknown error occurred. Please try again.",
+    "downloadSuccess": "Download file success"
 }

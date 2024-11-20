@@ -1,8 +1,8 @@
-import { FC, useCallback, useMemo } from "react";
+import { FC, useMemo } from "react";
 import { Modal, Button, Checkbox, Space, Flex } from "antd";
 import { TableOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useModal } from "@shared/lib/hooks/useModal/useModal";
+import { useModal } from "@shared/lib/hooks/useModal";
 import cls from "./ColumnManager.module.scss";
 
 interface ColumnManagerProps {
@@ -13,7 +13,7 @@ interface ColumnManagerProps {
 
 export const ColumnManager: FC<ColumnManagerProps> = (props) => {
     const { columnsConfig, visibleColumns, onVisibleColumnsChange } = props;
-    const { t } = useTranslation();
+    const { t: global } = useTranslation();
     const { isModalOpen, showModal, hideModal } = useModal();
 
     const options = useMemo(
@@ -21,12 +21,9 @@ export const ColumnManager: FC<ColumnManagerProps> = (props) => {
         [columnsConfig],
     );
 
-    const handleCheckboxChange = useCallback(
-        (checkedValues: Array<string>) => {
-            onVisibleColumnsChange(checkedValues);
-        },
-        [onVisibleColumnsChange],
-    );
+    const handleCheckboxChange = (checkedValues: Array<string>) => {
+        onVisibleColumnsChange(checkedValues);
+    };
 
     const handleSelectAll = () => {
         const allKeys = columnsConfig.map((col) => col.key);
@@ -41,7 +38,7 @@ export const ColumnManager: FC<ColumnManagerProps> = (props) => {
         <>
             <Flex justify="start">
                 <Button onClick={showModal}>
-                    {t("manageColumns")} ({visibleColumns.length}/{columnsConfig.length})
+                    {global("manageColumns")} ({visibleColumns.length}/{columnsConfig.length})
                     <Space>
                         <TableOutlined />
                     </Space>
@@ -49,23 +46,23 @@ export const ColumnManager: FC<ColumnManagerProps> = (props) => {
             </Flex>
 
             <Modal
-                title={t("manageColumns")}
+                title={global("manageColumns")}
                 open={isModalOpen}
                 onCancel={hideModal}
                 onOk={hideModal}
                 footer={[
                     <Button key="columns" type="primary" onClick={hideModal}>
-                        {t("ok")}
+                        {global("ok")}
                     </Button>,
                 ]}
             >
                 <Flex gap="small" className={cls.buttonGroup}>
                     <Button size="small" type="dashed" key="deselectAll" onClick={handleReset}>
-                        {t("deselectAll")}
+                        {global("deselectAll")}
                     </Button>
 
                     <Button size="small" type="dashed" key="selectAll" onClick={handleSelectAll}>
-                        {t("selectAll")}
+                        {global("selectAll")}
                     </Button>
                 </Flex>
                 <Checkbox.Group

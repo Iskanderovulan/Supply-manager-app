@@ -1,4 +1,4 @@
-import { useCallback, useEffect, ReactNode } from "react";
+import { useEffect, ReactNode } from "react";
 import { Form } from "antd";
 import { FormHeader } from "../FormHeader/FormHeader";
 import { FormField } from "../FormField/FormField";
@@ -37,6 +37,7 @@ interface DynamicFormProps<T> {
 
 export const DynamicForm = <T,>(props: DynamicFormProps<T>) => {
     const { config, onFinish, handlers, loading, header, className = "", updateValues } = props;
+
     const [form] = Form.useForm<T>();
 
     useEffect(() => {
@@ -45,14 +46,11 @@ export const DynamicForm = <T,>(props: DynamicFormProps<T>) => {
         }
     }, [updateValues, form]);
 
-    const handleButtonClick = useCallback(
-        (handlerKey?: string) => {
-            if (handlerKey && handlers) {
-                handlers[handlerKey]?.();
-            }
-        },
-        [handlers],
-    );
+    const handleButtonClick = (handlerKey?: string) => {
+        if (handlerKey && handlers) {
+            handlers[handlerKey]?.();
+        }
+    };
 
     return (
         <div className={classNames(cls.dynamicForm, className)}>

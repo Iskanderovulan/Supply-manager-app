@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { routeConfig } from "@app/providers/router/config/routeConfig";
-import { PageLoader } from "@shared/ui/PageLoader";
-import AppLayout from "../AppLayout/AppLayout";
+import { Loader } from "@shared/ui/Loader";
 import { ProtectedRoute } from "@shared/ui/ProtectedRoute";
+import { NotFoundPage } from "@pages/NotFoundPage";
+import AppLayout from "../AppLayout/AppLayout";
 
 const AppRouter = () => (
     <Routes>
@@ -14,12 +15,13 @@ const AppRouter = () => (
                     path={path}
                     element={
                         <ProtectedRoute reverseRedirect={!isProtected}>
-                            <Suspense fallback={<PageLoader />}>{element}</Suspense>
+                            <Suspense fallback={<Loader />}>{element}</Suspense>
                         </ProtectedRoute>
                     }
                 />
             ))}
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
     </Routes>
 );
 

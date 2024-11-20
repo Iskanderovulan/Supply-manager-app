@@ -1,23 +1,30 @@
 import { FC, useMemo } from "react";
-import { useGetMaterialsQuery } from "@entities/Material/model/api";
+import { useGetMaterialsQuery } from "@entities/Material/api";
 import { Flex } from "antd";
-import { CreateMaterial } from "../CreateMaterial/CreateMaterial";
+import { MaterialCreate } from "../MaterialCreate/MaterialCreate";
 import { MaterialsTable } from "../MaterialTable/MaterialTable";
-import { MaterialSearch } from "../MaterialSearch/MaterialSearch";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams/useFilterSearchParams";
-import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
-import { MaterialPagination } from "../MaterialPagination/MaterialPagination";
-import { MaterialPerPage } from "../MaterialPerPage/MaterialPerPage";
 import { MaterialFilter } from "../MaterialFilter/MaterialFilter";
+import { MaterialCrumb } from "../MaterialCrumb/MaterialCrumb";
 import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
-import { MaterialReset } from "../MaterialReset/MaterialReset";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
+import {
+    ResetQueries,
+    SortByDate,
+    PaginationControl,
+    ItemsPerPageControl,
+    Search,
+} from "@entities/CommonControl";
+import cls from "./Material.module.scss";
+import { MaterialExcel } from "../MaterialExcel/MaterialExcel";
 
 export const Material: FC = () => {
-    const { getSearchParam, updateSearchParams } = useFilterSearchParams();
+    const { getSearchParam, updateSearchParams, getDecodedParam } = useFilterSearchParams();
 
     const page = Number(getSearchParam("page")) || 1;
     const limit = Number(getSearchParam("limit")) || defaultPageSizeOption;
     const name = getSearchParam("name") || "";
+    const sortBy = getSearchParam("sortBy");
 
     const hardness = useMemo(() => getSearchParam("hardness", true) || [], [getSearchParam]);
     const createdBefore = getSearchParam("createdBefore");
@@ -34,6 +41,7 @@ export const Material: FC = () => {
         hardness,
         createdBefore,
         createdAfter,
+        sortBy,
     });
 
     const totalPages = materials?.totalPages;
@@ -43,18 +51,27 @@ export const Material: FC = () => {
     const initialFilters = useMemo<MaterialFiltersSchema>(
         () => ({
             materials: hardness,
-            dateRange: createdBefore && createdAfter ? [createdBefore, createdAfter] : null,
+            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
         }),
-        [hardness, createdBefore, createdAfter],
+        [hardness, createdAfter, createdBefore],
     );
 
     return (
         <Flex gap="middle" vertical>
-            <Flex justify="space-between" gap="middle">
-                <Flex gap="middle">
-                    <CreateMaterial />
-                    <MaterialSearch updateSearchParams={updateSearchParams} searchTerm={name} />
-                    <MaterialReset updateSearchParams={updateSearchParams} />
+            <Flex justify="space-between">
+                <Search updateSearchParams={updateSearchParams} searchTerm={name} />
+                <MaterialCrumb />
+            </Flex>
+
+            <Flex justify="space-between" gap="middle" align="center">
+                <Flex className={cls.scrollable} gap="middle">
+                    <MaterialCreate />
+                    <SortByDate
+                        getDecodedParam={getDecodedParam}
+                        updateSearchParams={updateSearchParams}
+                    />
+                    <ResetQueries updateSearchParams={updateSearchParams} />
+                    <MaterialExcel results={results} />
                 </Flex>
                 <MaterialFilter
                     updateSearchParams={updateSearchParams}
@@ -64,14 +81,14 @@ export const Material: FC = () => {
 
             <MaterialsTable dataSource={results} isLoading={isLoading} error={error} />
             <Flex align="center" gap="middle">
-                <MaterialPagination
+                <PaginationControl
                     totalResults={totalResults}
                     currentPage={page}
                     pageSize={limit}
                     totalPages={totalPages}
                     updateSearchParams={updateSearchParams}
                 />
-                <MaterialPerPage limit={limit} updateSearchParams={updateSearchParams} />
+                <ItemsPerPageControl limit={limit} updateSearchParams={updateSearchParams} />
             </Flex>
         </Flex>
     );

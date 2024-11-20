@@ -1,21 +1,24 @@
 export enum AppRoutes {
-    MAIN = "main",
     LOGIN = "login",
     REGISTER = "register",
-    NOT_FOUND = "not_found",
     MATERIAL = "material",
+    COLOR = "color",
+    PACK = "pack",
+    PRODUCT = "product"
 }
 
-export const getRouteMain = () => "/";
+export const getRouteProduct = () => "/";
 export const getRouteLogin = () => "/login";
 export const getRouteRegister = () => "/register";
-export const getRouteNotFound = () => "*";
 export const getRouteMaterial = () => "/material";
+export const getRouteColor = () => "/color";
+export const getRoutePack = () => "/pack";
 
 export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.MAIN]: getRouteMain(),
+    [AppRoutes.PRODUCT]: getRouteProduct(),
     [AppRoutes.LOGIN]: getRouteLogin(),
     [AppRoutes.REGISTER]: getRouteRegister(),
-    [AppRoutes.NOT_FOUND]: getRouteNotFound(),
     [AppRoutes.MATERIAL]: getRouteMaterial(),
+    [AppRoutes.COLOR]: getRouteColor(),
+    [AppRoutes.PACK]: getRoutePack(),
 };

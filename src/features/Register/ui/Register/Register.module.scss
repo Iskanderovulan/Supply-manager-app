@@ -1,0 +1,26 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--padding-middle);
+    background-color: var(--bg-color);
+    margin-top: var(--margin-large);
+}
+
+.content {
+    background-color: var(--secondary-bg-color);
+    padding: var(--padding-extra-large);
+    box-shadow: var(--layout-shadow);
+    width: 100%;
+    max-width: 400px;
+}
+
+.inputField {
+    margin: 0;
+}
+.title {
+    text-align: center;
+}
+.button {
+    width: 100%;
+}

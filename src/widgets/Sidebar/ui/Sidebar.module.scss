@@ -6,4 +6,8 @@
     &.Sidebar .custom-menu {
         border-inline-end: 1px solid var(--secondary-bg-color);
     }
+    .title {
+        margin: var(--margin-small) 0 var(--margin-small) var(--margin-small);
+        display: block;
+    }
 }

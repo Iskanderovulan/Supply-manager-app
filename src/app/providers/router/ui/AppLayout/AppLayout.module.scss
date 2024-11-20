@@ -12,9 +12,6 @@
 .content {
     flex-grow: 1;
     padding: var(--padding-middle);
-}
-
-.footer {
-    text-align: center;
-    background-color: red;
+    overflow-y: auto;
+    height: calc(100vh - var(--navbar-height));
 }

@@ -15,35 +15,23 @@ interface NotificationProps {
 }
 
 export const useNotification = (props: NotificationProps) => {
-    const {
-        isError,
-        isSuccess,
-        error,
-        reset,
-        notificationKey = NotificationData.default.message,
-    } = props;
+    const { isError, isSuccess, error, reset, notificationKey = "default" } = props;
     const { notification } = AntApp.useApp();
     const { t } = useTranslation(TranslationId.NOTIFICATION);
 
     useEffect(() => {
         if (isError && error) {
-            const errorMessage =
-                "data" in error && error.data
-                    ? (error.data as { message?: string })?.message
-                    : t(NotificationData.error.description);
             notification.error({
-                message: t(NotificationData.error.message),
-                description: errorMessage,
+                message: t(NotificationData.error),
                 duration: 2,
             });
             reset();
         }
 
         if (isSuccess) {
-            const { message, description } = NotificationData[notificationKey];
+            const messageKey = NotificationData[notificationKey];
             notification.success({
-                message: t(message),
-                description: t(description),
+                message: t(messageKey),
                 duration: 2,
             });
             reset();

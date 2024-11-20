@@ -1,6 +1,8 @@
-import { Tokens, User } from "shared/types/auth";
+import { Tokens, User } from "@shared/types/auth";
 
-export interface AuthSchema {
+export type RememberMeSchema = { rememberMe: boolean };
+
+export interface AuthSchema extends RememberMeSchema {
     token: string | null;
     refreshToken: string | null;
     isAuthenticated: boolean;

@@ -11,7 +11,7 @@
 
 .ant-pagination .ant-pagination-item:hover {
     // Very specific override required to change Ant Design's styles
-    background-color: var(--pagination-active-color) !important;
+    background-color: var(--active-color) !important;
 }
 
 .ant-pagination .ant-pagination-item-active:hover {

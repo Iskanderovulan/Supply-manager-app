@@ -14,6 +14,7 @@
 @import "antd/date-picker";
 @import "antd/checkbox";
 @import "antd/button";
+@import "antd/title";
 
 .app {
     font: var(--font-m);
@@ -24,4 +25,20 @@
 
 .content-page {
     display: flex;
+}
+
+body {
+    background: var(--bg-color);
+}
+
+@media (max-width: 820px) {
+    body {
+        width: 996px;
+    }
+}
+
+@media (min-width: 821px) {
+    body {
+        width: 100%;
+    }
 }

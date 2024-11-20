@@ -5,7 +5,7 @@
     "classificators": "Classificators",
     "material": "Material",
     "color": "Color",
-    "packType": "Pack Type",
+    "pack": "Pack",
     "login": "Login",
     "register": "Register",
     "searchByName": "Search by name",
@@ -15,5 +15,17 @@
     "manageColumns": "Manage columns",
     "reset": "Reset",
     "selectAll": "Select all",
-    "deselectAll": "Deselect all"
+    "deselectAll": "Deselect all",
+    "errorCode": "404",
+    "message": "Page Not Found",
+    "returnButton": "Return to Main Page",
+    "delete": "Delete",
+    "resetAll": "Reset all",
+    "edit": "Edit",
+    "sortByDate": "Sort by Date",
+    "sort": "Sort",
+    "rowDensity": "Row Density",
+    "condensed": "58 condensed",
+    "regular": "74 regular",
+    "relaxed": "90 relaxed"
 }
