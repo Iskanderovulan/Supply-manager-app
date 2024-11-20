@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { FilterConfig, FilterType } from "../../model/types/filterConfig";
 import { ValueGroup, DayjsType, Value } from "../../model/types/valueGroup";
-import { CheckboxFilter } from "../CheckboxFilter/CheckboxFilter";
-import { DatePickerFilter } from "../DatePickerFilter/DatePickerFilter";
+import { FilterCheckbox } from "../FilterCheckbox/FilterCheckbox";
+import { FilterDatePicker } from "../FilterDatePicker/FilterDatePicker";
+import { FilterRange } from "../FilterRange/FilterRange";
 import { TFunction } from "i18next";
 
 interface FilterItemProps {
@@ -17,7 +18,7 @@ export const FilterItem: FC<FilterItemProps> = (props) => {
     switch (filter.type) {
         case FilterType.Checkbox:
             return (
-                <CheckboxFilter
+                <FilterCheckbox
                     filter={filter}
                     selectedValue={selectedValue as Value}
                     onChange={onChange}
@@ -27,10 +28,21 @@ export const FilterItem: FC<FilterItemProps> = (props) => {
 
         case FilterType.DatePicker:
             return (
-                <DatePickerFilter
+                <FilterDatePicker
                     selectedValue={selectedValue as DayjsType}
                     onChange={onChange}
                     t={t}
+                />
+            );
+
+        case FilterType.Range:
+            return (
+                <FilterRange
+                    selectedValue={selectedValue as [number, number]}
+                    onChange={onChange}
+                    t={t}
+                    min={filter.min || 0} // Минимальное значение диапазона
+                    max={filter.max || 1000} // Максимальное значение диапазона
                 />
             );
 

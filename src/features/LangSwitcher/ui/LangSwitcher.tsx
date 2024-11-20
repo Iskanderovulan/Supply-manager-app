@@ -5,7 +5,7 @@ import { GlobalOutlined } from "@ant-design/icons";
 import { LOCAL_STORAGE_LANG_KEY } from "@shared/const/localstorage";
 
 export const LangSwitcher = () => {
-    const { t, i18n } = useTranslation();
+    const { t: global, i18n } = useTranslation();
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem(LOCAL_STORAGE_LANG_KEY);
@@ -22,7 +22,7 @@ export const LangSwitcher = () => {
 
     return (
         <Button onClick={toggle} icon={<GlobalOutlined />}>
-            {t("switcher")}
+            {global("switcher")}
         </Button>
     );
 };

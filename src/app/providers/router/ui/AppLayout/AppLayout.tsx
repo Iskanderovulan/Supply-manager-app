@@ -1,16 +1,16 @@
+import { Suspense } from "react";
 import Layout from "antd/es/layout/layout";
 import classNames from "classnames";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "@widgets/Sidebar";
 import { Navbar } from "@widgets/Navbar";
-import { AppFooter } from "@widgets/AppFooter";
-import { Suspense } from "react";
+import { Loader } from "@shared/ui/Loader";
 import cls from "./AppLayout.module.scss";
 
 const AppLayout = () => {
     return (
         <div className={classNames("app")}>
-            <Suspense fallback="">
+            <Suspense fallback={<Loader />}>
                 <Layout className={cls.layout}>
                     <Sidebar />
                     <Layout className={cls.siteLayout}>
@@ -18,7 +18,6 @@ const AppLayout = () => {
                         <div className={cls.content}>
                             <Outlet />
                         </div>
-                        <AppFooter />
                     </Layout>
                 </Layout>
             </Suspense>

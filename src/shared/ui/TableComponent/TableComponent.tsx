@@ -1,39 +1,42 @@
-import classNames from "classnames";
 import { Table, TableProps, Empty } from "antd";
-import { Loader } from "@shared/ui/Loader";
-import cls from "./TableComponent.module.scss";
-import { ErrorMessage } from "../ErrorMessage";
 
 interface TableComponentProps<T extends object> extends TableProps<T> {
-    isLoading: boolean;
-    error: unknown;
     emptyMessage?: string;
+    rowSpacing?: number;
 }
 
-export const TableComponent = <T extends object>(props: TableComponentProps<T>) => {
-    const {
-        columns,
-        dataSource,
-        isLoading,
-        error,
-        emptyMessage = "No data available",
-        ...rest
-    } = props;
+export const TableComponent = <T extends object>({
+    columns,
+    dataSource,
+    emptyMessage = "No data available",
+    rowSpacing,
+    ...rest
+}: TableComponentProps<T>) => {
+    const tableStyle: React.CSSProperties = {
+        width: "100%",
+        overflowX: "auto" as const,
+    };
 
-    if (isLoading) {
-        return <Loader />;
-    }
-    if (error) {
-        return <ErrorMessage error={error} />;
-    }
+    // Using inline styles for row spacing to ensure consistent height adjustment,
+    // as class-based styling was not effective in overriding Ant Design defaults
+    const resolvedRowSpacing = rowSpacing ?? 74;
+
+    const onRow = () => ({
+        style: {
+            height: `${resolvedRowSpacing}px`,
+            paddingTop: 0,
+            paddingBottom: 0,
+        },
+    });
 
     return (
-        <div className={classNames(cls.TableComponent)}>
+        <div style={tableStyle}>
             <Table<T>
                 columns={columns}
-                dataSource={dataSource}
+                dataSource={Array.isArray(dataSource) ? dataSource : []}
                 scroll={{ x: "max-content", y: "calc(100vh - 400px)" }}
                 pagination={false}
+                onRow={onRow}
                 locale={{
                     emptyText: <Empty description={emptyMessage} />,
                 }}

@@ -10,14 +10,14 @@ interface ItemsPerPageProps {
 
 export const ItemsPerPage: FC<ItemsPerPageProps> = (props) => {
     const { limit, onLimitChange } = props;
-    const { t } = useTranslation();
+    const { t: global } = useTranslation();
     return (
         <Select
             className="custom-select"
             value={limit}
             onChange={onLimitChange}
             options={pageSizeOptions.map((size) => ({
-                label: `${size} ${t("items")}`,
+                label: `${size} ${global("items")}`,
                 value: size,
             }))}
         />

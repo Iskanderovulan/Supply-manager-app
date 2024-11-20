@@ -5,6 +5,9 @@ const API_PATH = {
 };
 
 export const API_ENDPOINTS = {
+    PRODUCTS: "products",
+    PACKS: "packs",
+    COLORS: "colors",
     MATERIALS: "materials",
     LOGIN: `${API_PATH.AUTH}/login`,
     REGISTER: `${API_PATH.AUTH}/register`,

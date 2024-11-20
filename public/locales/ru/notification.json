@@ -6,18 +6,9 @@
     "updateSuccess": "Изменения успешно сохранены.",
     "deleteSuccess": "Удаление прошло успешно.",
     "defaultMessage": "Операция выполнена успешно.",
-
-    "logoutSuccessDescription": "Вы успешно вышли из системы.",
-    "registrationSuccessDescription": "Ваш аккаунт был успешно создан.",
-    "loginSuccessDescription": "Вы успешно вошли в систему.",
-    "createSuccessDescription": "Сущность была добавлена в список.",
-    "updateSuccessDescription": "Изменения были успешно сохранены.",
-    "deleteSuccessDescription": "Сущность была удалена из списка.",
-    "defaultDescription": "Действие выполнено успешно.",
-
     "errorOccurred": "Произошла неизвестная ошибка. Попробуйте еще раз.",
     "errorCode": "Код ошибки: код не предоставлен",
-
     "error": "Ошибка",
-    "unexpectedError": "Произошла неизвестная ошибка. Попробуйте еще раз."
+    "unexpectedError": "Произошла неизвестная ошибка. Попробуйте еще раз.",
+    "downloadSuccess": "Загрузка файла прошла успешно"
 }

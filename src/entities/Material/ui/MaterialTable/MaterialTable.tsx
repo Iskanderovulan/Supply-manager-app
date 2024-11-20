@@ -1,16 +1,20 @@
 import { FC, useMemo } from "react";
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
-import { generateColumns } from "@shared/lib/helpers/fixedColumnsHeader";
+import { generateColumns } from "@shared/lib/helpers/generateColumns/generateColumns";
 import { hardnessOptions } from "@entities/Material/model/const/hardnessOptions";
-import { generateDate } from "@shared/lib/helpers/generateDate";
+import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
 import { TableComponent } from "@shared/ui/TableComponent";
-import { EditMaterial } from "../EditMaterial/EditMaterial";
-import { DeleteMaterial } from "../DeleteMaterial/DeleteMaterial";
+import { MaterialEdit } from "../MaterialEdit/MaterialEdit";
+import { MaterialDelete } from "../MaterialDelete/MaterialDelete";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { Flex } from "antd";
 import { ColumnManager } from "@shared/ui/ColumnManager";
-import { useColumns } from "@shared/lib/hooks/useColumns/useColumns";
+import { useColumns } from "@shared/lib/hooks/useColumns";
+import { Loader } from "@shared/ui/Loader";
+import { ErrorMessage } from "@shared/ui/ErrorMessage";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
+import { RowDensity, selectSpacing } from "@shared/ui/RowDensity";
 
 interface MaterialsTableProps {
     dataSource: MaterialSchema[];
@@ -18,8 +22,10 @@ interface MaterialsTableProps {
     error: unknown;
 }
 
-export const MaterialsTable: FC<MaterialsTableProps> = ({ dataSource, isLoading, error }) => {
+export const MaterialsTable: FC<MaterialsTableProps> = (props) => {
+    const { dataSource, isLoading, error } = props;
     const { t } = useTranslation(TranslationId.MATERIAL);
+    const rowSpacing = useAppSelector(selectSpacing);
 
     const allColumns = useMemo(
         () =>
@@ -60,8 +66,8 @@ export const MaterialsTable: FC<MaterialsTableProps> = ({ dataSource, isLoading,
                     key: "actions",
                     render: (_, record) => (
                         <Flex gap="middle">
-                            <EditMaterial material={record} />
-                            <DeleteMaterial material={record} />
+                            <MaterialEdit material={record} />
+                            <MaterialDelete material={record} />
                         </Flex>
                     ),
                 },
@@ -69,8 +75,10 @@ export const MaterialsTable: FC<MaterialsTableProps> = ({ dataSource, isLoading,
         [t],
     );
 
-    const { columnsConfig, visibleColumns, setVisibleColumns, filteredColumns } =
-        useColumns(allColumns);
+    const { columnsConfig, visibleColumns, setVisibleColumns, filteredColumns } = useColumns(
+        allColumns,
+        "materialsTable",
+    );
 
     const expandedRowRender = (record: MaterialSchema) => (
         <span>
@@ -80,13 +88,19 @@ export const MaterialsTable: FC<MaterialsTableProps> = ({ dataSource, isLoading,
 
     const showExpandIcon = visibleColumns.includes("actions");
 
+    if (isLoading) {
+        return <Loader />;
+    }
+    if (error) {
+        return <ErrorMessage error={error} />;
+    }
+
     return (
         <>
             <TableComponent<MaterialSchema>
                 columns={filteredColumns}
+                rowSpacing={rowSpacing}
                 dataSource={dataSource}
-                isLoading={isLoading}
-                error={error}
                 rowKey="id"
                 expandable={{
                     expandedRowRender,
@@ -94,11 +108,14 @@ export const MaterialsTable: FC<MaterialsTableProps> = ({ dataSource, isLoading,
                     rowExpandable: (record) => !!record.id,
                 }}
             />
-            <ColumnManager
-                columnsConfig={columnsConfig}
-                visibleColumns={visibleColumns}
-                onVisibleColumnsChange={setVisibleColumns}
-            />
+            <Flex gap="small">
+                <ColumnManager
+                    columnsConfig={columnsConfig}
+                    visibleColumns={visibleColumns}
+                    onVisibleColumnsChange={setVisibleColumns}
+                />
+                <RowDensity />
+            </Flex>
         </>
     );
 };

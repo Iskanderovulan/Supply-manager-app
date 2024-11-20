@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAppSelector } from "@shared/lib/hooks/useAppSelector/useAppSelector";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { selectIsAuthenticated } from "@features/Auth";
 
 interface ProtectedRouteProps {
-    children: JSX.Element;
+    children: ReactNode;
     reverseRedirect?: boolean; // Optional prop for reversing the redirect logic
 }
 

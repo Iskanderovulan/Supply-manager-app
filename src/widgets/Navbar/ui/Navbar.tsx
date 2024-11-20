@@ -4,9 +4,9 @@ import cls from "./Navbar.module.scss";
 import { LangSwitcher } from "@features/LangSwitcher";
 import { ThemeSwitcher } from "@features/ThemeSwitcher";
 import { useCollapsed } from "@app/providers/layout/CollapseProvider";
-import { useAppSelector } from "@shared/lib/hooks/useAppSelector/useAppSelector";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Logout } from "@features/Logout/ui/Logout";
+import { Logout } from "@features/Logout";
 import { selectIsAuthenticated } from "@features/Auth";
 
 const { Header } = Layout;

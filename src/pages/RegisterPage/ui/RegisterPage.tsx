@@ -1,4 +1,4 @@
-import { Register } from "@features/Auth";
+import { Register } from "@features/Register";
 
 const RegisterPage = () => {
     return <Register />;

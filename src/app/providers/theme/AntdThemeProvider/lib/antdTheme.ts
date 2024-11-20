@@ -93,7 +93,11 @@ export const defaultTheme = {
             controlOutline: "unset",
         },
         Dropdown: {
-            colorBgElevated: "var(--secondary-bg-color)",
+            colorBgElevated: "var(--select-dropdown-bg)",
+        },
+        Breadcrumb: {
+            itemColor: "var(--inverse-color)",
+            lastItemColor: "var(--inverse-color)",
         },
     },
 };

@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { useCallback, useRef, useEffect } from "react";
 
 type UpdateSearchParams = Record<string, string | number | (string | number)[] | undefined | null>;
 export type UpdateSearchParamsType = (
@@ -10,51 +11,65 @@ interface UseFilterSearchParamsReturn {
     getSearchParam(paramKey: string): string;
     getSearchParam(paramKey: string, isArray: true): string[];
     updateSearchParams: UpdateSearchParamsType;
+    getDecodedParam(paramKey: string): string;
 }
 
 export function useFilterSearchParams(): UseFilterSearchParamsReturn {
     const [searchParams, setSearchParams] = useSearchParams();
 
+    const searchParamsRef = useRef(searchParams);
+    const setSearchParamsRef = useRef(setSearchParams);
+
+    useEffect(() => {
+        searchParamsRef.current = searchParams;
+    }, [searchParams]);
+
+    useEffect(() => {
+        setSearchParamsRef.current = setSearchParams;
+    }, [setSearchParams]);
+
     function getSearchParam(paramKey: string): string;
     function getSearchParam(paramKey: string, isArray: true): string[];
-
     function getSearchParam(paramKey: string, isArray = false): string | string[] {
-        if (isArray) {
-            return searchParams.getAll(paramKey);
-        }
-        return searchParams.get(paramKey) || "";
+        return isArray ? searchParams.getAll(paramKey) : searchParams.get(paramKey) || "";
     }
 
-    const updateSearchParams = (updates: UpdateSearchParams, { replace = false } = {}): void => {
-        if (typeof updates !== "object" || updates === null) {
-            console.error("Updates should be a non-null object");
-            return;
-        }
+    function getDecodedParam(paramKey: string): string {
+        return decodeURIComponent(searchParams.get(paramKey) || "");
+    }
 
-        // Если updates пустой, создаем пустой URLSearchParams для очистки всех параметров
-        if (Object.keys(updates).length === 0) {
-            setSearchParams(new URLSearchParams(), { replace });
-            return;
-        }
-
-        const newSearchParams = new URLSearchParams(searchParams);
-
-        Object.keys(updates).forEach((key) => {
-            const value = updates[key];
-            if (Array.isArray(value)) {
-                newSearchParams.delete(key);
-                value.forEach((v) => {
-                    newSearchParams.append(key, String(v));
-                });
-            } else if (value !== undefined && value !== null) {
-                newSearchParams.set(key, String(value));
-            } else {
-                newSearchParams.delete(key);
+    const updateSearchParams = useCallback(
+        (updates: UpdateSearchParams, { replace = false } = {}): void => {
+            if (typeof updates !== "object" || updates === null) {
+                console.error("Updates should be a non-null object");
+                return;
             }
-        });
 
-        setSearchParams(newSearchParams, { replace });
-    };
+            if (Object.keys(updates).length === 0) {
+                setSearchParamsRef.current(new URLSearchParams(), { replace });
+                return;
+            }
 
-    return { getSearchParam, updateSearchParams };
+            const newSearchParams = new URLSearchParams(searchParamsRef.current);
+
+            Object.keys(updates).forEach((key) => {
+                const value = updates[key];
+                if (Array.isArray(value)) {
+                    newSearchParams.delete(key);
+                    value.forEach((v) => {
+                        newSearchParams.append(key, String(v));
+                    });
+                } else if (value !== undefined && value !== null) {
+                    newSearchParams.set(key, String(value));
+                } else {
+                    newSearchParams.delete(key);
+                }
+            });
+
+            setSearchParamsRef.current(newSearchParams, { replace });
+        },
+        [],
+    );
+
+    return { getSearchParam, updateSearchParams, getDecodedParam };
 }

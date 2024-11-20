@@ -1,6 +1,7 @@
 .Header {
     padding: 0 var(--padding-middle);
     box-shadow: var(--navbar-shadow);
+    height: var(--navbar-height);
 
     .nav {
         display: flex;

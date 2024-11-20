@@ -5,11 +5,23 @@ import {
     LOCAL_STORAGE_TOKEN_KEY,
     LOCAL_STORAGE_REFRESH_TOKEN_KEY,
 } from "@shared/const/localstorage";
+import {
+    SESSION_STORAGE_TOKEN_KEY,
+    SESSION_STORAGE_REFRESH_TOKEN_KEY,
+} from "@shared/const/sessionstorage";
 
 const initialState: AuthSchema = {
-    token: localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY),
-    refreshToken: localStorage.getItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY),
-    isAuthenticated: !!localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY),
+    token:
+        localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY) ||
+        sessionStorage.getItem(SESSION_STORAGE_TOKEN_KEY),
+    refreshToken:
+        localStorage.getItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY) ||
+        sessionStorage.getItem(SESSION_STORAGE_REFRESH_TOKEN_KEY),
+    isAuthenticated: !!(
+        localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY) ||
+        sessionStorage.getItem(SESSION_STORAGE_TOKEN_KEY)
+    ),
+    rememberMe: !!localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY), // Автоматически устанавливаем на основе наличия токена в localStorage
 };
 
 const authSlice = createSlice({
@@ -17,22 +29,44 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         setCredentials: (state, action: PayloadAction<{ tokens: Tokens }>) => {
-            state.token = action.payload.tokens.access.token;
-            state.refreshToken = action.payload.tokens.refresh.token;
+            const { tokens } = action.payload;
+
+            state.token = tokens.access.token;
+            state.refreshToken = tokens.refresh.token;
             state.isAuthenticated = true;
-            localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload.tokens.access.token);
-            localStorage.setItem(
-                LOCAL_STORAGE_REFRESH_TOKEN_KEY,
-                action.payload.tokens.refresh.token,
-            );
+
+            // Сохраняем токены в localStorage или sessionStorage на основе rememberMe
+            if (state.rememberMe) {
+                localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, tokens.access.token);
+                localStorage.setItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY, tokens.refresh.token);
+                sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
+                sessionStorage.removeItem(SESSION_STORAGE_REFRESH_TOKEN_KEY);
+            } else {
+                sessionStorage.setItem(SESSION_STORAGE_TOKEN_KEY, tokens.access.token);
+                sessionStorage.setItem(SESSION_STORAGE_REFRESH_TOKEN_KEY, tokens.refresh.token);
+                localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+                localStorage.removeItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY);
+            }
         },
 
         clearToken: (state) => {
             state.token = null;
             state.refreshToken = null;
             state.isAuthenticated = false;
-            localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
-            localStorage.removeItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY);
+
+            // Удаляем только из того хранилища, которое соответствует rememberMe
+            if (state.rememberMe) {
+                localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+                localStorage.removeItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY);
+            } else {
+                sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
+                sessionStorage.removeItem(SESSION_STORAGE_REFRESH_TOKEN_KEY);
+            }
+            state.rememberMe = false; // Сбрасываем rememberMe после выхода
+        },
+
+        setRememberMe: (state, action: PayloadAction<boolean>) => {
+            state.rememberMe = action.payload;
         },
     },
 });

@@ -4,5 +4,4 @@ export {
     selectIsAuthenticated,
     selectRefreshToken,
 } from "./model/selector/authSelectors.ts";
-export { Register } from "./ui/Register/Register.tsx";
-export { Login } from "./ui/Login/Login.tsx";
+export type { AuthSchema, RememberMeSchema } from "./model/types/authSchema";

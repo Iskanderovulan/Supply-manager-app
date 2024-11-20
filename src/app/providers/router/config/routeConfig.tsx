@@ -1,26 +1,43 @@
 import {
     AppRoutes,
-    getRouteMain,
+    getRouteProduct,
     getRouteLogin,
     getRouteRegister,
-    getRouteNotFound,
     getRouteMaterial,
+    getRouteColor,
+    getRoutePack,
 } from "@shared/const/router";
 import { RouteProps } from "react-router-dom";
-import { MainPage } from "@pages/MainPage";
-import { NotFoundPage } from "@pages/NotFoundPage";
 import { LoginPage } from "@pages/LoginPage";
 import { RegisterPage } from "@pages/RegisterPage";
 import { MaterialPage } from "@pages/MaterialPage";
+import { PackPage } from "@pages/PackPage";
+import { ColorPage } from "@pages/ColorPage";
+import { ProductPage } from "@pages/ProductPage";
 
 type CustomRouteProps = {
     isProtected?: boolean;
 } & RouteProps;
 
 export const routeConfig: Record<AppRoutes, CustomRouteProps> = {
-    [AppRoutes.MAIN]: {
-        path: getRouteMain(),
-        element: <MainPage />,
+    [AppRoutes.PRODUCT]: {
+        path: getRouteProduct(),
+        element: <ProductPage />,
+        isProtected: true,
+    },
+    [AppRoutes.MATERIAL]: {
+        path: getRouteMaterial(),
+        element: <MaterialPage />,
+        isProtected: true,
+    },
+    [AppRoutes.COLOR]: {
+        path: getRouteColor(),
+        element: <ColorPage />,
+        isProtected: true,
+    },
+    [AppRoutes.PACK]: {
+        path: getRoutePack(),
+        element: <PackPage />,
         isProtected: true,
     },
     [AppRoutes.LOGIN]: {
@@ -32,15 +49,5 @@ export const routeConfig: Record<AppRoutes, CustomRouteProps> = {
         path: getRouteRegister(),
         element: <RegisterPage />,
         isProtected: false,
-    },
-    [AppRoutes.NOT_FOUND]: {
-        path: getRouteNotFound(),
-        element: <NotFoundPage />,
-        isProtected: false,
-    },
-    [AppRoutes.MATERIAL]: {
-        path: getRouteMaterial(),
-        element: <MaterialPage />,
-        isProtected: true,
     },
 };

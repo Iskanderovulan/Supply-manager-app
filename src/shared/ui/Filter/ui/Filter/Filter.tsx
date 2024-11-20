@@ -1,13 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
+import { useModal } from "@shared/lib/hooks/useModal";
+import { useTranslation } from "react-i18next";
+import { TranslationId } from "@shared/const/translation";
 import { Button } from "antd";
 import { FilterOutlined } from "@ant-design/icons";
 import { FilterDrawer } from "../FilterDrawer/FilterDrawer";
 import { FilterConfig } from "../../model/types/filterConfig";
-import { ValueGroup, DayjsType, RecordValueGroup } from "../../model/types/valueGroup";
-import { useModal } from "@shared/lib/hooks/useModal/useModal";
-import { useTranslation } from "react-i18next";
-import { TranslationId } from "@shared/const/translation";
-import dayjs from "dayjs";
+import { useFilterState } from "../../lib/hooks/useFilterState";
+import { RecordValueGroup } from "../../model/types/valueGroup";
 
 interface FilterProps<TFilters> {
     filters: FilterConfig[];
@@ -16,48 +15,27 @@ interface FilterProps<TFilters> {
     initialFilters: TFilters;
 }
 
-const convertDateRange = (dateRange: DayjsType) => ({
-    createdAfter: dateRange[0] ? dateRange[0].toISOString() : null,
-    createdBefore: dateRange[1] ? dateRange[1].toISOString() : null,
-});
-
-export const Filter = <TFilters extends Record<string, unknown>>(props: FilterProps<TFilters>) => {
-    const { filters, onApply, onReset, initialFilters } = props;
+export const Filter = <TFilters extends Record<string, unknown>>({
+    filters,
+    onApply,
+    onReset,
+    initialFilters,
+}: FilterProps<TFilters>) => {
     const { t } = useTranslation(TranslationId.FILTER);
     const { isModalOpen, showModal, hideModal } = useModal();
+    const { selectedFilters, handleFilterChange, applyFilters, resetFilters } = useFilterState(
+        initialFilters as RecordValueGroup,
+    );
 
-    const [selectedFilters, setSelectedFilters] = useState(initialFilters as RecordValueGroup);
-
-    useEffect(() => {
-        if (Array.isArray(initialFilters.dateRange)) {
-            const [start, end] = initialFilters.dateRange as [string | null, string | null];
-            setSelectedFilters((prevFilters) => ({
-                ...prevFilters,
-                dateRange: [start ? dayjs(start) : null, end ? dayjs(end) : null],
-            }));
-        }
-    }, [initialFilters]);
-
-    const handleFilterChange = useCallback((key: string, value: ValueGroup) => {
-        setSelectedFilters((prevFilters) => ({ ...prevFilters, [key]: value }));
-    }, []);
-
-    const handleApplyFilters = useCallback(() => {
-        const filtersToApply = { ...selectedFilters };
-
-        if (filtersToApply.dateRange) {
-            Object.assign(filtersToApply, convertDateRange(filtersToApply.dateRange as DayjsType));
-            delete filtersToApply.dateRange;
-        }
-
-        onApply(filtersToApply);
+    const handleApplyFilters = () => {
+        onApply(applyFilters());
         hideModal();
-    }, [selectedFilters, onApply, hideModal]);
+    };
 
-    const handleResetFilters = useCallback(() => {
-        setSelectedFilters({});
+    const handleResetFilters = () => {
+        resetFilters();
         onReset();
-    }, [onReset]);
+    };
 
     return (
         <>

@@ -1,11 +1,11 @@
-import { useEffect, FC, useCallback } from "react";
-import { useLogoutMutation } from "@features/Auth/model/api/logoutApi";
-import { useAppSelector } from "@shared/lib/hooks/useAppSelector/useAppSelector";
-import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useEffect, FC } from "react";
+import { useLogoutMutation } from "../api";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
+import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
 import { Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useNotification } from "@shared/lib/hooks/useNotification/useNotification";
+import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { baseApi } from "@shared/api/rtkApi";
 import { authActions, selectRefreshToken } from "@features/Auth";
@@ -22,14 +22,14 @@ export const Logout: FC = () => {
         isSuccess,
         error,
         reset,
-        notificationKey: NotificationData.logoutSuccess.message,
+        notificationKey: NotificationData.logoutSuccess,
     });
 
-    const handleLogout = useCallback(() => {
+    const handleLogout = () => {
         if (refreshToken) {
             logout({ refreshToken });
         }
-    }, [refreshToken, logout]);
+    };
 
     useEffect(() => {
         if (isSuccess) {
