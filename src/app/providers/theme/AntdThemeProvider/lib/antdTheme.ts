@@ -99,5 +99,11 @@ export const defaultTheme = {
             itemColor: "var(--inverse-color)",
             lastItemColor: "var(--inverse-color)",
         },
+        Slider: {
+            trackBg: "var(--track-bg)",
+            trackHoverBg: "var(--track-bg)",
+            railBg: "var(--rail-bg)",
+            railHoverBg: "var(--rail-bg)",
+        },
     },
 };

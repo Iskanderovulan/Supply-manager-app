@@ -1,24 +1,12 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { MaterialSchema } from "../model/types/materialSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { GetCommonParams } from "@entities/CommonControl";
+import { MaterialResponse } from "../model/types/materialResponse";
 
-type GetMaterialsParams = {
-    page?: number;
-    limit?: number;
-    name?: string;
+interface GetMaterialsParams extends GetCommonParams {
     hardness?: string[];
-    createdBefore?: string;
-    createdAfter?: string;
-    sortBy?: string;
-    paginated?: boolean;
-};
-
-type GetMaterialsResponse = {
-    results: MaterialSchema[];
-    totalResults?: number;
-    totalPages?: number;
-};
+}
 
 const getMaterialQueryConfig = ({
     page,
@@ -57,7 +45,7 @@ const getMaterialQueryConfig = ({
 
 export const getMaterialsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getMaterials: builder.query<GetMaterialsResponse, GetMaterialsParams>({
+        getMaterials: builder.query<MaterialResponse, GetMaterialsParams>({
             query: getMaterialQueryConfig,
             providesTags: (result) =>
                 result?.results

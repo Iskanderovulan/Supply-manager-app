@@ -21,7 +21,7 @@ const initialState: AuthSchema = {
         localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY) ||
         sessionStorage.getItem(SESSION_STORAGE_TOKEN_KEY)
     ),
-    rememberMe: !!localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY), // Автоматически устанавливаем на основе наличия токена в localStorage
+    rememberMe: !!localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY),
 };
 
 const authSlice = createSlice({

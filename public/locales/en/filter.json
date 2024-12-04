@@ -3,8 +3,10 @@
     "reset": "Reset",
     "exit": "Exit",
     "applyFilters": "Apply",
-    "selectAll": "Select all",
-    "filterOptions": "Filter options",
+    "selectAll": "Select All",
+    "filterOptions": "Filter Options",
     "startDate": "Start date",
-    "endDate": "End date"
+    "endDate": "End date",
+    "seeAll": "See All",
+    "hideAll": "Hide All"
 }

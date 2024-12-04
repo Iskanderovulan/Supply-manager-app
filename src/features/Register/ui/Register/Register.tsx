@@ -22,14 +22,14 @@ export const Register: FC = () => {
     useEffect(() => {
         if (isSuccess && data) {
             const { tokens } = data;
-            dispatch(authActions.setCredentials({ tokens })); // `rememberMe` флаг можно задать в отдельной обработке
+            dispatch(authActions.setCredentials({ tokens }));
         }
     }, [isSuccess, data, dispatch]);
 
     const handleRegister = (values: RegisterSchema & { rememberMe: boolean }) => {
-        const { rememberMe, ...registerData } = values;
-        dispatch(authActions.setRememberMe(rememberMe)); // Установка флага `rememberMe` перед регистрацией
-        register(registerData); // Отправляем данные регистрации без `rememberMe`
+        const { rememberMe, confirmPassword: _confirmPassword, ...registerData } = values;
+        dispatch(authActions.setRememberMe(rememberMe));
+        register(registerData);
     };
 
     return <RegisterForm onFinish={handleRegister} isLoading={isLoading} />;

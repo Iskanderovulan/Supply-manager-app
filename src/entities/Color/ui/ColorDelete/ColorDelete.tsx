@@ -16,8 +16,7 @@ export const ColorDelete: FC<ColorDeleteProps> = ({ color }) => {
     const { t } = useTranslation(TranslationId.COLOR);
     const { t: global } = useTranslation();
 
-    const [deleteColor, { isError, isLoading, isSuccess, error, reset }] =
-        useDeleteColorMutation();
+    const [deleteColor, { isError, isLoading, isSuccess, error, reset }] = useDeleteColorMutation();
 
     useNotification({
         isError,

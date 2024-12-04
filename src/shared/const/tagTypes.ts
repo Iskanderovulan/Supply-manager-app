@@ -4,5 +4,5 @@ export enum TagTypes {
     COLORS = "Colors",
     PACKS = "Packs",
     USERS = "Users",
-    PRODUCTS = "PRODUCTS",
+    PRODUCTS = "Products",
 }

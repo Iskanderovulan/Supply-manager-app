@@ -9,18 +9,18 @@ import { ProductSchema } from "@entities/Product/model/types/ProductSchema";
 import { excelProductConfig } from "@entities/Product/model/config/excelProductConfig";
 
 interface ProductExcelProps {
-  results: ProductSchema[];
+    results: ProductSchema[];
 }
 
 export const ProductExcel: FC<ProductExcelProps> = ({ results }) => {
-  const { t } = useTranslation(TranslationId.PRODUCT);
+    const { t } = useTranslation(TranslationId.PRODUCT);
 
-  return (
-    <ExcelGenerator<ProductSchema, ExcelConfigType>
-      data={results}
-      t={t}
-      fileName="Products"
-      excelConfig={excelProductConfig}
-    />
-  );
+    return (
+        <ExcelGenerator<ProductSchema, ExcelConfigType>
+            data={results}
+            t={t}
+            fileName="Products"
+            excelConfig={excelProductConfig}
+        />
+    );
 };

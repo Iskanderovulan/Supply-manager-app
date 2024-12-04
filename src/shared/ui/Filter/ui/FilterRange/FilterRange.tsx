@@ -15,14 +15,13 @@ export const FilterRange: FC<FilterRangeProps> = (props) => {
     const { selectedValue, onChange, t, min, max } = props;
 
     const handleRangeChange = (value: number[]) => {
-        // Проверяем, что значение корректное и передаем его как [number, number]
         if (value.length === 2) {
             onChange([value[0], value[1]]);
         }
     };
 
     const handleReset = () => {
-        onChange(null);
+        onChange([0, 0]);
     };
 
     return (
@@ -31,7 +30,7 @@ export const FilterRange: FC<FilterRangeProps> = (props) => {
                 range
                 min={min}
                 max={max}
-                value={selectedValue || [min, max]}
+                value={selectedValue || [0, 0]}
                 onChange={handleRangeChange}
                 className={cls.slider}
             />

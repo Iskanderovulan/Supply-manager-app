@@ -7,10 +7,10 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: "en", // Резервный язык
+        fallbackLng: "en",
         // debug: __IS_DEV__,
         interpolation: {
-            escapeValue: false, // Не нужно для React, так как он экранирует значения по умолчанию
+            escapeValue: false,
         },
         backend: {
             loadPath: "/locales/{{lng}}/{{ns}}.json",

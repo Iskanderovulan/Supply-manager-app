@@ -1,7 +1,7 @@
 import { Pack } from "@entities/Pack";
 
 const PackPage = () => {
-    return <Pack/>;
+    return <Pack />;
 };
 
 export default PackPage;

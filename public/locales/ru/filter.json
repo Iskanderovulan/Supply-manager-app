@@ -6,5 +6,7 @@
     "selectAll": "Выбрать все",
     "filterOptions": "Опции фильтра",
     "startDate": "Начало даты",
-    "endDate": "Конец даты"
+    "endDate": "Конец даты",
+    "seeAll": "Показать",
+    "hideAll": "Скрыть"
 }

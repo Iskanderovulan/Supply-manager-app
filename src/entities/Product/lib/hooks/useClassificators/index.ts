@@ -1,0 +1,1 @@
+export { useClassificators } from "./useClassificators";

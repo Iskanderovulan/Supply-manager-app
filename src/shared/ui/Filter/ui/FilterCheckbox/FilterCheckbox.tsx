@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Checkbox, Button, Flex } from "antd";
 import { FilterConfig } from "../../model/types/filterConfig";
 import { Value } from "../../model/types/valueGroup";
@@ -14,6 +14,11 @@ interface FilterCheckboxProps {
 
 export const FilterCheckbox: FC<FilterCheckboxProps> = (props) => {
     const { filter, selectedValue, onChange, t } = props;
+
+    const [showAll, setShowAll] = useState(false);
+
+    const toggleShowAll = () => setShowAll((prev) => !prev);
+
     const handleCheckboxChange = (checkedValues: Value) => {
         onChange(checkedValues);
     };
@@ -29,16 +34,28 @@ export const FilterCheckbox: FC<FilterCheckboxProps> = (props) => {
         onChange([]);
     };
 
+    const displayedOptions = showAll ? filter.options : filter.options?.slice(0, 10);
+
     return (
-        <>
+        <Flex vertical align="flex-start">
+            {filter.options && filter.options.length > 10 && (
+                <Button
+                    className={cls.marginBottom}
+                    type="dashed"
+                    size="small"
+                    onClick={toggleShowAll}
+                >
+                    {showAll ? t("hideAll") : t("seeAll")}
+                </Button>
+            )}
             <Checkbox.Group
                 className={cls.checkbox}
-                options={filter.options}
-                // value={selectedValue?.map((el) => Number(el))}
+                options={displayedOptions}
                 value={selectedValue}
                 onChange={handleCheckboxChange}
             />
-            <Flex className={cls.flex} justify="end" gap="small">
+
+            <Flex className={cls.marginTop} justify="end" gap="small">
                 <Button type="dashed" size="small" onClick={handleSelectAll}>
                     {t("selectAll")}
                 </Button>
@@ -46,6 +63,6 @@ export const FilterCheckbox: FC<FilterCheckboxProps> = (props) => {
                     {t("reset")}
                 </Button>
             </Flex>
-        </>
+        </Flex>
     );
 };

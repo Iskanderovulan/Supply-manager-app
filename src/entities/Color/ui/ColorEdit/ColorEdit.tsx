@@ -20,8 +20,7 @@ export const ColorEdit: FC<ColorEditProps> = ({ color }) => {
     const { t } = useTranslation(TranslationId.COLOR);
     const { t: global } = useTranslation();
 
-    const [updateColor, { isLoading, isError, isSuccess, reset, error }] =
-        useUpdateColorMutation();
+    const [updateColor, { isLoading, isError, isSuccess, reset, error }] = useUpdateColorMutation();
 
     useNotification({
         isError,

@@ -1,8 +1,8 @@
 {
-    "packPage": "Pack page",
-    "createPack": "Create pack",
-    "editPack": "Edit pack",
-    "updatePack": "Update pack",
+    "packPage": "Pack Page",
+    "createPack": "Create Pack",
+    "editPack": "Edit Pack",
+    "updatePack": "Update Pack",
     "packName": "Pack name",
     "enterPackName": "Enter pack name",
     "pleaseInputPackName": "Please input the pack name!",

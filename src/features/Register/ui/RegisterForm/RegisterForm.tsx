@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { RegisterSchema } from "@features/Register/model/types/registerSchema";
-import { emailPattern, passwordPattern } from "@shared/lib/validators/authValidators";
+import { emailPattern, passwordPattern, namePattern } from "@shared/lib/validators/authValidators";
 import { RememberMeSchema } from "@features/Auth";
 import cls from "./RegisterForm.module.scss";
 
@@ -32,6 +32,16 @@ export const RegisterForm: FC<RegisterFormProps> = ({ onFinish, isLoading }) => 
                 <Title className={cls.title} level={3}>
                     {t("registerNewAccount")}
                 </Title>
+                <Form.Item
+                    label={t("nameLabel")}
+                    name="name"
+                    rules={[
+                        { required: true, message: t("nameRequired") },
+                        { pattern: namePattern, message: t("nameInvalid") },
+                    ]}
+                >
+                    <Input placeholder={t("namePlaceholder")} className={cls.inputField} />
+                </Form.Item>
 
                 <Form.Item
                     label={t("emailLabel")}

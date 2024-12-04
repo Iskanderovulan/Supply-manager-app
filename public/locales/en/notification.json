@@ -10,5 +10,6 @@
     "errorCode": "Error code: No code provided",
     "error": "Error",
     "unexpectedError": "An unknown error occurred. Please try again.",
-    "downloadSuccess": "Download file success"
+    "downloadSuccess": "Download file success",
+    "passwordChangeSuccess": "Password change completed successfully."
 }
