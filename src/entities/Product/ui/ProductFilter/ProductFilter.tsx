@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { ProductFiltersSchema } from "@entities/Product/model/types/ProductFiltersSchema";
 import { ProductClassificatorsSchema } from "@entities/Product/model/types/ProductClassificatorsSchema";
+import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
 
 interface ProductFilterProps extends ProductClassificatorsSchema {
     updateSearchParams: UpdateSearchParamsType;
@@ -16,38 +17,31 @@ export const ProductFilter: FC<ProductFilterProps> = (props) => {
     const { updateSearchParams, initialFilters, materialOptions, colorOptions, packOptions } =
         props;
     const { t } = useTranslation(TranslationId.PRODUCT);
+
     const onApply = (selectedFilters: Record<string, unknown>) => {
-        const updatedParams: Record<string, string | null | string[]> = {
-            page: null,
+        const filterMapping: Record<string, string> = {
+            materials: "materialIds",
+            colors: "colorIds",
+            packs: "packIds",
+            createdBefore: "createdBefore",
+            createdAfter: "createdAfter",
         };
 
-        if (selectedFilters.materials) {
-            updatedParams.materialIds = selectedFilters.materials as string[];
-        }
-        if (selectedFilters.colors) {
-            updatedParams.colorIds = selectedFilters.colors as string[];
-        }
-        if (selectedFilters.packs) {
-            updatedParams.packIds = selectedFilters.packs as string[];
-        }
+        const updatedParams = getUpdatedParams(selectedFilters, filterMapping);
 
-        if (selectedFilters.createdBefore) {
-            updatedParams.createdBefore = selectedFilters.createdBefore as string;
-        }
-        if (selectedFilters.createdAfter) {
-            updatedParams.createdAfter = selectedFilters.createdAfter as string;
-        }
         if (selectedFilters.priceRange) {
             const [priceMin, priceMax] = selectedFilters.priceRange as [
                 number | null,
                 number | null,
             ];
-            updatedParams.priceMin = priceMin?.toString() || null;
-            updatedParams.priceMax = priceMax?.toString() || null;
+            console.log(priceMin, priceMax);
+            updatedParams.priceMin = priceMin === 0 ? null : priceMin?.toString() || null;
+            updatedParams.priceMax = priceMax === 0 ? null : priceMax?.toString() || null;
         }
 
         updateSearchParams(updatedParams);
     };
+
     const onReset = () => {
         updateSearchParams({
             materialIds: null,

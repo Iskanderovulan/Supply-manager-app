@@ -5,6 +5,7 @@ import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams"
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
+import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
 
 interface MaterialFilterProps {
     updateSearchParams: UpdateSearchParamsType;
@@ -16,20 +17,15 @@ export const MaterialFilter: FC<MaterialFilterProps> = (props) => {
     const { t } = useTranslation(TranslationId.MATERIAL);
 
     const onApply = (selectedFilters: Record<string, unknown>) => {
-        const updatedParams: Record<string, string | null | string[]> = {
-            page: null,
+        const filterMapping: Record<string, string> = {
+            materials: "hardness",
+            createdBefore: "createdBefore",
+            createdAfter: "createdAfter",
         };
-        if (selectedFilters.materials) {
-            updatedParams.hardness = selectedFilters.materials as string[];
-        }
-        if (selectedFilters.createdBefore) {
-            updatedParams.createdBefore = selectedFilters.createdBefore as string;
-        }
-        if (selectedFilters.createdAfter) {
-            updatedParams.createdAfter = selectedFilters.createdAfter as string;
-        }
+        const updatedParams = getUpdatedParams(selectedFilters, filterMapping);
         updateSearchParams(updatedParams);
     };
+
     const onReset = () => {
         updateSearchParams({
             hardness: [],

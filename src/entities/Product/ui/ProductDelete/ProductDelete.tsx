@@ -14,7 +14,7 @@ interface ProductDeleteProps {
 
 export const ProductDelete: FC<ProductDeleteProps> = ({ product }) => {
     const { t } = useTranslation(TranslationId.PRODUCT);
-    const { t: globalT } = useTranslation();
+    const { t: global } = useTranslation();
 
     const [deleteProduct, { isError, isLoading, isSuccess, error, reset }] =
         useDeleteProductMutation();
@@ -35,9 +35,9 @@ export const ProductDelete: FC<ProductDeleteProps> = ({ product }) => {
         Modal.confirm({
             title: t("deleteProduct"),
             icon: <ExclamationCircleOutlined />,
-            okText: globalT("delete"),
+            okText: global("delete"),
             okType: "danger",
-            cancelText: globalT("cancel"),
+            cancelText: global("cancel"),
             className: "modal-custom",
             onOk: handleDelete,
         });
@@ -45,7 +45,7 @@ export const ProductDelete: FC<ProductDeleteProps> = ({ product }) => {
 
     return (
         <Button danger icon={<DeleteOutlined />} onClick={showDeleteConfirm} loading={isLoading}>
-            {globalT("delete")}
+            {global("delete")}
         </Button>
     );
 };

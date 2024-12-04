@@ -1,13 +1,14 @@
-import { FC, useMemo } from "react";
-import { useGetPacksQuery } from "@entities/Pack/api";
+import { FC } from "react";
 import { Flex } from "antd";
 import { PackCreate } from "../PackCreate/PackCreate";
 import { PacksTable } from "../PackTable/PackTable";
 import { PackFilter } from "../PackFilter/PackFilter";
 import { PackCrumb } from "../PackCrumb/PackCrumb";
-import { PackFiltersSchema } from "@entities/Pack/model/types/packFiltersSchema";
+import { PackExcel } from "../PackExcel/PackExcel";
+import { usePackFilters } from "@entities/Pack/lib/usePackFilters";
+import { usePackData } from "@entities/Pack/lib/usePackData";
 import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
+import { useGetPacksQuery } from "@entities/Pack/api";
 import {
     ResetQueries,
     SortByDate,
@@ -16,19 +17,11 @@ import {
     Search,
 } from "@entities/CommonControl";
 import cls from "./Pack.module.scss";
-import { PackExcel } from "../PackExcel/PackExcel";
 
 export const Pack: FC = () => {
-    const { getSearchParam, updateSearchParams, getDecodedParam } = useFilterSearchParams();
-
-    const page = Number(getSearchParam("page")) || 1;
-    const limit = Number(getSearchParam("limit")) || defaultPageSizeOption;
-    const name = getSearchParam("name") || "";
-    const sortBy = getSearchParam("sortBy");
-
-    const type = useMemo(() => getSearchParam("type", true) || [], [getSearchParam]);
-    const createdBefore = getSearchParam("createdBefore");
-    const createdAfter = getSearchParam("createdAfter");
+    const { updateSearchParams, getDecodedParam } = useFilterSearchParams();
+    const { page, limit, name, sortBy, createdBefore, createdAfter, type, initialFilters } =
+        usePackFilters();
 
     const {
         data: packs,
@@ -44,17 +37,7 @@ export const Pack: FC = () => {
         sortBy,
     });
 
-    const totalPages = packs?.totalPages;
-    const totalResults = packs?.totalResults || 0;
-    const results = packs?.results || [];
-
-    const initialFilters = useMemo<PackFiltersSchema>(
-        () => ({
-            packs: type,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
-        }),
-        [type, createdAfter, createdBefore],
-    );
+    const { totalPages, totalResults, results } = usePackData(packs);
 
     return (
         <Flex gap="middle" vertical>

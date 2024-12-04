@@ -1,24 +1,12 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { ColorSchema } from "../model/types/colorSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { GetCommonParams } from "@entities/CommonControl";
+import { ColorResponse } from "../model/types/colorResponse";
 
-type GetColorsParams = {
-    page?: number; 
-    limit?: number;
-    name?: string;
+interface GetColorsParams extends GetCommonParams {
     intensity?: string[];
-    createdBefore?: string;
-    createdAfter?: string;
-    sortBy?: string;
-    paginated?: boolean; 
-};
-
-type GetColorsResponse = {
-    results: ColorSchema[]; 
-    totalResults?: number;
-    totalPages?: number;
-};
+}
 
 const getColorQueryConfig = ({
     page,
@@ -36,7 +24,7 @@ const getColorQueryConfig = ({
         createdBefore: { condition: !!createdBefore, value: createdBefore },
         createdAfter: { condition: !!createdAfter, value: createdAfter },
         sortBy: { condition: !!sortBy, value: sortBy },
-        paginated: { condition: !paginated, value: "0" }, 
+        paginated: { condition: !paginated, value: "0" },
     };
 
     const params: Record<string, unknown> = {};
@@ -57,7 +45,7 @@ const getColorQueryConfig = ({
 
 export const getColorsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getColors: builder.query<GetColorsResponse, GetColorsParams>({
+        getColors: builder.query<ColorResponse, GetColorsParams>({
             query: getColorQueryConfig,
             providesTags: (result) =>
                 result?.results

@@ -1,0 +1,19 @@
+{
+    "deleteAccountTitle": "Удаление аккаунта",
+    "deleteAccountContent": "Вы уверены, что хотите удалить свой аккаунт? Это действие необратимо.",
+    "nameLabel": "Имя",
+    "emailLabel": "Электронная почта",
+    "saveChanges": "Сохранить изменения",
+    "updateSuccessMessage": "Профиль успешно обновлён!",
+    "updateErrorMessage": "Не удалось обновить профиль.",
+    "profileInfo": "Информация о профиле",
+    "editProfile": "Редактировать профиль",
+    "changePasswordTitle": "Смена пароля",
+    "oldPasswordLabel": "Старый пароль",
+    "newPasswordLabel": "Новый пароль",
+    "oldPasswordRequired": "Пожалуйста, введите ваш старый пароль",
+    "newPasswordRequired": "Пожалуйста, введите ваш новый пароль",
+    "oldPasswordPlaceholder": "Введите ваш старый пароль",
+    "newPasswordPlaceholder": "Введите ваш новый пароль",
+    "changePasswordButton": "Сменить пароль"
+}

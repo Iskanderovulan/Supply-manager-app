@@ -18,9 +18,19 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         }),
         [theme],
     );
+    const applyTheme = (newTheme: Theme) => {
+        document.body.classList.add("disable-transitions");
+        document.body.setAttribute("data-theme", newTheme);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove("disable-transitions");
+            });
+        });
+    };
 
     useEffect(() => {
-        document.body.setAttribute("data-theme", theme);
+        applyTheme(theme);
     }, [theme]);
 
     return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;

@@ -8,22 +8,22 @@ import cls from "./ProductCrumb.module.scss";
 const { Text } = Typography;
 
 export const ProductCrumb: FC = memo(() => {
-  const { t } = useTranslation(TranslationId.PRODUCT);
+    const { t } = useTranslation(TranslationId.PRODUCT);
 
-  return (
-    <Breadcrumb
-      items={[
-        {
-          title: (
-            <Text keyboard>
-              <InboxOutlined className={cls.icon} />
-              {t("productPage")}
-            </Text>
-          ),
-        },
-      ]}
-    />
-  );
+    return (
+        <Breadcrumb
+            items={[
+                {
+                    title: (
+                        <Text keyboard>
+                            <InboxOutlined className={cls.icon} />
+                            {t("productPage")}
+                        </Text>
+                    ),
+                },
+            ]}
+        />
+    );
 });
 
 ProductCrumb.displayName = "ProductCrumb";

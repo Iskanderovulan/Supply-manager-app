@@ -39,7 +39,7 @@ export function useFilterSearchParams(): UseFilterSearchParamsReturn {
     }
 
     const updateSearchParams = useCallback(
-        (updates: UpdateSearchParams, { replace = false } = {}): void => {
+        (updates: UpdateSearchParams, { replace = true } = {}): void => {
             if (typeof updates !== "object" || updates === null) {
                 console.error("Updates should be a non-null object");
                 return;

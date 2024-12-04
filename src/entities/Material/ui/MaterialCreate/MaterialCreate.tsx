@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 
 export const MaterialCreate: FC = memo(() => {
     const { isModalOpen, showModal, hideModal } = useModal();
+
     const { t } = useTranslation(TranslationId.MATERIAL);
     const { t: global } = useTranslation();
 

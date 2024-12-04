@@ -5,6 +5,7 @@ import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams"
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { PackFiltersSchema } from "@entities/Pack/model/types/packFiltersSchema";
+import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
 
 interface PackFilterProps {
     updateSearchParams: UpdateSearchParamsType;
@@ -16,18 +17,12 @@ export const PackFilter: FC<PackFilterProps> = (props) => {
     const { t } = useTranslation(TranslationId.PACK);
 
     const onApply = (selectedFilters: Record<string, unknown>) => {
-        const updatedParams: Record<string, string | null | string[]> = {
-            page: null,
+        const filterMapping: Record<string, string> = {
+            packs: "type",
+            createdBefore: "createdBefore",
+            createdAfter: "createdAfter",
         };
-        if (selectedFilters.packs) {
-            updatedParams.type = selectedFilters.packs as string[];
-        }
-        if (selectedFilters.createdBefore) {
-            updatedParams.createdBefore = selectedFilters.createdBefore as string;
-        }
-        if (selectedFilters.createdAfter) {
-            updatedParams.createdAfter = selectedFilters.createdAfter as string;
-        }
+        const updatedParams = getUpdatedParams(selectedFilters, filterMapping);
         updateSearchParams(updatedParams);
     };
 

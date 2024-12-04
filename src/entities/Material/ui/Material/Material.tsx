@@ -1,13 +1,14 @@
-import { FC, useMemo } from "react";
-import { useGetMaterialsQuery } from "@entities/Material/api";
+import { FC } from "react";
 import { Flex } from "antd";
 import { MaterialCreate } from "../MaterialCreate/MaterialCreate";
 import { MaterialsTable } from "../MaterialTable/MaterialTable";
 import { MaterialFilter } from "../MaterialFilter/MaterialFilter";
 import { MaterialCrumb } from "../MaterialCrumb/MaterialCrumb";
-import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
+import { MaterialExcel } from "../MaterialExcel/MaterialExcel";
+import { useMaterialFilters } from "@entities/Material/lib/useMaterialFilters";
 import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
+import { useMaterialData } from "@entities/Material/lib/useMaterialData";
+import { useGetMaterialsQuery } from "@entities/Material/api";
 import {
     ResetQueries,
     SortByDate,
@@ -16,19 +17,11 @@ import {
     Search,
 } from "@entities/CommonControl";
 import cls from "./Material.module.scss";
-import { MaterialExcel } from "../MaterialExcel/MaterialExcel";
 
 export const Material: FC = () => {
-    const { getSearchParam, updateSearchParams, getDecodedParam } = useFilterSearchParams();
-
-    const page = Number(getSearchParam("page")) || 1;
-    const limit = Number(getSearchParam("limit")) || defaultPageSizeOption;
-    const name = getSearchParam("name") || "";
-    const sortBy = getSearchParam("sortBy");
-
-    const hardness = useMemo(() => getSearchParam("hardness", true) || [], [getSearchParam]);
-    const createdBefore = getSearchParam("createdBefore");
-    const createdAfter = getSearchParam("createdAfter");
+    const { updateSearchParams, getDecodedParam } = useFilterSearchParams();
+    const { page, limit, name, sortBy, createdBefore, createdAfter, hardness, initialFilters } =
+        useMaterialFilters();
 
     const {
         data: materials,
@@ -44,17 +37,7 @@ export const Material: FC = () => {
         sortBy,
     });
 
-    const totalPages = materials?.totalPages;
-    const totalResults = materials?.totalResults || 0;
-    const results = materials?.results || [];
-
-    const initialFilters = useMemo<MaterialFiltersSchema>(
-        () => ({
-            materials: hardness,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
-        }),
-        [hardness, createdAfter, createdBefore],
-    );
+    const { totalPages, totalResults, results } = useMaterialData(materials);
 
     return (
         <Flex gap="middle" vertical>

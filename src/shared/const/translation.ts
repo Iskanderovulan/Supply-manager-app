@@ -7,4 +7,5 @@ export enum TranslationId {
     COLOR = "color",
     PACK = "pack",
     PRODUCT = "product",
+    PROFILE = "profile",
 }

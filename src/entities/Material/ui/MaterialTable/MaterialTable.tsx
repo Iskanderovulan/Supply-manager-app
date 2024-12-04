@@ -42,8 +42,8 @@ export const MaterialsTable: FC<MaterialsTableProps> = (props) => {
                     render: (_, record) => (
                         <span>
                             {t(
-                                hardnessOptions.find((el) => el.value === record.hardness)?.label ||
-                                    "",
+                                hardnessOptions.find((el) => el.value === String(record.hardness))
+                                    ?.label || "",
                             )}
                         </span>
                     ),

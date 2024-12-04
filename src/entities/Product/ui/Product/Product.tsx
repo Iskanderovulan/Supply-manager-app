@@ -1,16 +1,9 @@
-import { FC, useMemo } from "react";
-import { useGetMaterialsQuery } from "@entities/Material/api";
-import { useGetColorsQuery } from "@entities/Color/api";
-import { useGetPacksQuery } from "@entities/Pack/api";
-import { useGetProductsQuery } from "@entities/Product/api";
+import { FC } from "react";
 import { Flex } from "antd";
 import { ProductCreate } from "../ProductCreate/ProductCreate";
 import { ProductsTable } from "../ProductTable/ProductTable";
 import { ProductFilter } from "../ProductFilter/ProductFilter";
 import { ProductCrumb } from "../ProductCrumb/ProductCrumb";
-import { ProductFiltersSchema } from "@entities/Product/model/types/ProductFiltersSchema";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
 import {
     ResetQueries,
     SortByDate,
@@ -18,34 +11,46 @@ import {
     ItemsPerPageControl,
     Search,
 } from "@entities/CommonControl";
-import cls from "./Product.module.scss";
 import { ProductExcel } from "../ProductExcel/ProductExcel";
+import { useGetProductsQuery } from "@entities/Product/api";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import { useClassificators } from "@entities/Product/lib/hooks/useClassificators";
+import { useProductFilters } from "@entities/Product/lib/hooks/useProductFilters";
+import { useProductData } from "@entities/Product/lib/hooks/useProductData/useProductData";
+import { Loader } from "@shared/ui/Loader";
+import { ErrorMessage } from "@shared/ui/ErrorMessage";
+import cls from "./Product.module.scss";
 
 export const Product: FC = () => {
-    const { getSearchParam, updateSearchParams, getDecodedParam } = useFilterSearchParams();
+    const { updateSearchParams, getDecodedParam } = useFilterSearchParams();
 
-    const page = Number(getSearchParam("page")) || 1;
-    const limit = Number(getSearchParam("limit")) || defaultPageSizeOption;
-    const name = getSearchParam("name") || "";
-    const sortBy = getSearchParam("sortBy");
+    const {
+        page,
+        limit,
+        name,
+        sortBy,
+        materialIds,
+        colorIds,
+        packIds,
+        createdBefore,
+        createdAfter,
+        priceMin,
+        priceMax,
+        initialFilters,
+    } = useProductFilters();
 
-    const materialIds = useMemo(() => getSearchParam("materialIds", true) || [], [getSearchParam]);
-    const colorIds = useMemo(() => getSearchParam("colorIds", true) || [], [getSearchParam]);
-    const packIds = useMemo(() => getSearchParam("packIds", true) || [], [getSearchParam]);
+    const {
+        materialOptions,
+        colorOptions,
+        packOptions,
+        isLoading: isLoadingClassificators,
+        error: errorClassificators,
+    } = useClassificators();
 
-    const createdBefore = getSearchParam("createdBefore");
-    const createdAfter = getSearchParam("createdAfter");
-    const priceMin = getSearchParam("priceMin");
-    const priceMax = getSearchParam("priceMax");
-
-    const { data: materials } = useGetMaterialsQuery({ paginated: false });
-    const { data: colors } = useGetColorsQuery({ paginated: false });
-    const { data: packs } = useGetPacksQuery({ paginated: false });
-    console.log(materials);
     const {
         data: products,
-        isLoading,
-        error,
+        isLoading: isLoadingProducts,
+        error: errorProducts,
     } = useGetProductsQuery({
         page,
         limit,
@@ -59,44 +64,11 @@ export const Product: FC = () => {
         priceMin,
         priceMax,
     });
-    const totalPages = products?.totalPages;
-    const totalResults = products?.totalResults || 0;
-    const results = products?.results || [];
-    const materialOptions = useMemo(
-        () =>
-            materials?.results.map((material) => ({
-                label: material.name,
-                value: material.id,
-            })) || [],
-        [materials],
-    );
-    const colorOptions = useMemo(
-        () =>
-            colors?.results.map((color) => ({
-                label: color.name,
-                value: color.id,
-            })) || [],
-        [colors],
-    );
 
-    const packOptions = useMemo(
-        () =>
-            packs?.results.map((pack) => ({
-                label: pack.name,
-                value: pack.id,
-            })) || [],
-        [packs],
-    );
-    const initialFilters = useMemo<ProductFiltersSchema>(
-        () => ({
-            materials: materialIds,
-            colors: colorIds,
-            packs: packIds,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
-            priceRange: [priceMin ? Number(priceMin) : null, priceMax ? Number(priceMax) : null],
-        }),
-        [materialIds, colorIds, packIds, createdBefore, createdAfter, priceMin, priceMax],
-    );
+    const { totalPages, totalResults, results } = useProductData(products);
+
+    if (isLoadingClassificators) return <Loader />;
+    if (errorClassificators) return <ErrorMessage error={errorClassificators} />;
 
     return (
         <Flex gap="middle" vertical>
@@ -130,8 +102,8 @@ export const Product: FC = () => {
 
             <ProductsTable
                 dataSource={results}
-                isLoading={isLoading}
-                error={error}
+                isLoading={isLoadingProducts}
+                error={errorProducts}
                 materialOptions={materialOptions}
                 colorOptions={colorOptions}
                 packOptions={packOptions}

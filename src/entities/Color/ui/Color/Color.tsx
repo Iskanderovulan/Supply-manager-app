@@ -1,13 +1,13 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { useGetColorsQuery } from "@entities/Color/api";
 import { Flex } from "antd";
 import { ColorCreate } from "../ColorCreate/ColorCreate";
 import { ColorsTable } from "../ColorTable/ColorTable";
 import { ColorFilter } from "../ColorFilter/ColorFilter";
 import { ColorCrumb } from "../ColorCrumb/ColorCrumb";
-import { ColorFiltersSchema } from "@entities/Color/model/types/colorFiltersSchema";
+import { useColorData } from "@entities/Color/lib/useColorData";
+import { useColorFilters } from "@entities/Color/lib/useColorFilters";
 import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
 import {
     ResetQueries,
     SortByDate,
@@ -19,16 +19,9 @@ import cls from "./Color.module.scss";
 import { ColorExcel } from "../ColorExcel/ColorExcel";
 
 export const Color: FC = () => {
-    const { getSearchParam, updateSearchParams, getDecodedParam } = useFilterSearchParams();
-
-    const page = Number(getSearchParam("page")) || 1;
-    const limit = Number(getSearchParam("limit")) || defaultPageSizeOption;
-    const name = getSearchParam("name") || "";
-    const sortBy = getSearchParam("sortBy");
-
-    const intensity = useMemo(() => getSearchParam("intensity", true) || [], [getSearchParam]);
-    const createdBefore = getSearchParam("createdBefore");
-    const createdAfter = getSearchParam("createdAfter");
+    const { updateSearchParams, getDecodedParam } = useFilterSearchParams();
+    const { page, limit, name, sortBy, createdBefore, createdAfter, intensity, initialFilters } =
+        useColorFilters();
 
     const {
         data: colors,
@@ -44,17 +37,7 @@ export const Color: FC = () => {
         sortBy,
     });
 
-    const totalPages = colors?.totalPages;
-    const totalResults = colors?.totalResults || 0;
-    const results = colors?.results || [];
-
-    const initialFilters = useMemo<ColorFiltersSchema>(
-        () => ({
-            colors: intensity,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
-        }),
-        [intensity, createdAfter, createdBefore],
-    );
+    const { totalPages, totalResults, results } = useColorData(colors);
 
     return (
         <Flex gap="middle" vertical>

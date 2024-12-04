@@ -18,6 +18,8 @@ export const ProductCreate: FC<ProductCreateProps> = memo(
     ({ materialOptions, colorOptions, packOptions }) => {
         const { isModalOpen, showModal, hideModal } = useModal();
         const { t } = useTranslation(TranslationId.PRODUCT);
+        const { t: global } = useTranslation();
+
         const [createProduct, { error, isError, isLoading, isSuccess, reset }] =
             useCreateProductMutation();
 
@@ -37,7 +39,6 @@ export const ProductCreate: FC<ProductCreateProps> = memo(
             if (isSuccess) hideModal();
         }, [isSuccess, hideModal]);
 
-        // Обновляем конфигурацию формы с динамическими опциями
         const formConfig = createProductFormConfig(t, {
             materialOptions,
             colorOptions,
@@ -55,7 +56,7 @@ export const ProductCreate: FC<ProductCreateProps> = memo(
                     onCancel={hideModal}
                     footer={[
                         <Button key="cancel" onClick={hideModal}>
-                            {t("cancel")}
+                            {global("cancel")}
                         </Button>,
                     ]}
                 >

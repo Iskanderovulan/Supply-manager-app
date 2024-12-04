@@ -16,6 +16,10 @@
 @import "antd/button";
 @import "antd/title";
 
+html {
+    font-size: 62.5%;
+}
+
 .app {
     font: var(--font-m);
     background: var(--bg-color);
@@ -31,13 +35,13 @@ body {
     background: var(--bg-color);
 }
 
-@media (max-width: 820px) {
+@media (max-width: 821px) {
     body {
         width: 996px;
     }
 }
 
-@media (min-width: 821px) {
+@media (min-width: 820px) {
     body {
         width: 100%;
     }

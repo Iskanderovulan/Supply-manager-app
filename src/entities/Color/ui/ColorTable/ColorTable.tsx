@@ -42,8 +42,8 @@ export const ColorsTable: FC<ColorsTableProps> = (props) => {
                     render: (_, record) => (
                         <span>
                             {t(
-                                intensityOptions.find((el) => el.value === record.intensity)?.label ||
-                                    "",
+                                intensityOptions.find((el) => el.value === String(record.intensity))
+                                    ?.label || "",
                             )}
                         </span>
                     ),

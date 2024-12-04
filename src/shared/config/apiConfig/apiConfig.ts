@@ -13,4 +13,5 @@ export const API_ENDPOINTS = {
     REGISTER: `${API_PATH.AUTH}/register`,
     REFRESH_TOKEN: `${API_PATH.AUTH}/refresh-tokens`,
     LOGOUT: `${API_PATH.AUTH}/logout`,
+    USERS: "/users",
 };

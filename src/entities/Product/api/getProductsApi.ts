@@ -1,32 +1,18 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { ProductSchema } from "../model/types/ProductSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { ProductResponse } from "../model/types/ProductResponse";
+import { GetCommonParams } from "@entities/CommonControl";
 
-// Тип параметров для получения продуктов
-type GetProductsParams = {
-    page?: number;
-    limit?: number;
-    name?: string;
-    materialIds?: string[]; // Массив ID материалов
-    colorIds?: string[]; // Массив ID цветов
-    packIds?: string[]; // Массив ID упаковок
+interface GetProductsParams extends GetCommonParams {
+    materialIds?: string[];
+    colorIds?: string[];
+    packIds?: string[];
     priceMin?: string;
     priceMax?: string;
-    createdBefore?: string;
-    createdAfter?: string;
-    sortBy?: string;
     paginated?: boolean;
-};
+}
 
-// Ответ API
-type GetProductsResponse = {
-    results: ProductSchema[];
-    totalResults?: number;
-    totalPages?: number;
-};
-
-// Конфигурация для запроса
 const getProductQueryConfig = ({
     page,
     limit,
@@ -76,10 +62,9 @@ const getProductQueryConfig = ({
     return { url: API_ENDPOINTS.PRODUCTS, params };
 };
 
-// Интеграция API
 export const getProductsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getProducts: builder.query<GetProductsResponse, GetProductsParams>({
+        getProducts: builder.query<ProductResponse, GetProductsParams>({
             query: getProductQueryConfig,
             providesTags: (result) =>
                 result?.results
@@ -96,5 +81,4 @@ export const getProductsApi = baseApi.injectEndpoints({
     overrideExisting: false,
 });
 
-// Хуки для использования API
 export const { useGetProductsQuery } = getProductsApi;

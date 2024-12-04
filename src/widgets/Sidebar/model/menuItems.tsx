@@ -3,10 +3,14 @@ import {
     getRouteLogin,
     getRouteRegister,
     getRouteMaterial,
+    getRouteColor,
+    getRoutePack,
+    getRouteProfile,
 } from "@shared/const/router";
 import { Link } from "react-router-dom";
 import { TFunction } from "i18next";
 import {
+    UserOutlined,
     RadarChartOutlined,
     ApartmentOutlined,
     PieChartOutlined,
@@ -23,6 +27,7 @@ interface MenuItemsArgs {
 
 export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
     const { global } = menuItemsArgs;
+
     const authItems = [
         {
             key: getRouteProduct(),
@@ -30,9 +35,9 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
             label: <Link to={getRouteProduct()}>{global("products")}</Link>,
         },
         {
-            key: "2",
+            key: "unset",
             icon: <RadarChartOutlined />,
-            label: <Link to="/charts">{global("chart")}</Link>,
+            label: <Link to="/chart">{global("chart")}</Link>,
         },
         {
             key: "sub1",
@@ -40,21 +45,26 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
             label: global("classificators"),
             children: [
                 {
-                    key: "3",
+                    key: getRouteMaterial(),
                     icon: <InboxOutlined />,
                     label: <Link to={getRouteMaterial()}>{global("material")}</Link>,
                 },
                 {
-                    key: "4",
+                    key: getRouteColor(),
                     icon: <BgColorsOutlined />,
-                    label: <Link to="/color">{global("color")}</Link>,
+                    label: <Link to={getRouteColor()}>{global("color")}</Link>,
                 },
                 {
-                    key: "5",
+                    key: getRoutePack(),
                     icon: <AppstoreOutlined />,
-                    label: <Link to="/pack">{global("pack")}</Link>,
+                    label: <Link to={getRoutePack()}>{global("pack")}</Link>,
                 },
             ],
+        },
+        {
+            key: getRouteProfile(),
+            icon: <UserOutlined />,
+            label: <Link to={getRouteProfile()}>{global("profile")}</Link>,
         },
     ];
 

@@ -41,8 +41,8 @@ export const FilterItem: FC<FilterItemProps> = (props) => {
                     selectedValue={selectedValue as [number, number]}
                     onChange={onChange}
                     t={t}
-                    min={filter.min || 0} // Минимальное значение диапазона
-                    max={filter.max || 1000} // Максимальное значение диапазона
+                    min={filter.min || 0}
+                    max={filter.max || 1000}
                 />
             );
 

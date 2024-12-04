@@ -1,24 +1,12 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { PackSchema } from "../model/types/packSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { GetCommonParams } from "@entities/CommonControl";
+import { PackResponse } from "../model/types/packResponse";
 
-type GetPacksParams = {
-    page?: number;
-    limit?: number;
-    name?: string;
+interface GetPacksParams extends GetCommonParams {
     type?: string[];
-    createdBefore?: string;
-    createdAfter?: string;
-    sortBy?: string;
-    paginated?: boolean;
-};
-
-type GetPacksResponse = {
-    results: PackSchema[];
-    totalResults?: number;
-    totalPages?: number;
-};
+}
 
 const getPackQueryConfig = ({
     page,
@@ -57,7 +45,7 @@ const getPackQueryConfig = ({
 
 export const getPacksApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getPacks: builder.query<GetPacksResponse, GetPacksParams>({
+        getPacks: builder.query<PackResponse, GetPacksParams>({
             query: getPackQueryConfig,
             providesTags: (result) =>
                 result?.results

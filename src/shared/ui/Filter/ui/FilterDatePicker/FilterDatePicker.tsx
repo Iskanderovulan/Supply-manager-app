@@ -15,9 +15,8 @@ export const FilterDatePicker: FC<FilterDatePickerProps> = (props) => {
     const handleDateChange = (dates: DayjsType | null) => {
         onChange(dates || null);
     };
-
     const handleReset = () => {
-        onChange(null);
+        onChange([null, null]);
     };
     return (
         <>

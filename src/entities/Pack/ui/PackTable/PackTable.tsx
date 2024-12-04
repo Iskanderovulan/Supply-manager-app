@@ -41,7 +41,10 @@ export const PacksTable: FC<PacksTableProps> = (props) => {
                     key: "type",
                     render: (_, record) => (
                         <span>
-                            {t(typeOptions.find((el) => el.value === record.type)?.label || "")}
+                            {t(
+                                typeOptions.find((el) => el.value === String(record.type))?.label ||
+                                    "",
+                            )}
                         </span>
                     ),
                 },

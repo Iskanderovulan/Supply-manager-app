@@ -8,4 +8,5 @@ export const NotificationData = {
     default: "default",
     error: "error",
     downloadSuccess: "downloadSuccess",
+    passwordChangeSuccess: "passwordChangeSuccess",
 } as const;

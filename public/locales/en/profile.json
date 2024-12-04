@@ -1,0 +1,19 @@
+{
+    "deleteAccountTitle": "Delete account",
+    "deleteAccountContent": "Are you sure you want to delete your account? This action cannot be undone.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "saveChanges": "Save Changes",
+    "updateSuccessMessage": "Profile updated successfully!",
+    "updateErrorMessage": "Failed to update profile.",
+    "profileInfo": "Profile Info",
+    "editProfile": "Edit Profile",
+    "changePasswordTitle": "Change Password",
+    "oldPasswordLabel": "Old Password",
+    "newPasswordLabel": "New Password",
+    "oldPasswordRequired": "Please enter your old password",
+    "newPasswordRequired": "Please enter your new password",
+    "oldPasswordPlaceholder": "Enter your old password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "changePasswordButton": "Change Password"
+}

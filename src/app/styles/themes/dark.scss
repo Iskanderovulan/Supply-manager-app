@@ -1,32 +1,43 @@
 body[data-theme="dark"] {
-    --bg-color: #1e1e1e;
-    --secondary-bg-color: #282c34;
+    /* Общие переменные для повторяющихся цветов */
+    --shared-pink: #e60099;
+    --shared-hover-pink: #bf006d;
+    --shared-white: #ffffff;
+    --shared-error: #ff4d4f;
+    --shared-error-hover: #ffa39e;
+    --shared-gray: #1e1e1e;
+    --shared-secondary-gray: #282c34;
+    --shared-placeholder-gray: #6e7a86;
+
+    /* Ваши переменные */
+    --bg-color: var(--shared-gray);
+    --secondary-bg-color: var(--shared-secondary-gray);
     --primary-color: #8c828b;
     --primary-color-hover: #a29ca0;
     --primary-color-active: #756f74;
-    --secondary-color: #282c34;
-    --secondary-color-hover: #1e1e1e;
+    --secondary-color: var(--shared-secondary-gray);
+    --secondary-color-hover: var(--shared-gray);
     --secondary-color-active: #212020;
     --accent-color: rgb(208, 163, 85);
     --accent-color-hover: rgb(191, 151, 83);
-    --error-color: #ff4d4f;
-    --error-color-hover: #ffa39e;
-    --inverse-color: #ffffff;
-    --border-color: #e60099;
-    --border-selected-color: #bf006d;
+    --error-color: var(--shared-error);
+    --error-color-hover: var(--shared-error-hover);
+    --inverse-color: var(--shared-white);
+    --border-color: var(--shared-pink);
+    --border-selected-color: var(--shared-hover-pink);
     --active-shadow: 0px 0px 6px rgba(222, 13, 76, 0.7);
     --layout-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
     --navbar-shadow: 0 4px 8px rgba(122, 119, 119, 0.3);
     --footer-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    --sidebar-selected-bg-color: #e60099;
-    --sidebar-selected-text-color: #ffffff;
-    --sidebar-hover-bg-color: #bf006d;
-    --input-placeholder-color: #6e7a86;
+    --sidebar-selected-bg-color: var(--shared-pink);
+    --sidebar-selected-text-color: var(--shared-white);
+    --sidebar-hover-bg-color: var(--shared-hover-pink);
+    --input-placeholder-color: var(--shared-placeholder-gray);
     --select-dropdown-bg: #444851;
     --select-active-bg: #363b45;
     --select-selected-bg: #31343a;
-    --select-placeholder-selected: #e60099;
-    --loader-color: #e60099;
+    --select-placeholder-selected: var(--shared-pink);
+    --loader-color: var(--shared-pink);
 
     --table-bg: #2d2d4d;
     --table-text: #d0d0d0;
@@ -34,6 +45,9 @@ body[data-theme="dark"] {
     --table-border: #3d3d5c;
     --table-row-hover: #333354;
 
-    --active-color: #e60099;
-    --checkbox-color: #ffffff;
+    --active-color: var(--shared-pink);
+    --checkbox-color: var(--shared-white);
+
+    --rail-bg: #666a6d;
+    --track-bg: var(--shared-pink);
 }

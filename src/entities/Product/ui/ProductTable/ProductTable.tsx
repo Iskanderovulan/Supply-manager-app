@@ -26,7 +26,6 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
     const { dataSource, isLoading, error, materialOptions, colorOptions, packOptions } = props;
     const { t } = useTranslation(TranslationId.PRODUCT);
     const rowSpacing = useAppSelector(selectSpacing);
-    console.log(dataSource);
     const allColumns = useMemo(
         () =>
             generateColumns<ProductSchema>([
@@ -35,11 +34,7 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
                     key: "name",
                     render: (_, record) => <span>{record.name}</span>,
                 },
-                {
-                    title: t("description"),
-                    key: "description",
-                    render: (_, record) => <span>{record.description}</span>,
-                },
+
                 {
                     title: t("price"),
                     key: "price",
