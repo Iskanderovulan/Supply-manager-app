@@ -28,5 +28,7 @@
     "rowDensity": "Плотность строк",
     "condensed": "58 сжатый",
     "regular": "74 обычный",
-    "relaxed": "90 свободный"
+    "relaxed": "90 свободный",
+    "errorScreenText": "Произошла непредвиденная ошибка",
+    "errorScreenBtn": "Обновить страницу"
 }

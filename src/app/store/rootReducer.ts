@@ -1,6 +1,6 @@
 // rootReducer.ts
 import { combineReducers } from "@reduxjs/toolkit";
-import { authReducer } from "@features/Auth";
+import { authReducer } from "@entities/Auth";
 import { baseApi } from "@shared/api/rtkApi";
 import { authApi } from "@shared/api/authApi";
 import { spacingReducer } from "@shared/ui/RowDensity";

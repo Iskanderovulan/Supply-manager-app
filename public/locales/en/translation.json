@@ -2,7 +2,7 @@
     "switcher": "EN",
     "products": "Products",
     "chart": "Сhart",
-    "profile":"Profile",
+    "profile": "Profile",
     "classificators": "Classificators",
     "material": "Material",
     "color": "Color",
@@ -28,5 +28,7 @@
     "rowDensity": "Row Density",
     "condensed": "58 condensed",
     "regular": "74 regular",
-    "relaxed": "90 relaxed"
+    "relaxed": "90 relaxed",
+    "errorScreenText": "An unexpected error occurred",
+    "errorScreenBtn": "Reload Page"
 }

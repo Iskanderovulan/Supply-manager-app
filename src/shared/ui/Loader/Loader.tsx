@@ -1,13 +1,12 @@
 import { FC } from "react";
-import classNames from "classnames";
 import cls from "./Loader.module.scss";
 
 interface LoaderProps {
     className?: string;
 }
 
-export const Loader: FC<LoaderProps> = ({ className = "" }) => (
-    <div className={classNames(cls["lds-ellipsis"], className)}>
+export const Loader: FC<LoaderProps> = () => (
+    <div className={cls["lds-ellipsis"]}>
         <div />
         <div />
         <div />

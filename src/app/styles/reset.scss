@@ -14,6 +14,10 @@ select {
     font: inherit;
 }
 
+/* 
+   Using `!important` ensures transitions and animations are fully disabled, 
+   overriding any conflicting styles, for scenarios like theme changes. 
+*/
 .disable-transitions * {
     transition: none !important;
     animation: none !important;

@@ -1,14 +1,14 @@
 import { FC, memo } from "react";
 import { Breadcrumb, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { AppstoreOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
-import cls from "./PackCrumb.module.scss";
+import cls from "./ProfileCrumb.module.scss";
 
 const { Text } = Typography;
 
-export const PackCrumb: FC = memo(() => {
-    const { t } = useTranslation(TranslationId.PACK);
+export const ProfileCrumb: FC = memo(() => {
+    const { t } = useTranslation(TranslationId.PROFILE);
 
     return (
         <Breadcrumb
@@ -16,8 +16,8 @@ export const PackCrumb: FC = memo(() => {
                 {
                     title: (
                         <Text keyboard>
-                            <AppstoreOutlined className={cls.icon} />
-                            {t("packPage")}
+                            <UserOutlined className={cls.icon} />
+                            {t("profilePage")}
                         </Text>
                     ),
                 },
@@ -26,4 +26,4 @@ export const PackCrumb: FC = memo(() => {
     );
 });
 
-PackCrumb.displayName = "PackCrumb";
+ProfileCrumb.displayName = "ProfileCrumb";

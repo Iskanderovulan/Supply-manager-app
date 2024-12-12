@@ -15,5 +15,6 @@
     "newPasswordRequired": "Please enter your new password",
     "oldPasswordPlaceholder": "Enter your old password",
     "newPasswordPlaceholder": "Enter your new password",
-    "changePasswordButton": "Change Password"
+    "changePasswordButton": "Change Password",
+    "profilePage": "Profile Page"
 }
