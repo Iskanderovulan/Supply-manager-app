@@ -15,7 +15,8 @@ interface ProfileFormProps {
     userId: string;
 }
 
-export const ProfileForm: FC<ProfileFormProps> = ({ initialValues, onClose, userId }) => {
+export const ProfileForm: FC<ProfileFormProps> = (props) => {
+    const { initialValues, onClose, userId } = props;
     const [form] = Form.useForm();
     const [updateUser, { isLoading: isUpdating, isError, isSuccess, error, reset }] =
         useUpdateUserMutation();

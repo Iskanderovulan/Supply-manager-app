@@ -13,7 +13,8 @@ interface ProfileInfoProps {
     userId: string;
 }
 
-export const ProfileInfo: FC<ProfileInfoProps> = ({ name, email, onEdit, userId }) => {
+export const ProfileInfo: FC<ProfileInfoProps> = (props) => {
+    const { name, email, onEdit, userId } = props;
     const { t } = useTranslation(TranslationId.PROFILE);
 
     return (

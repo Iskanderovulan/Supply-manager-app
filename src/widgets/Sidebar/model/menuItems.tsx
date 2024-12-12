@@ -6,9 +6,8 @@ import {
     getRouteColor,
     getRoutePack,
     getRouteProfile,
+    getRouteChart,
 } from "@shared/const/router";
-import { Link } from "react-router-dom";
-import { TFunction } from "i18next";
 import {
     UserOutlined,
     RadarChartOutlined,
@@ -20,6 +19,8 @@ import {
     BgColorsOutlined,
     AppstoreOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { TFunction } from "i18next";
 
 interface MenuItemsArgs {
     global: TFunction;
@@ -35,9 +36,9 @@ export const getMenuItems = (menuItemsArgs: MenuItemsArgs) => {
             label: <Link to={getRouteProduct()}>{global("products")}</Link>,
         },
         {
-            key: "unset",
+            key: getRouteChart(),
             icon: <RadarChartOutlined />,
-            label: <Link to="/chart">{global("chart")}</Link>,
+            label: <Link to={getRouteChart()}>{global("chart")}</Link>,
         },
         {
             key: "sub1",

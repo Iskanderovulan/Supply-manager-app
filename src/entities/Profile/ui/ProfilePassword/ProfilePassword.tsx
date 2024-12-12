@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, memo } from "react";
 import { Form, Input, Button, Card, Typography } from "antd";
 import { useChangePasswordMutation } from "@entities/Profile/api";
 import { useTranslation } from "react-i18next";
@@ -9,7 +9,7 @@ import { passwordPattern } from "@shared/lib/validators/authValidators";
 
 const { Title } = Typography;
 
-export const ProfilePassword: FC = () => {
+export const ProfilePassword: FC = memo(() => {
     const { t } = useTranslation(TranslationId.PROFILE);
     const { t: auth, i18n } = useTranslation(TranslationId.AUTH);
 
@@ -70,4 +70,6 @@ export const ProfilePassword: FC = () => {
             </Form>
         </Card>
     );
-};
+});
+
+ProfilePassword.displayName = "ProfilePassword";

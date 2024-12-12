@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
-import { authActions } from "@features/Auth";
+import { authActions } from "@entities/Auth";
 import { useLoginMutation } from "@features/Login/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";

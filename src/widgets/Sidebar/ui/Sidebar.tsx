@@ -1,14 +1,13 @@
 import { Layout, Menu, Typography } from "antd";
-import { useCollapsed } from "@app/providers/layout/CollapseProvider";
+import { useCollapsed } from "@app/providers/CollapseProvider";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
-import { selectIsAuthenticated } from "@features/Auth";
+import { selectIsAuthenticated } from "@entities/Auth";
 import { getMenuItems } from "../model/menuItems";
 import { useTranslation } from "react-i18next";
-import classNames from "classnames";
-import cls from "./Sidebar.module.scss";
 import { useRef } from "react";
 import { useAdjustHeight } from "../lib/useAdjustHeight";
 import { useActiveMenuItem } from "../lib/useActiveMenuItem";
+import cls from "./Sidebar.module.scss";
 
 const { Sider } = Layout;
 const { Title } = Typography;
@@ -32,10 +31,10 @@ export const Sidebar = () => {
             theme="light"
             collapsible
             collapsed={collapsed}
-            className={cls.Sidebar}
+            className={cls.sidebar}
             trigger={null}
         >
-            <Title className={classNames(cls.title)} level={collapsed ? 3 : 2}>
+            <Title className={cls.title} level={collapsed ? 3 : 2}>
                 CRM
             </Title>
             <Menu

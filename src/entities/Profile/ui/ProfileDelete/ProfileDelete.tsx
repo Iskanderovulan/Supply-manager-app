@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Modal, Button } from "antd";
 import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useDeleteUserMutation } from "@entities/Profile/api";
@@ -6,12 +6,13 @@ import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import { useLogoutEffect } from "@entities/Auth";
 
 interface ProfileDeleteProps {
     userId: string;
 }
 
-export const ProfileDelete: FC<ProfileDeleteProps> = ({ userId }) => {
+export const ProfileDelete: FC<ProfileDeleteProps> = memo(({ userId }) => {
     const { t } = useTranslation(TranslationId.PROFILE);
     const { t: global } = useTranslation();
 
@@ -25,8 +26,10 @@ export const ProfileDelete: FC<ProfileDeleteProps> = ({ userId }) => {
         notificationKey: NotificationData.deleteSuccess,
     });
 
-    const handleDelete = () => {
-        deleteUser(userId);
+    useLogoutEffect({ isSuccess, isError, reset });
+
+    const handleDelete = async () => {
+        await deleteUser(userId);
     };
 
     const showDeleteConfirm = () => {
@@ -47,4 +50,6 @@ export const ProfileDelete: FC<ProfileDeleteProps> = ({ userId }) => {
             {global("delete")}
         </Button>
     );
-};
+});
+
+ProfileDelete.displayName = "ProfileDelete";

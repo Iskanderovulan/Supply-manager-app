@@ -15,5 +15,6 @@
     "newPasswordRequired": "Пожалуйста, введите ваш новый пароль",
     "oldPasswordPlaceholder": "Введите ваш старый пароль",
     "newPasswordPlaceholder": "Введите ваш новый пароль",
-    "changePasswordButton": "Сменить пароль"
+    "changePasswordButton": "Сменить пароль",
+    "profilePage": "Страница профиля"
 }

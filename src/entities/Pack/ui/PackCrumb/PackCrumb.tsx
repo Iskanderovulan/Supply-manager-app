@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { Breadcrumb, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { InboxOutlined } from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
 import cls from "./PackCrumb.module.scss";
 
@@ -16,7 +16,7 @@ export const PackCrumb: FC = memo(() => {
                 {
                     title: (
                         <Text keyboard>
-                            <InboxOutlined className={cls.icon} />
+                            <AppstoreOutlined className={cls.icon} />
                             {t("packPage")}
                         </Text>
                     ),

@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { Breadcrumb, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { AlertOutlined } from "@ant-design/icons";
+import { BgColorsOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
 import cls from "./ColorCrumb.module.scss";
 
@@ -16,7 +16,7 @@ export const ColorCrumb: FC = memo(() => {
                 {
                     title: (
                         <Text keyboard>
-                            <AlertOutlined className={cls.icon} />
+                            <BgColorsOutlined className={cls.icon} />
                             {t("colorPage")}
                         </Text>
                     ),

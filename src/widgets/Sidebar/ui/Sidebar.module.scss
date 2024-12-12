@@ -1,9 +1,9 @@
-.Sidebar {
+.sidebar {
     box-shadow: var(--layout-shadow);
     height: 100vh;
     overflow-y: auto;
     z-index: 2;
-    &.Sidebar .custom-menu {
+    &.sidebar .custom-menu {
         border-inline-end: 1px solid var(--secondary-bg-color);
     }
     .title {

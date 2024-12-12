@@ -8,6 +8,7 @@ import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useModal } from "@shared/lib/hooks/useModal";
 import cls from "./Profile.module.scss";
+import { ProfileCrumb } from "../ProfileCrumb/ProfileCrumb";
 
 export const Profile: FC = () => {
     const { data: user, isLoading, error } = useGetUserQuery();
@@ -30,13 +31,22 @@ export const Profile: FC = () => {
     }
 
     return (
-        <Flex vertical gap="middle" className={cls.profile}>
-            {isModalOpen ? (
-                <ProfileForm initialValues={{ name, email }} onClose={hideModal} userId={userId} />
-            ) : (
-                <ProfileInfo name={name} email={email} onEdit={showModal} userId={userId} />
-            )}
-            <ProfilePassword />
-        </Flex>
+        <>
+            <Flex justify="flex-end">
+                <ProfileCrumb />
+            </Flex>
+            <Flex vertical gap="middle" className={cls.profile}>
+                {isModalOpen ? (
+                    <ProfileForm
+                        initialValues={{ name, email }}
+                        onClose={hideModal}
+                        userId={userId}
+                    />
+                ) : (
+                    <ProfileInfo name={name} email={email} onEdit={showModal} userId={userId} />
+                )}
+                <ProfilePassword />
+            </Flex>
+        </>
     );
 };

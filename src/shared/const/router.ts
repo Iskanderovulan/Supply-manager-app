@@ -6,6 +6,7 @@ export enum AppRoutes {
     PACK = "pack",
     PRODUCT = "product",
     PROFILE = "profile",
+    CHART = "CHART",
 }
 
 export const getRouteProduct = () => "/";
@@ -15,6 +16,7 @@ export const getRouteMaterial = () => "/material";
 export const getRouteColor = () => "/color";
 export const getRoutePack = () => "/pack";
 export const getRouteProfile = () => "/profile";
+export const getRouteChart = () => "/chart";
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.PRODUCT]: getRouteProduct(),
     [AppRoutes.LOGIN]: getRouteLogin(),
@@ -23,4 +25,5 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.COLOR]: getRouteColor(),
     [AppRoutes.PACK]: getRoutePack(),
     [AppRoutes.PROFILE]: getRouteProfile(),
+    [AppRoutes.CHART]: getRouteChart(),
 };

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { RootState } from "@app/store/store";
-import { authActions } from "@features/Auth";
+import { authActions } from "@entities/Auth";
 import { BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query";
 import { Tokens } from "@shared/types/auth";
 import { TagTypes } from "@shared/const/tagTypes";
@@ -24,12 +24,10 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 ) => {
     let result = await baseQuery(args, api, extraOptions);
 
-    // Если возникает ошибка 401, то обновляем токен
     if (result.error && result.error.status === 401) {
         const refreshToken = (api.getState() as RootState).auth.refreshToken;
 
         if (refreshToken) {
-            // Отправляем запрос на обновление токена
             const refreshResult = await baseQuery(
                 {
                     url: API_ENDPOINTS.REFRESH_TOKEN,
@@ -43,22 +41,18 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
             if (refreshResult.data) {
                 const tokens = refreshResult.data as Tokens;
 
-                // Обновляем токены в хранилище
                 api.dispatch(
                     authActions.setCredentials({
                         tokens,
                     }),
                 );
 
-                // Повторяем исходный запрос с обновленным токеном
                 result = await baseQuery(args, api, extraOptions);
             } else {
-                // Если обновление не удалось, очищаем данные пользователя
                 api.dispatch(baseApi.util.resetApiState());
                 api.dispatch(authActions.clearToken());
             }
         } else {
-            // Если refreshToken отсутствует, очищаем данные пользователя
             api.dispatch(baseApi.util.resetApiState());
             api.dispatch(authActions.clearToken());
         }
@@ -70,6 +64,12 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 export const baseApi = createApi({
     reducerPath: "api",
     baseQuery: baseQueryWithReauth,
-    tagTypes: [TagTypes.MATERIALS, TagTypes.COLOR, TagTypes.PACK, TagTypes.PRODUCT],
+    tagTypes: [
+        TagTypes.MATERIALS,
+        TagTypes.COLORS,
+        TagTypes.PACKS,
+        TagTypes.PRODUCTS,
+        TagTypes.USERS,
+    ],
     endpoints: () => ({}),
 });
