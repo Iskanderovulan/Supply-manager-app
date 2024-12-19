@@ -1,11 +1,9 @@
 import { FC, memo } from "react";
-import { Breadcrumb, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import { useTranslation } from "react-i18next";
 import { BgColorsOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
-import cls from "./ColorCrumb.module.scss";
-
-const { Text } = Typography;
+import { CrumbItem } from "@shared/ui/CrumbItem/CrumbItem";
 
 export const ColorCrumb: FC = memo(() => {
     const { t } = useTranslation(TranslationId.COLOR);
@@ -14,12 +12,7 @@ export const ColorCrumb: FC = memo(() => {
         <Breadcrumb
             items={[
                 {
-                    title: (
-                        <Text keyboard>
-                            <BgColorsOutlined className={cls.icon} />
-                            {t("colorPage")}
-                        </Text>
-                    ),
+                    title: <CrumbItem icon={<BgColorsOutlined />} text={t("colorPage")} />,
                 },
             ]}
         />

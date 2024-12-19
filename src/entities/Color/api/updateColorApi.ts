@@ -11,11 +11,9 @@ export const updateColorApi = baseApi.injectEndpoints({
                 method: "PATCH",
                 body: patch,
             }),
-            invalidatesTags: (result, error, { id }) =>
+            invalidatesTags: (result, _, { id }) =>
                 result
                     ? [{ type: TagTypes.COLORS, id }]
-                    : error
-                    ? [{ type: TagTypes.COLORS, id: TagTypes.LIST }]
                     : [{ type: TagTypes.COLORS, id: TagTypes.LIST }],
         }),
     }),

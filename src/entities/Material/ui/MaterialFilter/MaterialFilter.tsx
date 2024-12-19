@@ -19,8 +19,6 @@ export const MaterialFilter: FC<MaterialFilterProps> = (props) => {
     const onApply = (selectedFilters: Record<string, unknown>) => {
         const filterMapping: Record<string, string> = {
             materials: "hardness",
-            createdBefore: "createdBefore",
-            createdAfter: "createdAfter",
         };
         const updatedParams = getUpdatedParams(selectedFilters, filterMapping);
         updateSearchParams(updatedParams);
@@ -29,8 +27,6 @@ export const MaterialFilter: FC<MaterialFilterProps> = (props) => {
     const onReset = () => {
         updateSearchParams({
             hardness: [],
-            createdBefore: null,
-            createdAfter: null,
         });
     };
 

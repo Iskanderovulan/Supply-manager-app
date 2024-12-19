@@ -11,11 +11,9 @@ export const updateProductApi = baseApi.injectEndpoints({
                 method: "PATCH",
                 body: patch,
             }),
-            invalidatesTags: (result, error, { id }) =>
+            invalidatesTags: (result, _, { id }) =>
                 result
                     ? [{ type: TagTypes.PRODUCTS, id }]
-                    : error
-                    ? [{ type: TagTypes.PRODUCTS, id: TagTypes.LIST }]
                     : [{ type: TagTypes.PRODUCTS, id: TagTypes.LIST }],
         }),
     }),

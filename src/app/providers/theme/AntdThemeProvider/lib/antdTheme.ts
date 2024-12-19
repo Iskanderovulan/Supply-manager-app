@@ -14,7 +14,7 @@ export const defaultTheme = {
             colorPrimary: "var(--primary-color)",
             colorPrimaryHover: "var(--primary-color-hover)",
             colorPrimaryActive: "var(--primary-color-active)",
-            colorBgContainer: "var(--input-bg-color)",
+            colorBgContainer: "var(--secondary-bg-color)",
             colorText: "var(--inverse-color)",
             colorBorder: "var(--border-color)",
         },
@@ -98,12 +98,38 @@ export const defaultTheme = {
         Breadcrumb: {
             itemColor: "var(--inverse-color)",
             lastItemColor: "var(--inverse-color)",
+            separatorColor: "var(--inverse-color)",
         },
         Slider: {
             trackBg: "var(--track-bg)",
             trackHoverBg: "var(--track-bg)",
             railBg: "var(--rail-bg)",
             railHoverBg: "var(--rail-bg)",
+        },
+        Statistic: {
+            colorTextHeading: "var(--inverse-color)",
+            colorTextDescription: "var(--inverse-color)",
+            colorBorder: "var(--border-color)",
+        },
+        Progress: {
+            colorText: "var(--inverse-color)",
+            remainingColor: "var(--chart-bg)",
+            defaultColor: "var(--shared-pink)",
+        },
+        Divider: {
+            colorTextHeading: "var(--inverse-color)",
+            colorSplit: "var(--inverse-color)",
+        },
+        Collapse: {
+            colorTextHeading: "var(--inverse-color)",
+        },
+        Card: {
+            colorBorderSecondary: "var(--inverse-color)",
+        },
+        Descriptions: {
+            colorText: "var(--inverse-color)",
+            colorTextSecondary: "var(--inverse-color)",
+            colorSplit: "var(--inverse-color)",
         },
     },
 };

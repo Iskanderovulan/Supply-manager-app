@@ -40,15 +40,7 @@ export const FilterDrawer: FC<FilterDrawerProps> = (props) => {
             onClose={closeDrawer}
             open={visible}
             width={400}
-            footer={
-                <FilterFooter
-                    selectedFilters={selectedFilters}
-                    onExit={closeDrawer}
-                    onApply={onApply}
-                    onReset={onReset}
-                    t={t}
-                />
-            }
+            footer={<FilterFooter onExit={closeDrawer} onApply={onApply} onReset={onReset} t={t} />}
         >
             <Collapse
                 className="custom-collpase"

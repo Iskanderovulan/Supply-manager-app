@@ -1,11 +1,9 @@
 import { FC, memo } from "react";
-import { Breadcrumb, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import { useTranslation } from "react-i18next";
 import { AppstoreOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
-import cls from "./PackCrumb.module.scss";
-
-const { Text } = Typography;
+import { CrumbItem } from "@shared/ui/CrumbItem/CrumbItem";
 
 export const PackCrumb: FC = memo(() => {
     const { t } = useTranslation(TranslationId.PACK);
@@ -14,12 +12,7 @@ export const PackCrumb: FC = memo(() => {
         <Breadcrumb
             items={[
                 {
-                    title: (
-                        <Text keyboard>
-                            <AppstoreOutlined className={cls.icon} />
-                            {t("packPage")}
-                        </Text>
-                    ),
+                    title: <CrumbItem icon={<AppstoreOutlined />} text={t("packPage")} />,
                 },
             ]}
         />

@@ -8,4 +8,5 @@ export enum TranslationId {
     PACK = "pack",
     PRODUCT = "product",
     PROFILE = "profile",
+    CHART = "chart",
 }

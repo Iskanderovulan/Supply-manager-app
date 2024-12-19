@@ -1,4 +1,4 @@
-import { Material } from "@entities/Material";
+import { Material } from "@widgets/Material/ui/Material";
 
 const MaterialPage = () => {
     return <Material />;

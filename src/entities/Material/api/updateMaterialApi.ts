@@ -11,11 +11,9 @@ export const updateMaterialApi = baseApi.injectEndpoints({
                 method: "PATCH",
                 body: patch,
             }),
-            invalidatesTags: (result, error, { id }) =>
+            invalidatesTags: (result, _, { id }) =>
                 result
                     ? [{ type: TagTypes.MATERIALS, id }]
-                    : error
-                    ? [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }]
                     : [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
         }),
     }),

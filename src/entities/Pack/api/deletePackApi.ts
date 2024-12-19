@@ -10,12 +10,7 @@ export const deletePackApi = baseApi.injectEndpoints({
                 url: `${API_ENDPOINTS.PACKS}/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: (result, error, id) =>
-                result
-                    ? [{ type: TagTypes.PACKS, id }]
-                    : error
-                    ? [{ type: TagTypes.PACKS, id: TagTypes.LIST }]
-                    : [{ type: TagTypes.PACKS, id: TagTypes.LIST }],
+            invalidatesTags: [{ type: TagTypes.PACKS, id: TagTypes.LIST }],
         }),
     }),
     overrideExisting: false,

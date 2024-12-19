@@ -11,11 +11,9 @@ export const updatePackApi = baseApi.injectEndpoints({
                 method: "PATCH",
                 body: patch,
             }),
-            invalidatesTags: (result, error, { id }) =>
+            invalidatesTags: (result, _, { id }) =>
                 result
                     ? [{ type: TagTypes.PACKS, id }]
-                    : error
-                    ? [{ type: TagTypes.PACKS, id: TagTypes.LIST }]
                     : [{ type: TagTypes.PACKS, id: TagTypes.LIST }],
         }),
     }),

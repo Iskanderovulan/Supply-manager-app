@@ -1,4 +1,4 @@
-import { Product } from "@entities/Product";
+import { Product } from "@widgets/Product";
 
 const ProductPage = () => {
     return <Product />;

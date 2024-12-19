@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
-import { GetCommonParams } from "@entities/CommonControl";
+import { GetCommonParams } from "@shared/ui/CommonControl";
 import { ColorResponse } from "../model/types/colorResponse";
 
 interface GetColorsParams extends GetCommonParams {
@@ -13,16 +13,12 @@ const getColorQueryConfig = ({
     limit,
     name,
     intensity,
-    createdBefore,
-    createdAfter,
     sortBy,
     paginated = true,
 }: GetColorsParams) => {
     const config: Record<string, { condition: boolean; value: string | undefined }> = {
         name: { condition: !!name, value: name },
         intensity: { condition: (intensity || []).length > 0, value: intensity?.join(",") },
-        createdBefore: { condition: !!createdBefore, value: createdBefore },
-        createdAfter: { condition: !!createdAfter, value: createdAfter },
         sortBy: { condition: !!sortBy, value: sortBy },
         paginated: { condition: !paginated, value: "0" },
     };

@@ -1,6 +1,5 @@
 export enum FilterType {
     Checkbox = "checkbox",
-    DatePicker = "datePicker",
     Range = "range",
 }
 

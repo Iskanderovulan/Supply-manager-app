@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
 import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
-import { FilterKeys } from "@entities/CommonControl";
+import { FilterKeys } from "@shared/ui/CommonControl";
 import { MaterialFiltersSchema } from "../../model/types/materialFiltersSchema";
 
 export const useMaterialFilters = () => {
@@ -11,8 +11,7 @@ export const useMaterialFilters = () => {
     const limit = Number(getSearchParam(FilterKeys.LIMIT)) || defaultPageSizeOption;
     const name = getSearchParam(FilterKeys.NAME) || "";
     const sortBy = getSearchParam(FilterKeys.SORT_BY);
-    const createdBefore = getSearchParam(FilterKeys.CREATED_BEFORE);
-    const createdAfter = getSearchParam(FilterKeys.CREATED_AFTER);
+
     const hardness = useMemo(
         () => getSearchParam(FilterKeys.HARDNESS, true) || [],
         [getSearchParam],
@@ -21,17 +20,14 @@ export const useMaterialFilters = () => {
     const initialFilters = useMemo<MaterialFiltersSchema>(() => {
         return {
             materials: hardness,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
         };
-    }, [hardness, createdBefore, createdAfter]);
+    }, [hardness]);
 
     return {
         page,
         limit,
         name,
         sortBy,
-        createdBefore,
-        createdAfter,
         hardness,
         initialFilters,
     };

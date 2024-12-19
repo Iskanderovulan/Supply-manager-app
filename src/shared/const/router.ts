@@ -6,7 +6,8 @@ export enum AppRoutes {
     PACK = "pack",
     PRODUCT = "product",
     PROFILE = "profile",
-    CHART = "CHART",
+    CHART = "chart",
+    DETAILS = "details",
 }
 
 export const getRouteProduct = () => "/";
@@ -17,13 +18,17 @@ export const getRouteColor = () => "/color";
 export const getRoutePack = () => "/pack";
 export const getRouteProfile = () => "/profile";
 export const getRouteChart = () => "/chart";
-export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.PRODUCT]: getRouteProduct(),
-    [AppRoutes.LOGIN]: getRouteLogin(),
-    [AppRoutes.REGISTER]: getRouteRegister(),
-    [AppRoutes.MATERIAL]: getRouteMaterial(),
-    [AppRoutes.COLOR]: getRouteColor(),
-    [AppRoutes.PACK]: getRoutePack(),
-    [AppRoutes.PROFILE]: getRouteProfile(),
-    [AppRoutes.CHART]: getRouteChart(),
+export const getRouteDetails = (id: string) => `/details/${id}`;
+
+// Route-to-Enum mapping
+export const AppRouteByPathPattern: Record<string, AppRoutes> = {
+    [getRouteLogin()]: AppRoutes.LOGIN,
+    [getRouteRegister()]: AppRoutes.REGISTER,
+    [getRouteMaterial()]: AppRoutes.MATERIAL,
+    [getRouteColor()]: AppRoutes.COLOR,
+    [getRoutePack()]: AppRoutes.PACK,
+    [getRouteProduct()]: AppRoutes.PRODUCT,
+    [getRouteProfile()]: AppRoutes.PROFILE,
+    [getRouteChart()]: AppRoutes.CHART,
+    [getRouteDetails(":id")]: AppRoutes.DETAILS,
 };

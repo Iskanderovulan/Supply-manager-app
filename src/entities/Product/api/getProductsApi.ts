@@ -2,7 +2,7 @@ import { baseApi } from "@shared/api/rtkApi";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
 import { ProductResponse } from "../model/types/ProductResponse";
-import { GetCommonParams } from "@entities/CommonControl";
+import { GetCommonParams } from "@shared/ui/CommonControl";
 
 interface GetProductsParams extends GetCommonParams {
     materialIds?: string[];
@@ -22,8 +22,6 @@ const getProductQueryConfig = ({
     packIds,
     priceMin,
     priceMax,
-    createdBefore,
-    createdAfter,
     sortBy,
     paginated = true,
 }: GetProductsParams) => {
@@ -40,8 +38,6 @@ const getProductQueryConfig = ({
             condition: priceMax !== "",
             value: priceMax?.toString(),
         },
-        createdBefore: { condition: !!createdBefore, value: createdBefore },
-        createdAfter: { condition: !!createdAfter, value: createdAfter },
         sortBy: { condition: !!sortBy, value: sortBy },
         paginated: { condition: !paginated, value: "0" },
     };

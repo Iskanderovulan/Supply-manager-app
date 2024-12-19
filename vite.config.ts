@@ -20,5 +20,8 @@ export default defineConfig(({ mode }) => {
         define: {
             __IS_DEV__: mode === "development",
         },
+        optimizeDeps: {
+            exclude: ["recharts"], // или любые модули, вызывающие проблемы
+        },
     };
 });

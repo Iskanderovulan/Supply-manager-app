@@ -31,11 +31,6 @@ export const filterProductConfig = (
         options: options.packOptions || "",
     },
     {
-        type: FilterType.DatePicker,
-        label: t("filterByDate"),
-        key: "dateRange",
-    },
-    {
         type: FilterType.Range,
         label: t("filterByPrice"),
         key: "priceRange",

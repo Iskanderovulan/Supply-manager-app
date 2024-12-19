@@ -1,5 +1,7 @@
+import { Chart } from "@widgets/Chart";
+
 const ChartPage = () => {
-    return <h2>CHART</h2>;
+    return <Chart />;
 };
 
 export default ChartPage;

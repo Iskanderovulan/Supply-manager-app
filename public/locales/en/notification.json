@@ -11,5 +11,8 @@
     "error": "Error",
     "unexpectedError": "An unknown error occurred. Please try again.",
     "downloadSuccess": "Download file success",
-    "passwordChangeSuccess": "Password change completed successfully."
+    "passwordChangeSuccess": "Password change completed successfully.",
+    "copySuccess": "Content copied!",
+    "copyError": "Failed to copy content. Please try again.",
+    "notFound": "Item not found."
 }

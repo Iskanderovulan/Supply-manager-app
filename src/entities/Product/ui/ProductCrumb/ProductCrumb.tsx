@@ -1,11 +1,9 @@
 import { FC, memo } from "react";
-import { Breadcrumb, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import { useTranslation } from "react-i18next";
 import { PieChartOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
-import cls from "./ProductCrumb.module.scss";
-
-const { Text } = Typography;
+import { CrumbItem } from "@shared/ui/CrumbItem/CrumbItem";
 
 export const ProductCrumb: FC = memo(() => {
     const { t } = useTranslation(TranslationId.PRODUCT);
@@ -13,12 +11,7 @@ export const ProductCrumb: FC = memo(() => {
         <Breadcrumb
             items={[
                 {
-                    title: (
-                        <Text keyboard>
-                            <PieChartOutlined className={cls.icon} />
-                            {t("productPage")}
-                        </Text>
-                    ),
+                    title: <CrumbItem icon={<PieChartOutlined />} text={t("productPage")} />,
                 },
             ]}
         />

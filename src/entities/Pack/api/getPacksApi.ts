@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
-import { GetCommonParams } from "@entities/CommonControl";
+import { GetCommonParams } from "@shared/ui/CommonControl";
 import { PackResponse } from "../model/types/packResponse";
 
 interface GetPacksParams extends GetCommonParams {
@@ -13,16 +13,12 @@ const getPackQueryConfig = ({
     limit,
     name,
     type,
-    createdBefore,
-    createdAfter,
     sortBy,
     paginated = true,
 }: GetPacksParams) => {
     const config: Record<string, { condition: boolean; value: string | undefined }> = {
         name: { condition: !!name, value: name },
         type: { condition: (type || []).length > 0, value: type?.join(",") },
-        createdBefore: { condition: !!createdBefore, value: createdBefore },
-        createdAfter: { condition: !!createdAfter, value: createdAfter },
         sortBy: { condition: !!sortBy, value: sortBy },
         paginated: { condition: !paginated, value: "0" },
     };
