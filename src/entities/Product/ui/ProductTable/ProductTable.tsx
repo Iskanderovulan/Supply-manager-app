@@ -15,6 +15,7 @@ import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { RowDensity, selectSpacing } from "@shared/ui/RowDensity";
 import { ProductClassificatorsSchema } from "@entities/Product/model/types/ProductClassificatorsSchema";
+import { ProductNavigate } from "../ProductNavigate/ProductNavigate";
 
 interface ProductsTableProps extends ProductClassificatorsSchema {
     dataSource: ProductSchema[];
@@ -79,6 +80,7 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
                                 packOptions={packOptions}
                             />
                             <ProductDelete product={record} />
+                            <ProductNavigate productId={record.id} />
                         </Flex>
                     ),
                 },

@@ -8,6 +8,7 @@ body[data-theme="dark"] {
     --shared-gray: #1e1e1e;
     --shared-secondary-gray: #282c34;
     --shared-placeholder-gray: #6e7a86;
+    --shared-chart-bg: #666a6d;
 
     /* Ваши переменные */
     --bg-color: var(--shared-gray);
@@ -48,6 +49,8 @@ body[data-theme="dark"] {
     --active-color: var(--shared-pink);
     --checkbox-color: var(--shared-white);
 
-    --rail-bg: #666a6d;
+    --rail-bg: var(--shared-chart-bg);
     --track-bg: var(--shared-pink);
+
+    --chart-bg: var(--shared-chart-bg);
 }

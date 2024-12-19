@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
-import { GetCommonParams } from "@entities/CommonControl";
+import { GetCommonParams } from "@shared/ui/CommonControl";
 import { MaterialResponse } from "../model/types/materialResponse";
 
 interface GetMaterialsParams extends GetCommonParams {
@@ -13,16 +13,12 @@ const getMaterialQueryConfig = ({
     limit,
     name,
     hardness,
-    createdBefore,
-    createdAfter,
     sortBy,
     paginated = true,
 }: GetMaterialsParams) => {
     const config: Record<string, { condition: boolean; value: string | undefined }> = {
         name: { condition: !!name, value: name },
         hardness: { condition: (hardness || []).length > 0, value: hardness?.join(",") },
-        createdBefore: { condition: !!createdBefore, value: createdBefore },
-        createdAfter: { condition: !!createdAfter, value: createdAfter },
         sortBy: { condition: !!sortBy, value: sortBy },
         paginated: { condition: !paginated, value: "0" },
     };

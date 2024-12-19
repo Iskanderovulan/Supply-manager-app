@@ -3,6 +3,7 @@ import { Card, Space, Typography, Button } from "antd";
 import { ProfileDelete } from "../ProfileDelete/ProfileDelete";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import cls from "./ProfileInfo.module.scss";
 
 const { Text, Title } = Typography;
 
@@ -19,15 +20,15 @@ export const ProfileInfo: FC<ProfileInfoProps> = (props) => {
 
     return (
         <Card bordered={false}>
-            <Space direction="vertical" size="middle" style={{ width: "100%" }}>
-                <Title level={2}>{t("profileInfo")}</Title>
+            <Space direction="vertical" size="middle" className={cls.profileInfo}>
+                <Title level={3}>{t("profileInfo")}</Title>
                 <Text>
                     <strong>{t("nameLabel")}:</strong> {name}
                 </Text>
                 <Text>
                     <strong>{t("emailLabel")}:</strong> {email}
                 </Text>
-                <Space style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Space className={cls.buttonGroup}>
                     <Button type="primary" onClick={onEdit}>
                         {t("editProfile")}
                     </Button>

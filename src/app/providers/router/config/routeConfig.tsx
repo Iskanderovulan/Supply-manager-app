@@ -8,6 +8,7 @@ import {
     getRoutePack,
     getRouteProfile,
     getRouteChart,
+    getRouteDetails,
 } from "@shared/const/router";
 import { RouteProps } from "react-router-dom";
 import { LoginPage } from "@pages/LoginPage";
@@ -18,6 +19,7 @@ import { ColorPage } from "@pages/ColorPage";
 import { ProductPage } from "@pages/ProductPage";
 import { ProfilePage } from "@pages/ProfilePage";
 import { ChartPage } from "@pages/ChartPage";
+import { DetailsPage } from "@pages/DetailsPage";
 
 type CustomRouteProps = {
     isProtected?: boolean;
@@ -63,6 +65,11 @@ export const routeConfig: Record<AppRoutes, CustomRouteProps> = {
     [AppRoutes.CHART]: {
         path: getRouteChart(),
         element: <ChartPage />,
+        isProtected: true,
+    },
+    [AppRoutes.DETAILS]: {
+        path: getRouteDetails(":id"),
+        element: <DetailsPage />,
         isProtected: true,
     },
 };

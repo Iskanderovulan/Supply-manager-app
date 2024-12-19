@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
 import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
-import { FilterKeys } from "@entities/CommonControl";
+import { FilterKeys } from "@shared/ui/CommonControl";
 import { ProductFiltersSchema } from "@entities/Product/model/types/ProductFiltersSchema";
 
 export const useProductFilters = () => {
@@ -11,8 +11,6 @@ export const useProductFilters = () => {
     const limit = Number(getSearchParam(FilterKeys.LIMIT)) || defaultPageSizeOption;
     const name = getSearchParam(FilterKeys.NAME) || "";
     const sortBy = getSearchParam(FilterKeys.SORT_BY);
-    const createdBefore = getSearchParam(FilterKeys.CREATED_BEFORE);
-    const createdAfter = getSearchParam(FilterKeys.CREATED_AFTER);
     const priceMin = getSearchParam(FilterKeys.PRICE_MIN);
     const priceMax = getSearchParam(FilterKeys.PRICE_MAX);
 
@@ -34,10 +32,9 @@ export const useProductFilters = () => {
             materials: materialIds,
             colors: colorIds,
             packs: packIds,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
             priceRange: [priceMin ? Number(priceMin) : null, priceMax ? Number(priceMax) : null],
         };
-    }, [materialIds, colorIds, packIds, createdBefore, createdAfter, priceMin, priceMax]);
+    }, [materialIds, colorIds, packIds, priceMin, priceMax]);
 
     return {
         page,
@@ -47,8 +44,6 @@ export const useProductFilters = () => {
         materialIds,
         colorIds,
         packIds,
-        createdBefore,
-        createdAfter,
         priceMin,
         priceMax,
         initialFilters,

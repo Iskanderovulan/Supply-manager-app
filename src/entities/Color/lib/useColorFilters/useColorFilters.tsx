@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
 import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
-import { FilterKeys } from "@entities/CommonControl";
+import { FilterKeys } from "@shared/ui/CommonControl";
 import { ColorFiltersSchema } from "@entities/Color/model/types/colorFiltersSchema";
 
 export const useColorFilters = () => {
@@ -11,8 +11,6 @@ export const useColorFilters = () => {
     const limit = Number(getSearchParam(FilterKeys.LIMIT)) || defaultPageSizeOption;
     const name = getSearchParam(FilterKeys.NAME) || "";
     const sortBy = getSearchParam(FilterKeys.SORT_BY);
-    const createdBefore = getSearchParam(FilterKeys.CREATED_BEFORE);
-    const createdAfter = getSearchParam(FilterKeys.CREATED_AFTER);
     const intensity = useMemo(
         () => getSearchParam(FilterKeys.INTENSITY, true) || [],
         [getSearchParam],
@@ -21,17 +19,14 @@ export const useColorFilters = () => {
     const initialFilters = useMemo<ColorFiltersSchema>(() => {
         return {
             colors: intensity,
-            dateRange: createdAfter && createdBefore ? [createdAfter, createdBefore] : null,
         };
-    }, [intensity, createdBefore, createdAfter]);
+    }, [intensity]);
 
     return {
         page,
         limit,
         name,
         sortBy,
-        createdBefore,
-        createdAfter,
         intensity,
         initialFilters,
     };

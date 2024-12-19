@@ -10,12 +10,7 @@ export const deleteMaterialApi = baseApi.injectEndpoints({
                 url: `${API_ENDPOINTS.MATERIALS}/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: (result, error, id) =>
-                result
-                    ? [{ type: TagTypes.MATERIALS, id }]
-                    : error
-                    ? [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }]
-                    : [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
+            invalidatesTags: [{ type: TagTypes.MATERIALS, id: TagTypes.LIST }],
         }),
     }),
     overrideExisting: false,

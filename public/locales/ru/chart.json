@@ -1,0 +1,19 @@
+
+{
+    "chartPage": "Страница графиков",
+    "category": "Категория",
+    "percentage": "Процент",
+    "productAnalysis": "Анализ продуктов",
+    "categoryDistribution": "Распределение категорий",
+    "chartStatistics": "Статистика графиков",
+    "colorsAvailable": "Доступные цвета",
+    "materialsAvailable": "Доступные материалы",
+    "packsAvailable": "Доступные упаковки",
+    "typesSuffix": "Типов",
+    "materials": "Материалы",
+    "colors": "Цвета",
+    "packs": "Упаковки",
+    "barData": "Данные графика",
+    "classificators":"Классификаторы"
+}
+

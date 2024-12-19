@@ -1,0 +1,1 @@
+export { useGetStatisticsQuery } from "./chartApi";

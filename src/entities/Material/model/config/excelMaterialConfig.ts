@@ -4,7 +4,9 @@ import { hardnessOptions } from "../const/hardnessOptions";
 import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
 
 export const excelMaterialConfig = (item: MaterialSchema, t: TFunction, lang: string) => {
-    const hardnessLabel = hardnessOptions.find((option) => option.value === item.hardness)?.label;
+    const hardnessLabel = hardnessOptions.find(
+        (option) => option.value === String(item.hardness),
+    )?.label;
 
     return {
         [t("id", { lng: lang })]: item.id,

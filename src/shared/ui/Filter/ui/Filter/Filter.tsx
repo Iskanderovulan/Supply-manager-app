@@ -28,7 +28,8 @@ export const Filter = <TFilters extends Record<string, unknown>>({
     );
 
     const handleApplyFilters = () => {
-        onApply(applyFilters());
+        const filters = applyFilters();
+        onApply(filters);
         hideModal();
     };
 

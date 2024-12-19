@@ -35,5 +35,6 @@
     "filterByColor": "Filter by color",
     "filterByPack": "Filter by pack",
     "filterByDate": "Filter by date",
-    "filterByPrice": "Filter by price"
+    "filterByPrice": "Filter by price",
+    "detailsPage": "Details Page"
 }

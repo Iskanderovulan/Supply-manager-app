@@ -35,5 +35,6 @@
     "filterByColor": "Фильтр по цвету",
     "filterByPack": "Фильтр по упаковке",
     "filterByDate": "Фильтр по дате",
-    "filterByPrice": "Фильтр по цене"
+    "filterByPrice": "Фильтр по цене",
+    "detailsPage": "Страница деталей"
 }

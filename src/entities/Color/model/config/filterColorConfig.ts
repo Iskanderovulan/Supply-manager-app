@@ -10,9 +10,4 @@ export const filterColorConfig = (t: TFunction): FilterConfig[] => [
         key: "colors",
         options: intensityOptions.map((el) => ({ ...el, label: t(el.label) })),
     },
-    {
-        type: FilterType.DatePicker,
-        label: t("filterByDate"),
-        key: "dateRange",
-    },
 ];

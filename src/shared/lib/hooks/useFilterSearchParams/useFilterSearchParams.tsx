@@ -1,7 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import { useCallback, useRef, useEffect } from "react";
 
-type UpdateSearchParams = Record<string, string | number | (string | number)[] | undefined | null>;
+// type UpdateSearchParams = Record<string, string | number | (string | number)[] | undefined | null>;
+type UpdateSearchParams = Record<string, unknown>;
+
 export type UpdateSearchParamsType = (
     updates: UpdateSearchParams,
     options?: { replace?: boolean },

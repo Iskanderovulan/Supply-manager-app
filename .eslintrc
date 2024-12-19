@@ -20,7 +20,7 @@
     "plugins": ["react", "@typescript-eslint", "import", "jsx-a11y", "react-hooks", "prettier"],
     "settings": {
         "react": {
-            "version": "detect" // Automatically detect the react version
+            "version": "detect" 
         }
     },
     "rules": {

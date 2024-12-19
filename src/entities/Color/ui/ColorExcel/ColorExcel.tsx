@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ExcelGenerator } from "@entities/CommonControl";
+import { ExcelGenerator } from "@shared/ui/CommonControl";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { ExcelConfigType } from "@entities/Color/model/config/excelColorConfig";

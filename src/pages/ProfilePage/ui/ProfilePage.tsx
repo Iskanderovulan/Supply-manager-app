@@ -1,4 +1,4 @@
-import { Profile } from "@entities/Profile";
+import { Profile } from "@widgets/Profile";
 
 const ProfilePage = () => {
     return <Profile />;

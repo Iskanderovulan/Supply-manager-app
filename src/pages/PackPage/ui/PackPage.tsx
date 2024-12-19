@@ -1,4 +1,4 @@
-import { Pack } from "@entities/Pack";
+import { Pack } from "@widgets/Pack";
 
 const PackPage = () => {
     return <Pack />;

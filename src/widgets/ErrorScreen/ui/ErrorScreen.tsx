@@ -5,7 +5,7 @@ import cls from "./ErrorScreen.module.scss";
 const { Text } = Typography;
 
 export const ErrorScreen = () => {
-    const { t } = useTranslation();
+    const { t: global } = useTranslation();
     const reloadPage = () => {
         // eslint-disable-next-line no-restricted-globals
         location.reload();
@@ -13,8 +13,8 @@ export const ErrorScreen = () => {
 
     return (
         <Flex align="center" justify="center" vertical className={cls.ErrorPage}>
-            <Text>{t("errorScreenText")}</Text>
-            <Button onClick={reloadPage}>{t("errorScreenBtn")}</Button>
+            <Text>{global("errorScreenText")}</Text>
+            <Button onClick={reloadPage}>{global("errorScreenBtn")}</Button>
         </Flex>
     );
 };

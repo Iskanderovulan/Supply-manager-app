@@ -23,8 +23,6 @@ export const ProductFilter: FC<ProductFilterProps> = (props) => {
             materials: "materialIds",
             colors: "colorIds",
             packs: "packIds",
-            createdBefore: "createdBefore",
-            createdAfter: "createdAfter",
         };
 
         const updatedParams = getUpdatedParams(selectedFilters, filterMapping);

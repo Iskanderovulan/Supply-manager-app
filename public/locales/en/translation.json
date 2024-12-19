@@ -30,5 +30,6 @@
     "regular": "74 regular",
     "relaxed": "90 relaxed",
     "errorScreenText": "An unexpected error occurred",
-    "errorScreenBtn": "Reload Page"
+    "errorScreenBtn": "Reload Page",
+    "goBack": "Go Back"
 }

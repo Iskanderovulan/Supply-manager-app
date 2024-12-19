@@ -10,12 +10,7 @@ export const deleteColorApi = baseApi.injectEndpoints({
                 url: `${API_ENDPOINTS.COLORS}/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: (result, error, id) =>
-                result
-                    ? [{ type: TagTypes.COLORS, id }]
-                    : error
-                    ? [{ type: TagTypes.COLORS, id: TagTypes.LIST }]
-                    : [{ type: TagTypes.COLORS, id: TagTypes.LIST }],
+            invalidatesTags: [{ type: TagTypes.COLORS, id: TagTypes.LIST }],
         }),
     }),
     overrideExisting: false,

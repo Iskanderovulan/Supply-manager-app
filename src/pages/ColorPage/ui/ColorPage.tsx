@@ -1,4 +1,4 @@
-import { Color } from "@entities/Color";
+import { Color } from "@widgets/Color";
 
 const ColorPage = () => {
     return <Color />;

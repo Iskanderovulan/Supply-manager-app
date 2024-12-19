@@ -40,7 +40,7 @@ export const ProfilePassword: FC = memo(() => {
 
     return (
         <Card bordered={false}>
-            <Title level={2}>{t("changePasswordTitle")}</Title>
+            <Title level={3}>{t("changePasswordTitle")}</Title>
             <Form form={form} layout="vertical" onFinish={handleFinish}>
                 <Form.Item
                     label={t("oldPasswordLabel")}

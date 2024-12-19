@@ -19,8 +19,6 @@ export const ColorFilter: FC<ColorFilterProps> = (props) => {
     const onApply = (selectedFilters: Record<string, unknown>) => {
         const filterMapping: Record<string, string> = {
             colors: "intensity",
-            createdBefore: "createdBefore",
-            createdAfter: "createdAfter",
         };
         const updatedParams = getUpdatedParams(selectedFilters, filterMapping);
         updateSearchParams(updatedParams);
@@ -29,8 +27,6 @@ export const ColorFilter: FC<ColorFilterProps> = (props) => {
     const onReset = () => {
         updateSearchParams({
             intensity: [],
-            createdBefore: null,
-            createdAfter: null,
         });
     };
 

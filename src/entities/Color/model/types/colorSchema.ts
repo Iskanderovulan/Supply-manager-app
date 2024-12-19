@@ -1,7 +1,5 @@
-export interface ColorSchema {
-    id: string;
-    name: string;
+import { CommonSchema } from "@shared/ui/CommonControl";
+
+export interface ColorSchema extends CommonSchema {
     intensity: number;
-    createdAt: string;
-    updatedAt: string;
 }

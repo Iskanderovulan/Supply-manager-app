@@ -1,11 +1,9 @@
 import { FC, memo } from "react";
-import { Breadcrumb, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import { useTranslation } from "react-i18next";
 import { InboxOutlined } from "@ant-design/icons";
 import { TranslationId } from "@shared/const/translation";
-import cls from "./MaterialCrumb.module.scss";
-
-const { Text } = Typography;
+import { CrumbItem } from "@shared/ui/CrumbItem/CrumbItem";
 
 export const MaterialCrumb: FC = memo(() => {
     const { t } = useTranslation(TranslationId.MATERIAL);
@@ -14,12 +12,7 @@ export const MaterialCrumb: FC = memo(() => {
         <Breadcrumb
             items={[
                 {
-                    title: (
-                        <Text keyboard>
-                            <InboxOutlined className={cls.icon} />
-                            {t("materialPage")}
-                        </Text>
-                    ),
+                    title: <CrumbItem icon={<InboxOutlined />} text={t("materialPage")} />,
                 },
             ]}
         />
