@@ -54,6 +54,7 @@ export const ProductCreate: FC<ProductCreateProps> = memo(
                     title={t("createProduct")}
                     open={isModalOpen}
                     onCancel={hideModal}
+                    destroyOnClose
                     footer={[
                         <Button key="cancel" onClick={hideModal}>
                             {global("cancel")}

@@ -1,10 +1,11 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Form, Input, Button, Typography, Checkbox } from "antd";
 import { useTranslation } from "react-i18next";
-import { LoginSchema } from "@features/Login/model/types/loginSchema";
+import { LoginSchema } from "@features/Login/model/loginSchema";
 import { emailPattern, passwordPattern } from "@shared/lib/validators/authValidators";
 import { TranslationId } from "@shared/const/translation";
 import { RememberMeSchema } from "@entities/Auth";
+import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 import cls from "./LoginForm.module.scss";
 
 const { Title } = Typography;
@@ -15,16 +16,10 @@ interface LoginFormProps {
 }
 
 export const LoginForm: FC<LoginFormProps> = ({ onFinish, isLoading }) => {
-    const { t, i18n } = useTranslation(TranslationId.AUTH);
+    const { t } = useTranslation(TranslationId.AUTH);
     const [form] = Form.useForm<LoginSchema & RememberMeSchema>();
 
-    useEffect(() => {
-        form.getFieldsError().forEach(({ name, errors }) => {
-            if (errors.length > 0) {
-                form.validateFields([name]);
-            }
-        });
-    }, [i18n.language, form]);
+    useForceTranslate({ form });
 
     return (
         <div className={cls.wrap}>

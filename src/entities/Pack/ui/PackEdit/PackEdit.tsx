@@ -47,6 +47,7 @@ export const PackEdit: FC<PackEditProps> = ({ pack }) => {
                 title={t("updatePack")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

@@ -42,6 +42,7 @@ export const PackCreate: FC = memo(() => {
                 title={t("createPack")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

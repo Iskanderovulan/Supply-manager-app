@@ -47,6 +47,7 @@ export const ColorEdit: FC<ColorEditProps> = ({ color }) => {
                 title={t("updateColor")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

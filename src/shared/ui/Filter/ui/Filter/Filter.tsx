@@ -5,7 +5,7 @@ import { Button } from "antd";
 import { FilterOutlined } from "@ant-design/icons";
 import { FilterDrawer } from "../FilterDrawer/FilterDrawer";
 import { FilterConfig } from "../../model/types/filterConfig";
-import { useFilterState } from "../../lib/hooks/useFilterState";
+import { useFilterState } from "../../lib/useFilterState";
 import { RecordValueGroup } from "../../model/types/valueGroup";
 
 interface FilterProps<TFilters> {

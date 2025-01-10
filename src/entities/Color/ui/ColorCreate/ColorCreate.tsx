@@ -42,6 +42,7 @@ export const ColorCreate: FC = memo(() => {
                 title={t("createColor")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

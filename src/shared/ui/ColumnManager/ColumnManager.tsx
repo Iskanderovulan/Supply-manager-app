@@ -37,7 +37,7 @@ export const ColumnManager: FC<ColumnManagerProps> = (props) => {
     return (
         <>
             <Flex justify="start">
-                <Button onClick={showModal}>
+                <Button onClick={showModal} data-testid="manage-columns-button">
                     {global("manageColumns")} ({visibleColumns.length}/{columnsConfig.length})
                     <Space>
                         <TableOutlined />
@@ -51,17 +51,34 @@ export const ColumnManager: FC<ColumnManagerProps> = (props) => {
                 onCancel={hideModal}
                 onOk={hideModal}
                 footer={[
-                    <Button key="columns" type="primary" onClick={hideModal}>
+                    <Button
+                        key="columns"
+                        type="primary"
+                        onClick={hideModal}
+                        data-testid="ok-button"
+                    >
                         {global("ok")}
                     </Button>,
                 ]}
             >
                 <Flex gap="small" className={cls.buttonGroup}>
-                    <Button size="small" type="dashed" key="deselectAll" onClick={handleReset}>
+                    <Button
+                        size="small"
+                        type="dashed"
+                        key="deselectAll"
+                        onClick={handleReset}
+                        data-testid="deselect-all-button"
+                    >
                         {global("deselectAll")}
                     </Button>
 
-                    <Button size="small" type="dashed" key="selectAll" onClick={handleSelectAll}>
+                    <Button
+                        size="small"
+                        type="dashed"
+                        key="selectAll"
+                        onClick={handleSelectAll}
+                        data-testid="select-all-button"
+                    >
                         {global("selectAll")}
                     </Button>
                 </Flex>
@@ -70,6 +87,7 @@ export const ColumnManager: FC<ColumnManagerProps> = (props) => {
                     value={visibleColumns}
                     onChange={handleCheckboxChange}
                     className={cls.checkboxGroup}
+                    data-testid="checkbox-group"
                 />
             </Modal>
         </>

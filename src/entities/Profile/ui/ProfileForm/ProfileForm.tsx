@@ -6,6 +6,7 @@ import { NotificationData } from "@shared/const/notifications";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { emailPattern, namePattern } from "@shared/lib/validators/authValidators";
+import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 
 const { Title } = Typography;
 
@@ -22,7 +23,7 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
         useUpdateUserMutation();
 
     const { t } = useTranslation(TranslationId.PROFILE);
-    const { t: auth, i18n } = useTranslation(TranslationId.AUTH);
+    const { t: auth } = useTranslation(TranslationId.AUTH);
     const { t: global } = useTranslation();
 
     useNotification({
@@ -43,13 +44,7 @@ export const ProfileForm: FC<ProfileFormProps> = (props) => {
         }
     }, [isSuccess, onClose]);
 
-    useEffect(() => {
-        form.getFieldsError().forEach(({ name, errors }) => {
-            if (errors.length > 0) {
-                form.validateFields([name]);
-            }
-        });
-    }, [i18n.language, form]);
+    useForceTranslate({ form });
 
     return (
         <Card bordered={false}>

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { Modal, Button } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import { useModal } from "@shared/lib/hooks/useModal";
@@ -51,6 +51,17 @@ export const ProductEdit: FC<ProductEditProps> = ({
         packOptions,
     });
 
+    const transformProductForForm = (product: ProductSchema) => {
+        return {
+            ...product,
+            material: product.material?.id || "",
+            color: product.color?.id || "",
+            pack: product.pack?.id || "",
+        };
+    };
+
+    const formValues = useMemo(() => transformProductForForm(product), [product]);
+
     return (
         <>
             <Button type="primary" icon={<EditOutlined />} onClick={showModal}>
@@ -60,17 +71,18 @@ export const ProductEdit: FC<ProductEditProps> = ({
                 title={t("updateProduct")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}
                     </Button>,
                 ]}
             >
-                <DynamicForm<ProductSchema>
+                <DynamicForm<typeof formValues & ProductSchema>
                     config={formConfig}
                     onFinish={handleEditProduct}
                     loading={isLoading}
-                    updateValues={product}
+                    updateValues={formValues}
                 />
             </Modal>
         </>

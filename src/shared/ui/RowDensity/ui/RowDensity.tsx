@@ -15,6 +15,7 @@ export const RowDensity: FC = memo(() => {
     const dispatch = useAppDispatch();
     const spacing = useAppSelector(selectSpacing);
     const { t: global } = useTranslation();
+
     const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
         const newSpacing = parseInt(key);
         dispatch(spacingActions.setSpacing(newSpacing));
