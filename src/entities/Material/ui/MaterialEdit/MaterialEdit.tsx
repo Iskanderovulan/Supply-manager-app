@@ -48,6 +48,7 @@ export const MaterialEdit: FC<MaterialEditProps> = ({ material }) => {
                 title={t("updateMaterial")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

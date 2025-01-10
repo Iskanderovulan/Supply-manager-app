@@ -23,5 +23,11 @@ export default defineConfig(({ mode }) => {
         optimizeDeps: {
             exclude: ["recharts"], // или любые модули, вызывающие проблемы
         },
+        test: {
+            globals: true, // Поддержка глобальных методов тестирования (например, `describe`, `it`)
+            environment: "jsdom", // Среда выполнения тестов для DOM
+            setupFiles: "./src/setupTests.ts", // Настройка перед запуском тестов
+            css: true, // Поддержка CSS для компонентов
+        },
     };
 });

@@ -44,6 +44,7 @@ export const FilterCheckbox: FC<FilterCheckboxProps> = (props) => {
                     type="dashed"
                     size="small"
                     onClick={toggleShowAll}
+                    data-testid="toggle-show-button"
                 >
                     {showAll ? t("hideAll") : t("seeAll")}
                 </Button>
@@ -56,10 +57,15 @@ export const FilterCheckbox: FC<FilterCheckboxProps> = (props) => {
             />
 
             <Flex className={cls.marginTop} justify="end" gap="small">
-                <Button type="dashed" size="small" onClick={handleSelectAll}>
+                <Button
+                    type="dashed"
+                    size="small"
+                    onClick={handleSelectAll}
+                    data-testid="select-all-button"
+                >
                     {t("selectAll")}
                 </Button>
-                <Button type="dashed" size="small" onClick={handleReset}>
+                <Button type="dashed" size="small" onClick={handleReset} data-testid="reset-button">
                     {t("reset")}
                 </Button>
             </Flex>

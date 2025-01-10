@@ -4,7 +4,7 @@ import { FormHeader } from "../FormHeader/FormHeader";
 import { FormField } from "../FormField/FormField";
 import { FormButtons } from "../FormButtons/FormButtons";
 import { FormRecord, RecursivePartial } from "../../model/types/types";
-import classNames from "classnames";
+import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 import cls from "./DynamicForm.module.scss";
 
 interface DynamicFormProps<T> {
@@ -30,13 +30,12 @@ interface DynamicFormProps<T> {
         [key: string]: (values?: T) => void;
     };
     loading?: boolean;
-    className?: string;
     header?: ReactNode;
     updateValues?: RecursivePartial<T>;
 }
 
 export const DynamicForm = <T,>(props: DynamicFormProps<T>) => {
-    const { config, onFinish, handlers, loading, header, className = "", updateValues } = props;
+    const { config, onFinish, handlers, loading, header, updateValues } = props;
 
     const [form] = Form.useForm<T>();
 
@@ -52,8 +51,10 @@ export const DynamicForm = <T,>(props: DynamicFormProps<T>) => {
         }
     };
 
+    useForceTranslate({ form });
+
     return (
-        <div className={classNames(cls.dynamicForm, className)}>
+        <div className={cls.dynamicForm}>
             <FormHeader header={header} />
             <Form layout="vertical" onFinish={onFinish} form={form}>
                 {config.fields.map((field, index) => (

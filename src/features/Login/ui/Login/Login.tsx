@@ -4,7 +4,7 @@ import { authActions } from "@entities/Auth";
 import { useLoginMutation } from "@features/Login/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { LoginSchema } from "@features/Login/model/types/loginSchema";
+import { LoginSchema } from "@features/Login/model/loginSchema";
 import { LoginForm } from "../LoginForm/LoginForm";
 
 export const Login: FC = () => {

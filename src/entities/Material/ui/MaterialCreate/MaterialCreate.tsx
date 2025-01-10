@@ -45,6 +45,7 @@ export const MaterialCreate: FC = memo(() => {
                 title={t("createMaterial")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

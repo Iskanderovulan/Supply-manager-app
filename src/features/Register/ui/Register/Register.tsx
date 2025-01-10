@@ -5,7 +5,7 @@ import { useRegisterMutation } from "@features/Register/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
-import { RegisterSchema } from "@features/Register/model/types/registerSchema";
+import { RegisterSchema } from "@features/Register/model/registerSchema";
 
 export const Register: FC = () => {
     const dispatch = useAppDispatch();

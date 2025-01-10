@@ -18,7 +18,6 @@ export const PaginationControl: FC<PaginationControlProps> = memo((props) => {
             page: getUpdatedValue(newPage, 1),
         });
     };
-
     return (
         <>
             {!!totalPages && totalPages > 1 && (

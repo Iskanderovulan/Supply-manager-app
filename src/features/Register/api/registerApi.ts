@@ -1,5 +1,5 @@
 import { authApi } from "@shared/api/authApi";
-import { RegisterSchema } from "../model/types/registerSchema";
+import { RegisterSchema } from "../model/registerSchema";
 import { UserData } from "@entities/Auth/model/types/authSchema";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
 
