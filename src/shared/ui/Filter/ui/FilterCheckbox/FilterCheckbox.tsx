@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { Checkbox, Button, Flex } from "antd";
+import { TFunction } from "i18next";
 import { FilterConfig } from "../../model/types/filterConfig";
 import { Value } from "../../model/types/valueGroup";
 import cls from "./FilterCheckbox.module.scss";
-import { TFunction } from "i18next";
 
 interface FilterCheckboxProps {
     filter: FilterConfig;

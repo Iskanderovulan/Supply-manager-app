@@ -21,13 +21,13 @@ export default defineConfig(({ mode }) => {
             __IS_DEV__: mode === "development",
         },
         optimizeDeps: {
-            exclude: ["recharts"], // или любые модули, вызывающие проблемы
+            exclude: ["recharts"],
         },
         test: {
-            globals: true, // Поддержка глобальных методов тестирования (например, `describe`, `it`)
-            environment: "jsdom", // Среда выполнения тестов для DOM
-            setupFiles: "./src/setupTests.ts", // Настройка перед запуском тестов
-            css: true, // Поддержка CSS для компонентов
+            globals: true,
+            environment: "jsdom",
+            setupFiles: "./src/setupTests.ts",
+            css: true,
         },
     };
 });

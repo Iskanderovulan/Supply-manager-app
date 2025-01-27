@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { Filter } from "@shared/ui/Filter";
-import { filterProductConfig } from "@entities/Product/model/config/filterProductConfig";
-import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
+import { Filter } from "@shared/ui/Filter";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { TranslationId } from "@shared/const/translation";
+import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
 import { ProductFiltersSchema } from "@entities/Product/model/types/ProductFiltersSchema";
 import { ProductClassificatorsSchema } from "@entities/Product/model/types/ProductClassificatorsSchema";
-import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
+import { filterProductConfig } from "@entities/Product/config/filterProductConfig";
 
 interface ProductFilterProps extends ProductClassificatorsSchema {
     updateSearchParams: UpdateSearchParamsType;

@@ -1,14 +1,14 @@
 import { FC } from "react";
-import { useGetStatisticsQuery } from "@entities/Chart/api";
+import { useTranslation } from "react-i18next";
 import { Loader } from "@shared/ui/Loader";
+import { TranslationId } from "@shared/const/translation";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { ChartStatistics } from "@entities/Chart";
 import { ChartProgress } from "@entities/Chart";
 import { ChartAnalysis } from "@entities/Chart";
 import { ChartCrumb } from "@entities/Chart";
 import { ChartBar } from "@entities/Chart";
-import { useTranslation } from "react-i18next";
-import { TranslationId } from "@shared/const/translation";
+import { useGetStatisticsQuery } from "@entities/Chart/api";
 
 import type { Stats, Category } from "@entities/Chart/model/chartSchema";
 

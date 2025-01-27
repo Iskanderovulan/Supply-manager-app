@@ -1,11 +1,10 @@
 import { FC } from "react";
-import { Button } from "antd";
+import { App as AntApp, Button } from "antd";
 import { CopyOutlined } from "@ant-design/icons";
-import { ProductSchema } from "@entities/Product";
-import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
-import { App as AntApp } from "antd";
 import { useTranslation } from "react-i18next";
+import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
 import { TranslationId } from "@shared/const/translation";
+import { ProductSchema } from "@entities/Product";
 
 interface DetailsCopyProps {
     product: ProductSchema;

@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Card, Typography, Flex, Descriptions } from "antd";
-import { DetailsNavigate } from "../DetailsNavigate/DetailsNavigate";
-import { ProductSchema } from "@entities/Product";
-import { DetailsCopy } from "../DetailsCopy/DetailsCopy";
-import { detailsConfig } from "@entities/Details/model/detailsConfig";
 import { useTranslation } from "react-i18next";
+import { DetailsNavigate } from "../DetailsNavigate/DetailsNavigate";
+import { DetailsCopy } from "../DetailsCopy/DetailsCopy";
 import { TranslationId } from "@shared/const/translation";
+import { ProductSchema } from "@entities/Product";
+import { detailsConfig } from "@entities/Details/model/detailsConfig";
 import cls from "./DetailsInfo.module.scss";
 
 const { Title } = Typography;

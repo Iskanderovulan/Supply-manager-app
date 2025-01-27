@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Modal, Button } from "antd";
 import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons";
-import { PackSchema } from "@entities/Pack/model/types/packSchema";
-import { useDeletePackMutation } from "@entities/Pack/api";
+import { useTranslation } from "react-i18next";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import { PackSchema } from "@entities/Pack/model/types/packSchema";
+import { useDeletePackMutation } from "@entities/Pack/api";
 
 interface PackDeleteProps {
     pack: PackSchema;

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { Drawer, Collapse } from "antd";
+import { TFunction } from "i18next";
 import { FilterFooter } from "../FilterFooter/FilterFooter";
 import { FilterItem } from "../FilterItem/FilterItem";
 import { FilterConfig } from "../..//model/types/filterConfig";
 import { ValueGroup, RecordValueGroup } from "../../model/types/valueGroup";
-import { TFunction } from "i18next";
 
 interface FilterDrawerProps {
     visible: boolean;

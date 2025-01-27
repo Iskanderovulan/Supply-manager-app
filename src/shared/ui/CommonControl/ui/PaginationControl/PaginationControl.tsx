@@ -3,7 +3,7 @@ import { CustomPagination } from "@shared/ui/CustomPagination";
 import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { getUpdatedValue } from "@shared/lib/helpers/getUpdatedValue/getUpdatedValue";
 
-interface PaginationControlProps {
+export interface PaginationControlProps {
     totalPages?: number;
     updateSearchParams: UpdateSearchParamsType;
     totalResults: number;

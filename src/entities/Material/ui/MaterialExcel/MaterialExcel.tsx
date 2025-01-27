@@ -1,10 +1,12 @@
 import { FC } from "react";
-import { ExcelGenerator } from "@shared/ui/CommonControl";
 import { useTranslation } from "react-i18next";
+import { ExcelGenerator } from "@shared/ui/CommonControl";
 import { TranslationId } from "@shared/const/translation";
-import { ExcelConfigType } from "@entities/Material/model/config/excelMaterialConfig";
+import {
+    ExcelConfigType,
+    excelMaterialConfig,
+} from "@entities/Material/config/excelMaterialConfig";
 import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
-import { excelMaterialConfig } from "@entities/Material/model/config/excelMaterialConfig";
 
 interface MaterialExcelProps {
     results: MaterialSchema[];

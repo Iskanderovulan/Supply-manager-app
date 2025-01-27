@@ -1,15 +1,17 @@
 import { FC, useMemo, useState, useEffect, ReactNode } from "react";
-import { Theme, ThemeContext } from "../lib/ThemeContext";
+import { ThemeContext } from "../lib/ThemeContext";
+import { Theme } from "@shared/types/theme";
 import { LOCAL_STORAGE_THEME_KEY } from "@shared/const/localstorage";
 
-const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.DARK;
+const savedTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
 
 interface ThemeProviderProps {
     children: ReactNode;
+    initialTheme?: Theme;
 }
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>(defaultTheme);
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
+    const [theme, setTheme] = useState<Theme>(initialTheme || savedTheme || Theme.DARK);
 
     const defaultProps = useMemo(
         () => ({
@@ -18,6 +20,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         }),
         [theme],
     );
+
     const applyTheme = (newTheme: Theme) => {
         document.body.classList.add("disable-transitions");
         document.body.setAttribute("data-theme", newTheme);

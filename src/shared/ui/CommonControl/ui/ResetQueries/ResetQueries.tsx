@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 import { Button } from "antd";
 import { ReloadOutlined } from "@ant-design/icons";
-import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 
 interface ResetQueriesButtonProps {
     updateSearchParams: UpdateSearchParamsType;

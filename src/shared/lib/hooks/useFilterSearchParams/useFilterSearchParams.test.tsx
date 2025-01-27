@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react";
-import { useFilterSearchParams } from "./useFilterSearchParams";
 import { MemoryRouter } from "react-router-dom";
 import { describe, it, expect } from "vitest";
+import { useFilterSearchParams } from "./useFilterSearchParams";
 
 describe("useFilterSearchParams", () => {
     const wrapper = ({ children }: { children: React.ReactNode }) => (

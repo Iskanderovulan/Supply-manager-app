@@ -1,4 +1,13 @@
 import { FC } from "react";
+import { Flex } from "antd";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import {
+    ResetQueries,
+    SortByDate,
+    PaginationControl,
+    ItemsPerPageControl,
+    Search,
+} from "@shared/ui/CommonControl";
 import {
     useGetColorsQuery,
     ColorCreate,
@@ -9,15 +18,6 @@ import {
     useColorData,
     useColorFilters,
 } from "@entities/Color";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import {
-    ResetQueries,
-    SortByDate,
-    PaginationControl,
-    ItemsPerPageControl,
-    Search,
-} from "@shared/ui/CommonControl";
-import { Flex } from "antd";
 import cls from "./Color.module.scss";
 
 export const Color: FC = () => {

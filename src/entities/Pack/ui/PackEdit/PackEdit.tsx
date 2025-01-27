@@ -1,15 +1,15 @@
 import { FC, useEffect } from "react";
 import { Modal, Button } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { useModal } from "@shared/lib/hooks/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
-import { PackSchema } from "@entities/Pack/model/types/packSchema";
-import { useUpdatePackMutation } from "@entities/Pack/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { editPackFormConfig } from "@entities/Pack/model/config/editPackFormConfig";
 import { TranslationId } from "@shared/const/translation";
-import { useTranslation } from "react-i18next";
+import { PackSchema } from "@entities/Pack/model/types/packSchema";
+import { useUpdatePackMutation } from "@entities/Pack/api";
+import { editPackFormConfig } from "@entities/Pack/config/editPackFormConfig";
 
 interface PackEditProps {
     pack: PackSchema;

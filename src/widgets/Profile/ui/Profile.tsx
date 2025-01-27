@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Flex } from "antd";
 import {
     ProfileForm,
     ProfileInfo,
@@ -6,7 +7,6 @@ import {
     ProfileCrumb,
     useGetUserQuery,
 } from "@entities/Profile";
-import { Flex } from "antd";
 import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useModal } from "@shared/lib/hooks/useModal";

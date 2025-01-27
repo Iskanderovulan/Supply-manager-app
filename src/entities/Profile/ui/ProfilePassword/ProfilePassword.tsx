@@ -1,12 +1,12 @@
 import { FC, memo } from "react";
 import { Form, Input, Button, Card, Typography } from "antd";
-import { useChangePasswordMutation } from "@entities/Profile/api";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { passwordPattern } from "@shared/lib/validators/authValidators";
 import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
+import { useChangePasswordMutation } from "@entities/Profile/api";
 
 const { Title } = Typography;
 

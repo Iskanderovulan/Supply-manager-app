@@ -1,4 +1,15 @@
 import { FC } from "react";
+import { Flex } from "antd";
+import {
+    ResetQueries,
+    SortByDate,
+    PaginationControl,
+    ItemsPerPageControl,
+    Search,
+} from "@shared/ui/CommonControl";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import { Loader } from "@shared/ui/Loader";
+import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import {
     ProductCreate,
     ProductsTable,
@@ -10,17 +21,6 @@ import {
     useProductFilters,
     useProductData,
 } from "@entities/Product";
-import {
-    ResetQueries,
-    SortByDate,
-    PaginationControl,
-    ItemsPerPageControl,
-    Search,
-} from "@shared/ui/CommonControl";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import { Loader } from "@shared/ui/Loader";
-import { ErrorMessage } from "@shared/ui/ErrorMessage";
-import { Flex } from "antd";
 import cls from "./Product.module.scss";
 
 export const Product: FC = () => {

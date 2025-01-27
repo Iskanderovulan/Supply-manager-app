@@ -1,14 +1,14 @@
 import { FC, memo } from "react";
 import { Dropdown, Button, Space } from "antd";
+import type { MenuProps } from "antd";
 import { BarsOutlined } from "@ant-design/icons";
+import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { spacingActions } from "../model/slice/spacingSlice";
 import { spacingOptions } from "../model/const/spacingOptions";
 import { selectSpacing } from "../model/selector/spacingSelectors";
-import { useTranslation } from "react-i18next";
-import type { MenuProps } from "antd";
-import classNames from "classnames";
 import cls from "./RowDensity.module.scss";
 
 export const RowDensity: FC = memo(() => {

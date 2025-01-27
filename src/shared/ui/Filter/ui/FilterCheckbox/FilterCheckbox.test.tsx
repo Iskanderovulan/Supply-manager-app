@@ -1,10 +1,10 @@
 import { render, fireEvent } from "@testing-library/react";
 import { describe, it, vi, expect, beforeEach } from "vitest";
+import { mockT } from "@shared/lib/tests/mockT";
 import { FilterCheckbox } from "./FilterCheckbox";
 import { FilterConfig } from "../../model/types/filterConfig";
 import { Value } from "../../model/types/valueGroup";
 import { FilterType } from "../../model/types/filterConfig";
-import { mockT } from "@shared/lib/tests/mockT";
 
 const mockFilter: FilterConfig = {
     label: "testFilter",

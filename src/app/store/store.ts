@@ -1,4 +1,3 @@
-// store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from "./rootReducer";
 import { baseApi } from "@shared/api/rtkApi";

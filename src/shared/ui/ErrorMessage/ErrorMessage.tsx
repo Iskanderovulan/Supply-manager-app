@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { CustomError } from "@shared/types/error";
 import { TranslationId } from "@shared/const/translation";
 
-interface ErrorMessageProps {
+export interface ErrorMessageProps {
     error: unknown;
 }
 

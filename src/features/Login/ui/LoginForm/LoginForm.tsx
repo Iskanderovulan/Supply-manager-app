@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { Form, Input, Button, Typography, Checkbox } from "antd";
 import { useTranslation } from "react-i18next";
-import { LoginSchema } from "@features/Login/model/loginSchema";
 import { emailPattern, passwordPattern } from "@shared/lib/validators/authValidators";
 import { TranslationId } from "@shared/const/translation";
-import { RememberMeSchema } from "@entities/Auth";
 import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
+import { RememberMeSchema } from "@entities/Auth";
+import { LoginSchema } from "@features/Login/model/loginSchema";
 import cls from "./LoginForm.module.scss";
 
 const { Title } = Typography;
 
-interface LoginFormProps {
+export interface LoginFormProps {
     onFinish: (values: LoginSchema & RememberMeSchema) => void;
     isLoading: boolean;
 }
