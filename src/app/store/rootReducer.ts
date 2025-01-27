@@ -1,4 +1,3 @@
-// rootReducer.ts
 import { combineReducers } from "@reduxjs/toolkit";
 import { authReducer } from "@entities/Auth";
 import { baseApi } from "@shared/api/rtkApi";

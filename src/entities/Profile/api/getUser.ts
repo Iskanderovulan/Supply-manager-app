@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { UserSchema } from "../model/types/userSchema";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
 import { TagTypes } from "@shared/const/tagTypes";
+import { UserSchema } from "../model/types/userSchema";
 
 export const getUserApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({

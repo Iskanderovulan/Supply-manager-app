@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { ExcelGenerator } from "@shared/ui/CommonControl";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
-import { ExcelConfigType } from "@entities/Color/model/config/excelColorConfig";
+import { ExcelGenerator } from "@shared/ui/CommonControl";
+import { ExcelConfigType, excelColorConfig } from "@entities/Color/config/excelColorConfig";
 import { ColorSchema } from "@entities/Color/model/types/colorSchema";
-import { excelColorConfig } from "@entities/Color/model/config/excelColorConfig";
 
 interface ColorExcelProps {
     results: ColorSchema[];

@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import ThemeProvider from "./ThemeProvider";
-import { ThemeContext, Theme } from "../lib/ThemeContext";
+import { ThemeContext } from "../lib/ThemeContext";
+import { Theme } from "@shared/types/theme";
 import { LOCAL_STORAGE_THEME_KEY } from "@shared/const/localstorage";
 import userEvent from "@testing-library/user-event";
 import { mockLocalStorage } from "@shared/lib/tests/mockLocalStorage";

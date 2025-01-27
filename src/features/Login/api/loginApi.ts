@@ -1,7 +1,7 @@
 import { authApi } from "@shared/api/authApi";
-import { LoginSchema } from "../model/loginSchema";
-import { UserData } from "@entities/Auth/model/types/authSchema";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { UserData } from "@entities/Auth/model/types/authSchema";
+import { LoginSchema } from "../model/loginSchema";
 
 export const loginApi = authApi.injectEndpoints({
     endpoints: (builder) => ({

@@ -1,10 +1,12 @@
 .sidebar {
     box-shadow: var(--layout-shadow);
+    background-color: var(--secondary-bg-color);
     height: 100vh;
     overflow-y: auto;
     z-index: 2;
-    &.sidebar .custom-menu {
-        border-inline-end: 1px solid var(--secondary-bg-color);
+    .customMenu {
+        // Very specific override required to change Ant Design's styles
+        border-inline-end: 1px solid var(--secondary-bg-color) !important;
     }
     .title {
         margin: var(--margin-small) 0 var(--margin-small) var(--margin-small);

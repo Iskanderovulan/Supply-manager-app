@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 import { Button, Tooltip } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
-import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 
 enum SortOrder {
     ASC = "asc",

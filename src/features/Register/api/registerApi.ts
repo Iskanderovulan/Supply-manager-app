@@ -1,7 +1,7 @@
 import { authApi } from "@shared/api/authApi";
-import { RegisterSchema } from "../model/registerSchema";
-import { UserData } from "@entities/Auth/model/types/authSchema";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { UserData } from "@entities/Auth/model/types/authSchema";
+import { RegisterSchema } from "../model/registerSchema";
 
 export const registerApi = authApi.injectEndpoints({
     endpoints: (builder) => ({

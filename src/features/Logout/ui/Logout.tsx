@@ -1,14 +1,14 @@
 import { FC } from "react";
-import { useLogoutMutation } from "../api";
-import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
+import { TranslationId } from "@shared/const/translation";
 import { selectRefreshToken } from "@entities/Auth";
 import { useLogoutEffect } from "@entities/Auth";
-import { TranslationId } from "@shared/const/translation";
+import { useLogoutMutation } from "../api";
 
 export const Logout: FC = () => {
     const [logout, { isLoading, isError, isSuccess, error, reset }] = useLogoutMutation();

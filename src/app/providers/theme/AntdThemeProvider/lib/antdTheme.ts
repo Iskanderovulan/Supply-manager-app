@@ -59,9 +59,9 @@ export const defaultTheme = {
             hoverBorderColor: "var(--border-selected-color)",
             optionSelectedColor: "var(--inverse-color)",
             optionSelectedBg: "var(--select-selected-bg)",
+            optionActiveBg: "var(--select-active-bg)",
             colorText: "var(--inverse-color)",
             colorBgElevated: "var(--select-dropdown-bg)",
-            optionActiveBg: "var(--select-active-bg)",
             colorTextPlaceholder: "var(--border-color)",
         },
         Table: {

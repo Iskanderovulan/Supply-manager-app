@@ -1,12 +1,12 @@
 import { FC, useEffect } from "react";
 import { Form, Input, Button, Card, Typography } from "antd";
-import { useUpdateUserMutation } from "@entities/Profile/api";
+import { useTranslation } from "react-i18next";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { emailPattern, namePattern } from "@shared/lib/validators/authValidators";
 import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
+import { useUpdateUserMutation } from "@entities/Profile/api";
 
 const { Title } = Typography;
 

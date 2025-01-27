@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { ColorSchema } from "../model/types/colorSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { ColorSchema } from "../model/types/colorSchema";
 
 export const deleteColorApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({

@@ -1,5 +1,4 @@
 body[data-theme="light"] {
-    /* Общие переменные для повторяющихся цветов */
     --shared-pink: #ffc1cc;
     --shared-hover-pink: #ff99aa;
     --shared-white: #ffffff;
@@ -10,7 +9,6 @@ body[data-theme="light"] {
     --shared-accent: #f7d2c7;
     --shared-chart-bg: #c7c2c278;
 
-    /* Ваши переменные */
     --bg-color: #eaeaea;
     --secondary-bg-color: var(--shared-white);
     --primary-color: #6d27e8;
@@ -34,23 +32,19 @@ body[data-theme="light"] {
     --sidebar-selected-text-color: #20232a;
     --sidebar-hover-bg-color: var(--shared-hover-pink);
     --input-placeholder-color: var(--shared-gray);
-    --select-dropdown-bg: #e7d3e9;
-    --select-active-bg: #dcbfde;
-    --select-selected-bg: #cfa7d3;
+    --select-dropdown-bg: #fffefe;
+    --select-active-bg: var(--shared-pink);
+    --select-selected-bg: var(--shared-pink);
     --select-placeholder-selected: var(--shared-pink);
     --loader-color: var(--shared-pink);
-
     --table-bg: var(--shared-white);
     --table-text: var(--shared-black);
     --table-header-bg: #d5d2d2;
     --table-border: #d9d9d9;
     --table-row-hover: #f5f5f5;
-
     --active-color: var(--shared-pink);
     --checkbox-color: #f2eeee;
-
     --rail-bg: var(--shared-chart-bg);
     --track-bg: var(--shared-pink);
-
     --chart-bg: var(--shared-chart-bg);
 }

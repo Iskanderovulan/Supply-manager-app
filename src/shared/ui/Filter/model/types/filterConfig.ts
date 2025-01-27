@@ -8,6 +8,6 @@ export interface FilterConfig {
     label: string;
     key: string;
     options?: { label: string; value: string | number }[];
-    min?: number; // Минимальное значение для диапазона
-    max?: number; // Максимальное значение для диапазона
+    min?: number;
+    max?: number;
 }

@@ -1,4 +1,13 @@
 import { FC } from "react";
+import { Flex } from "antd";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import {
+    ResetQueries,
+    SortByDate,
+    PaginationControl,
+    ItemsPerPageControl,
+    Search,
+} from "@shared/ui/CommonControl";
 import {
     MaterialCreate,
     MaterialsTable,
@@ -9,15 +18,6 @@ import {
     useMaterialData,
     useGetMaterialsQuery,
 } from "@entities/Material";
-import { Flex } from "antd";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import {
-    ResetQueries,
-    SortByDate,
-    PaginationControl,
-    ItemsPerPageControl,
-    Search,
-} from "@shared/ui/CommonControl";
 import cls from "./Material.module.scss";
 
 export const Material: FC = () => {

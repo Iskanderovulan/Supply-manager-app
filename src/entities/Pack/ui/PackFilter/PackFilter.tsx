@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Filter } from "@shared/ui/Filter";
-import { filterPackConfig } from "@entities/Pack/model/config/filterPackConfig";
-import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
-import { PackFiltersSchema } from "@entities/Pack/model/types/packFiltersSchema";
+import { Filter } from "@shared/ui/Filter";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
+import { filterPackConfig } from "@entities/Pack/config/filterPackConfig";
+import { PackFiltersSchema } from "@entities/Pack/model/types/packFiltersSchema";
 
 interface PackFilterProps {
     updateSearchParams: UpdateSearchParamsType;

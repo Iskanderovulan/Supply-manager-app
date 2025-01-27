@@ -1,4 +1,3 @@
-// AntdThemeProvider.tsx
 import { ReactNode, FC } from "react";
 import { ConfigProvider } from "antd";
 import { defaultTheme } from "../lib/antdTheme";

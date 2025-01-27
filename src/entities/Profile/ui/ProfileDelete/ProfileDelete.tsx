@@ -1,11 +1,11 @@
 import { FC, memo } from "react";
 import { Modal, Button } from "antd";
+import { useTranslation } from "react-i18next";
 import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons";
-import { useDeleteUserMutation } from "@entities/Profile/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import { useDeleteUserMutation } from "@entities/Profile/api";
 import { useLogoutEffect } from "@entities/Auth";
 
 interface ProfileDeleteProps {

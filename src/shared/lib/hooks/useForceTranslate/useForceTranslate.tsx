@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { FormInstance } from "antd";
 import { InternalNamePath } from "antd/es/form/interface";
+import { useTranslation } from "react-i18next";
 
 export const useForceTranslate = <T,>({ form }: { form: FormInstance<T> }) => {
     const { i18n } = useTranslation();

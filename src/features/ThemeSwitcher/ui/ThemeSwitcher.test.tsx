@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { Theme, useTheme } from "@app/providers/theme/ThemeProvider";
+import { useTheme } from "@app/providers/theme/ThemeProvider";
+import { Theme } from "@shared/types/theme";
 
 type MockedFunctionType = ReturnType<typeof vi.fn>;
 

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useModal } from "@shared/lib/hooks/useModal";
 import cls from "./ColumnManager.module.scss";
 
-interface ColumnManagerProps {
+export interface ColumnManagerProps {
     columnsConfig: Array<{ key: string; title: string }>;
     visibleColumns: string[];
     onVisibleColumnsChange: (visibleColumns: string[]) => void;

@@ -1,13 +1,5 @@
-import {
-    getRouteProduct,
-    getRouteLogin,
-    getRouteRegister,
-    getRouteMaterial,
-    getRouteColor,
-    getRoutePack,
-    getRouteProfile,
-    getRouteChart,
-} from "@shared/const/router";
+import { Link } from "react-router-dom";
+import { TFunction } from "i18next";
 import {
     UserOutlined,
     RadarChartOutlined,
@@ -19,8 +11,16 @@ import {
     BgColorsOutlined,
     AppstoreOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { TFunction } from "i18next";
+import {
+    getRouteProduct,
+    getRouteLogin,
+    getRouteRegister,
+    getRouteMaterial,
+    getRouteColor,
+    getRoutePack,
+    getRouteProfile,
+    getRouteChart,
+} from "@shared/const/router";
 
 interface MenuItemsArgs {
     global: TFunction;

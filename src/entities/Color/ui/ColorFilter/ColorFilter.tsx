@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Filter } from "@shared/ui/Filter";
-import { filterColorConfig } from "@entities/Color/model/config/filterColorConfig";
-import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
+import { Filter } from "@shared/ui/Filter";
 import { TranslationId } from "@shared/const/translation";
-import { ColorFiltersSchema } from "@entities/Color/model/types/colorFiltersSchema";
 import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
+import { filterColorConfig } from "@entities/Color/config/filterColorConfig";
+import { ColorFiltersSchema } from "@entities/Color/model/types/colorFiltersSchema";
 
 interface ColorFilterProps {
     updateSearchParams: UpdateSearchParamsType;

@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { Breadcrumb, Flex } from "antd";
-import { useTranslation } from "react-i18next";
 import { UserOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { CrumbItem } from "@shared/ui/CrumbItem/CrumbItem";
 

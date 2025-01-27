@@ -1,13 +1,13 @@
 import { useEffect, ReactNode } from "react";
 import { Form } from "antd";
+import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 import { FormHeader } from "../FormHeader/FormHeader";
 import { FormField } from "../FormField/FormField";
 import { FormButtons } from "../FormButtons/FormButtons";
 import { FormRecord, RecursivePartial } from "../../model/types/types";
-import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 import cls from "./DynamicForm.module.scss";
 
-interface DynamicFormProps<T> {
+export interface DynamicFormProps<T> {
     config: {
         fields: {
             label: string;
