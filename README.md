@@ -1,8 +1,8 @@
-# CRM Management System
+# Packing supply management app
 
 ## Overview
 
-The **CRM Management System** is a high-performance, scalable, and modular web application built using modern frontend technologies. The project follows industry best practices, adhering to **clean architecture, feature-sliced design (FSD)**, and **enterprise-grade TypeScript and React development standards**.
+The **Packing supply management app** is a high-performance, scalable, and modular web application built using modern frontend technologies. The project follows industry best practices, adhering to **clean architecture, feature-sliced design (FSD)**, and **enterprise-grade TypeScript and React development standards**.
 
 It is designed for **product and inventory management**, providing extensive capabilities such as **dynamic filtering, pagination, sorting, role-based access control, API-driven data interactions**, and **real-time updates**. The system ensures an intuitive UI/UX through **Ant Design components**, **theme customization**, and **globalization (i18n support)**.
 
