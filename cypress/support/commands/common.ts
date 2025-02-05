@@ -1,11 +1,12 @@
 import { LOCAL_STORAGE_TOKEN_KEY } from "@shared/const/localstorage";
+import { BASE_URL } from "@shared/config/apiConfig/apiConfig";
 import { User } from "@shared/types/auth";
 
 export const login = (email: string, password: string) => {
     return cy
         .request({
             method: "POST",
-            url: "http://localhost:5050/v1/auth/login",
+            url: `${BASE_URL}auth/login`,
             body: {
                 email,
                 password,
