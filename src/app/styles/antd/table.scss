@@ -28,3 +28,7 @@ body .ant-table-thead > tr > th {
 .ant-empty .ant-empty-description {
     color: var(--inverse-color);
 }
+// Very specific override required to change Ant Design's styles
+.ant-table-wrapper .ant-table {
+    scrollbar-color: inherit !important;
+}

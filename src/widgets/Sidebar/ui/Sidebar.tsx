@@ -38,7 +38,6 @@ export const Sidebar = () => {
                 CRM
             </Title>
             <Menu
-                defaultOpenKeys={["sub1"]}
                 selectedKeys={[pathname]}
                 mode="inline"
                 className={cls.customMenu}
