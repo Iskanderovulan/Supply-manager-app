@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:5050/v1/";
+export const BASE_URL = "https://admin-panel-backend-1egy.onrender.com/v1/";
 
 const API_PATH = {
     AUTH: "auth",

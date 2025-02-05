@@ -1,6 +1,6 @@
 describe("Product CRUD", () => {
     beforeEach(() => {
-        cy.login("ronaldo@gmail.com", "Qwerty1!");
+        cy.login("admin@gmail.com", "Qwerty1!");
         cy.visit("/");
     });
 

@@ -31,7 +31,7 @@ describe("App Routing", () => {
     });
 
     it("should allow authenticated users to access protected routes", () => {
-        cy.login("ronaldo@gmail.com", "Qwerty1!");
+        cy.login("admin@gmail.com", "Qwerty1!");
 
         const protectedRoutes = [
             { path: getRouteProduct(), testId: "ProductWidget" },
@@ -61,7 +61,7 @@ describe("App Routing", () => {
     });
 
     it("should redirect authenticated users away from login/register", () => {
-        cy.login("ronaldo@gmail.com", "Qwerty1!");
+        cy.login("admin@gmail.com", "Qwerty1!");
 
         cy.visit(getRouteLogin());
         cy.url().should("not.include", getRouteLogin());
