@@ -10,10 +10,6 @@ import {
 } from "@shared/const/router";
 
 describe("App Routing", () => {
-    beforeEach(() => {
-        cy.visit(getRouteProduct());
-    });
-
     it("should redirect unauthenticated users to /login when accessing protected routes", () => {
         const protectedRoutes = [
             getRouteProduct(),
