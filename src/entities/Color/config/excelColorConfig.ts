@@ -3,7 +3,6 @@ import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
 import { ColorSchema } from "../model/types/colorSchema";
 import { intensityOptions } from "../model/const/intensityOptions";
 
-
 export const excelColorConfig = (item: ColorSchema, t: TFunction, lang: string) => {
     const intensityLabel = intensityOptions.find(
         (option) => option.value === String(item.intensity),

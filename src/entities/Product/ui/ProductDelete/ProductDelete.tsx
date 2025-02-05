@@ -39,7 +39,7 @@ export const ProductDelete: FC<ProductDeleteProps> = ({ product }) => {
             okType: "danger",
             cancelText: global("cancel"),
             className: "modal-custom",
-            okButtonProps: { "data-testid": "confirm-delete" }, 
+            okButtonProps: { "data-testid": "confirm-delete" },
             onOk: handleDelete,
         });
     };
