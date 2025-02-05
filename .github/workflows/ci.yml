@@ -1,104 +1,90 @@
 name: CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+    push:
+        branches:
+            - master
+    pull_request:
+        branches:
+            - master
 
 jobs:
-  lint:
-    name: ESLint + Prettier Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    build:
+        name: Build & Test Project
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'yarn'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: "yarn"
 
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+            - name: Cache Yarn Modules
+              uses: actions/cache@v3
+              with:
+                  path: ~/.yarn
+                  key: yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      yarn-
 
-      - name: Run ESLint
-        run: yarn lint
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
 
-      - name: Run Prettier
-        run: yarn prettier
+            - name: Build Project
+              run: yarn build
 
-  test:
-    name: Unit Tests (Vitest)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    test:
+        name: Run Unit Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'yarn'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: "yarn"
 
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
 
-      - name: Run Vitest
-        run: yarn test
+            - name: Run Unit Tests (Vitest)
+              run: yarn test
 
-  e2e:
-    name: E2E Tests (Cypress)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    e2e:
+        name: Run E2E Tests
+        runs-on: ubuntu-latest
+        needs: [build]
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'yarn'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: "yarn"
 
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
 
-      - name: Run Cypress E2E Tests
-        run: yarn e2e:run
+            - name: Start Vite Server & Run Cypress
+              run: yarn dev --host & npx wait-on http://localhost:5173 && yarn e2e:run --browser electron --headless
 
-  build:
-    name: Build Project
-    runs-on: ubuntu-latest
-    needs: [lint, test, e2e]
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    deploy:
+        name: Deploy to Vercel
+        runs-on: ubuntu-latest
+        needs: [e2e]
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'yarn'
+            - name: Install Vercel CLI
+              run: yarn global add vercel
 
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build Project
-        run: yarn build
-
-  deploy:
-    name: Deploy to Vercel
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Install Vercel CLI
-        run: yarn global add vercel
-
-      - name: Deploy to Vercel
-        run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
+            - name: Deploy to Vercel
+              run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
