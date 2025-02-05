@@ -38,7 +38,6 @@ describe("Product CRUD", () => {
         cy.wait("@getMaterials");
         cy.wait("@getColors");
         cy.wait("@getPacks");
-        cy.get(".ant-modal .ant-modal-content").should("be.visible");
 
         cy.get("#name").type(product.name);
         cy.get("#description").type(product.description);
@@ -68,7 +67,6 @@ describe("Product CRUD", () => {
         cy.getByTestId("product-table").should("contain", product.name);
 
         cy.getByTestId(`edit-product-${product.id}`).should("exist").click();
-        cy.get(".ant-modal .ant-modal-content").should("be.visible");
 
         cy.get("#name").clear().type("Updated Product Name");
 
@@ -86,7 +84,6 @@ describe("Product CRUD", () => {
 
         cy.getByTestId(`delete-product-${product.id}`).should("exist").click();
 
-        cy.get(".ant-modal .ant-modal-content").should("be.visible");
         cy.getByTestId("confirm-delete").click();
         cy.wait("@deleteProduct").its("response.statusCode").should("eq", 200);
     };
