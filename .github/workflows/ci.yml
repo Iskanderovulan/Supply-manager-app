@@ -100,11 +100,11 @@ jobs:
                   name: build
                   path: dist/
 
-            - name: Serve Build Locally
-              run: npx serve dist -l 5000 &
+            - name: Serve Build Locally (Vite)
+              run: yarn preview --host &
 
             - name: Wait for Server to Start
-              run: npx wait-on http://localhost:5000
+              run: npx wait-on http://localhost:4173
 
             - name: Run Cypress E2E Tests (excluding product.cy.ts)
-              run: yarn cypress run --config baseUrl=http://localhost:5000 --spec "cypress/e2e/**/*.cy.ts,!cypress/e2e/product.cy.ts"
+              run: yarn cypress run --config baseUrl=http://localhost:4173 --spec "cypress/e2e/**/*.cy.ts,!cypress/e2e/product.cy.ts"
