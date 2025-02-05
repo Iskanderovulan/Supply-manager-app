@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { useGetDetailsQuery, DetailsInfo, DetailsCrumb } from "@entities/Details";
-import { Alert } from "antd";
 import { useParams } from "react-router-dom";
+import { Alert } from "antd";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
+import { useGetDetailsQuery, DetailsInfo, DetailsCrumb } from "@entities/Details";
 
 export const Details: FC = () => {
     const { id } = useParams<{ id: string }>();

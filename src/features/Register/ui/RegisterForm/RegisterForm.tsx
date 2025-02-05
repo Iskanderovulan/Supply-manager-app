@@ -1,10 +1,11 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
-import { RegisterSchema } from "@features/Register/model/types/registerSchema";
 import { emailPattern, passwordPattern, namePattern } from "@shared/lib/validators/authValidators";
+import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 import { RememberMeSchema } from "@entities/Auth";
+import { RegisterSchema } from "@features/Register/model/registerSchema";
 import cls from "./RegisterForm.module.scss";
 
 const { Title } = Typography;
@@ -15,20 +16,20 @@ interface RegisterFormProps {
 }
 
 export const RegisterForm: FC<RegisterFormProps> = ({ onFinish, isLoading }) => {
-    const { t, i18n } = useTranslation(TranslationId.AUTH);
+    const { t } = useTranslation(TranslationId.AUTH);
     const [form] = Form.useForm<RegisterSchema & RememberMeSchema>();
 
-    useEffect(() => {
-        form.getFieldsError().forEach(({ name, errors }) => {
-            if (errors.length > 0) {
-                form.validateFields([name]);
-            }
-        });
-    }, [i18n.language, form]);
+    useForceTranslate({ form });
 
     return (
-        <div className={cls.wrap}>
-            <Form layout="vertical" form={form} onFinish={onFinish} className={cls.content}>
+        <div className={cls.wrap} data-testid="RegisterForm">
+            <Form
+                layout="vertical"
+                form={form}
+                onFinish={onFinish}
+                className={cls.content}
+                initialValues={{ rememberMe: true }}
+            >
                 <Title className={cls.title} level={3}>
                     {t("registerNewAccount")}
                 </Title>

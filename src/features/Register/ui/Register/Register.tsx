@@ -1,11 +1,11 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
-import { authActions } from "@entities/Auth";
-import { useRegisterMutation } from "@features/Register/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
+import { authActions } from "@entities/Auth";
+import { useRegisterMutation } from "@features/Register/api";
+import { RegisterSchema } from "@features/Register/model/registerSchema";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
-import { RegisterSchema } from "@features/Register/model/types/registerSchema";
 
 export const Register: FC = () => {
     const dispatch = useAppDispatch();

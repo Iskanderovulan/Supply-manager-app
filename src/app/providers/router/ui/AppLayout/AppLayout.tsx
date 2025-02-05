@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import Layout from "antd/es/layout/layout";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "@widgets/Sidebar";
 import { Navbar } from "@widgets/Navbar";
 import { Loader } from "@shared/ui/Loader";
+import Layout from "antd/es/layout/layout";
 import cls from "./AppLayout.module.scss";
 
 const AppLayout = () => {

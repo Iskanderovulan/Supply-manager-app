@@ -1,8 +1,8 @@
 import { baseApi } from "@shared/api/rtkApi";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
-import { ProductResponse } from "../model/types/ProductResponse";
 import { GetCommonParams } from "@shared/ui/CommonControl";
+import { ProductResponse } from "../model/types/ProductResponse";
 
 interface GetProductsParams extends GetCommonParams {
     materialIds?: string[];

@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
-import { RootState } from "@app/store/store";
-import { authActions } from "@entities/Auth";
 import { BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query";
 import { Tokens } from "@shared/types/auth";
 import { TagTypes } from "@shared/const/tagTypes";
 import { BASE_URL, API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { authActions } from "@entities/Auth";
+import { RootState } from "@app/store/store";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,

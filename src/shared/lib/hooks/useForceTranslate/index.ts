@@ -1,0 +1,1 @@
+export { useForceTranslate } from "./useForceTranslate";

@@ -12,7 +12,7 @@ export const ErrorScreen = () => {
     };
 
     return (
-        <Flex align="center" justify="center" vertical className={cls.ErrorPage}>
+        <Flex align="center" justify="center" vertical className={cls.ErrorScreen}>
             <Text>{global("errorScreenText")}</Text>
             <Button onClick={reloadPage}>{global("errorScreenBtn")}</Button>
         </Flex>

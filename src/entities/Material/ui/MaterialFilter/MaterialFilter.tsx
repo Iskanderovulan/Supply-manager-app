@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Filter } from "@shared/ui/Filter";
-import { filterMaterialConfig } from "@entities/Material/model/config/filterMaterialConfig";
-import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { useTranslation } from "react-i18next";
+import { Filter } from "@shared/ui/Filter";
+import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams";
 import { TranslationId } from "@shared/const/translation";
-import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
 import { getUpdatedParams } from "@shared/lib/helpers/getUpdatedParams/getUpdatedParams";
+import { filterMaterialConfig } from "@entities/Material/config/filterMaterialConfig";
+import { MaterialFiltersSchema } from "@entities/Material/model/types/materialFiltersSchema";
 
 interface MaterialFilterProps {
     updateSearchParams: UpdateSearchParamsType;

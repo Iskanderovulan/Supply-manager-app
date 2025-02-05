@@ -1,15 +1,15 @@
 import { FC, useEffect } from "react";
 import { Modal, Button } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { useModal } from "@shared/lib/hooks/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
-import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
-import { useUpdateMaterialMutation } from "@entities/Material/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { editMaterialFormConfig } from "@entities/Material/model/config/editMaterialFormConfig";
 import { TranslationId } from "@shared/const/translation";
-import { useTranslation } from "react-i18next";
+import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
+import { useUpdateMaterialMutation } from "@entities/Material/api";
+import { editMaterialFormConfig } from "@entities/Material/config/editMaterialFormConfig";
 
 interface MaterialEditProps {
     material: MaterialSchema;
@@ -48,6 +48,7 @@ export const MaterialEdit: FC<MaterialEditProps> = ({ material }) => {
                 title={t("updateMaterial")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

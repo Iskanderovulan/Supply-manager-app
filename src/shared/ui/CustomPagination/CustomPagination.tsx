@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Pagination } from "antd";
 import { PaginationProps } from "antd/lib/pagination";
 
-interface CustomPaginationProps extends PaginationProps {
+export interface CustomPaginationProps extends PaginationProps {
     totalResults: number;
     currentPage: number;
     onPageChange: (page: number, limit: number) => void;

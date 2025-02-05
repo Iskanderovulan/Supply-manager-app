@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Breadcrumb, Flex, Typography } from "antd";
-import { useTranslation } from "react-i18next";
 import { PieChartOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { CrumbItem } from "@shared/ui/CrumbItem/CrumbItem";
-import { useNavigate } from "react-router-dom";
 import { getRouteProduct } from "@shared/const/router";
 import cls from "./DetailsCrumb.module.scss";
 

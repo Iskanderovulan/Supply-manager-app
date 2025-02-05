@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Modal, Button } from "antd";
 import { ExclamationCircleOutlined, DeleteOutlined } from "@ant-design/icons";
-import { ColorSchema } from "@entities/Color/model/types/colorSchema";
-import { useDeleteColorMutation } from "@entities/Color/api";
+import { useTranslation } from "react-i18next";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import { ColorSchema } from "@entities/Color/model/types/colorSchema";
+import { useDeleteColorMutation } from "@entities/Color/api";
 
 interface ColorDeleteProps {
     color: ColorSchema;

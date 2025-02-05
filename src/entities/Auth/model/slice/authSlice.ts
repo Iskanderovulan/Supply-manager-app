@@ -35,7 +35,6 @@ const authSlice = createSlice({
             state.refreshToken = tokens.refresh.token;
             state.isAuthenticated = true;
 
-            // Сохраняем токены в localStorage или sessionStorage на основе rememberMe
             if (state.rememberMe) {
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, tokens.access.token);
                 localStorage.setItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY, tokens.refresh.token);
@@ -54,7 +53,6 @@ const authSlice = createSlice({
             state.refreshToken = null;
             state.isAuthenticated = false;
 
-            // Удаляем только из того хранилища, которое соответствует rememberMe
             if (state.rememberMe) {
                 localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
                 localStorage.removeItem(LOCAL_STORAGE_REFRESH_TOKEN_KEY);
@@ -62,7 +60,7 @@ const authSlice = createSlice({
                 sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
                 sessionStorage.removeItem(SESSION_STORAGE_REFRESH_TOKEN_KEY);
             }
-            state.rememberMe = false; // Сбрасываем rememberMe после выхода
+            state.rememberMe = false;
         },
 
         setRememberMe: (state, action: PayloadAction<boolean>) => {

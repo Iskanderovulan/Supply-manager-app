@@ -1,4 +1,4 @@
-import { FC, memo, useState, useEffect } from "react";
+import { FC, memo, useState } from "react";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
@@ -17,17 +17,17 @@ export const Search: FC<SearchProps> = memo((props) => {
     const { t: global } = useTranslation();
     const [inputValue, setInputValue] = useState(searchTerm);
 
-    const debouncedValue = useDebounce(inputValue, 500);
-
-    useEffect(() => {
+    const debouncedUpdateSearchParams = useDebounce((value: string) => {
         updateSearchParams({
             page: null,
-            name: getUpdatedValue(debouncedValue, ""),
+            name: getUpdatedValue(value, ""),
         });
-    }, [debouncedValue, updateSearchParams]);
+    }, 500);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value);
+        const value = e.target.value;
+        setInputValue(value);
+        debouncedUpdateSearchParams(value);
     };
 
     return (
