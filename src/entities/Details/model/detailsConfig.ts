@@ -1,5 +1,5 @@
-import { ProductSchema } from "@entities/Product";
 import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
+import { ProductSchema } from "@entities/Product";
 
 export const detailsConfig = (product: ProductSchema) => [
     { labelKey: "id", value: product.id },

@@ -1,5 +1,4 @@
 body[data-theme="dark"] {
-    /* Общие переменные для повторяющихся цветов */
     --shared-pink: #e60099;
     --shared-hover-pink: #bf006d;
     --shared-white: #ffffff;
@@ -10,7 +9,6 @@ body[data-theme="dark"] {
     --shared-placeholder-gray: #6e7a86;
     --shared-chart-bg: #666a6d;
 
-    /* Ваши переменные */
     --bg-color: var(--shared-gray);
     --secondary-bg-color: var(--shared-secondary-gray);
     --primary-color: #8c828b;
@@ -39,18 +37,14 @@ body[data-theme="dark"] {
     --select-selected-bg: #31343a;
     --select-placeholder-selected: var(--shared-pink);
     --loader-color: var(--shared-pink);
-
     --table-bg: #2d2d4d;
     --table-text: #d0d0d0;
     --table-header-bg: #2b2b3b;
     --table-border: #3d3d5c;
     --table-row-hover: #333354;
-
     --active-color: var(--shared-pink);
     --checkbox-color: var(--shared-white);
-
     --rail-bg: var(--shared-chart-bg);
     --track-bg: var(--shared-pink);
-
     --chart-bg: var(--shared-chart-bg);
 }

@@ -4,7 +4,7 @@ import { UpdateSearchParamsType } from "@shared/lib/hooks/useFilterSearchParams"
 import { getUpdatedValue } from "@shared/lib/helpers/getUpdatedValue/getUpdatedValue";
 import { defaultPageSizeOption } from "@shared/const/pageSizeOptions";
 
-interface ItemsPerPageControlProps {
+export interface ItemsPerPageControlProps {
     limit: number;
     updateSearchParams: UpdateSearchParamsType;
 }

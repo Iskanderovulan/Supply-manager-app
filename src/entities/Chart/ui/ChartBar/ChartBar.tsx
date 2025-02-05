@@ -9,9 +9,10 @@ import {
     Legend,
 } from "chart.js";
 import { Divider, Flex } from "antd";
-import { useTheme, Theme } from "@app/providers/theme/ThemeProvider";
-import cls from "./ChartBar.module.scss";
+import { useTheme } from "@app/providers/theme/ThemeProvider";
+import { Theme } from "@shared/types/theme";
 import { TFunction } from "i18next";
+import cls from "./ChartBar.module.scss";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 

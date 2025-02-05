@@ -21,7 +21,16 @@ export default defineConfig(({ mode }) => {
             __IS_DEV__: mode === "development",
         },
         optimizeDeps: {
-            exclude: ["recharts"], // или любые модули, вызывающие проблемы
+            exclude: ["recharts"],
+        },
+        test: {
+            globals: true,
+            environment: "jsdom",
+            setupFiles: "./src/setupTests.ts",
+            css: true,
+        },
+        server: {
+            host: true, // или '0.0.0.0'
         },
     };
 });

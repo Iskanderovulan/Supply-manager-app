@@ -1,0 +1,9 @@
+{
+    "id": "12345",
+    "name": "Test Product",
+    "description": "This is a test product",
+    "price": 99.99,
+    "material": { "id": "material-id-123", "name": "Plastic" },
+    "color": { "id": "color-id-456", "name": "Red" },
+    "pack": { "id": "pack-id-789", "name": "Box" }
+}

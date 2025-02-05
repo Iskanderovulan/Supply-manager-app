@@ -1,12 +1,9 @@
-// src/components/ProductExcel/ProductExcel.tsx
-
 import { FC } from "react";
-import { ExcelGenerator } from "@shared/ui/CommonControl";
 import { useTranslation } from "react-i18next";
+import { ExcelGenerator } from "@shared/ui/CommonControl";
 import { TranslationId } from "@shared/const/translation";
-import { ExcelConfigType } from "@entities/Product/model/config/excelProductConfig";
+import { ExcelConfigType, excelProductConfig } from "@entities/Product/config/excelProductConfig";
 import { ProductSchema } from "@entities/Product/model/types/ProductSchema";
-import { excelProductConfig } from "@entities/Product/model/config/excelProductConfig";
 
 interface ProductExcelProps {
     results: ProductSchema[];

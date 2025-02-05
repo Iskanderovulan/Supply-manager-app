@@ -4,7 +4,7 @@ import cls from "./CrumbItem.module.scss";
 
 const { Text } = Typography;
 
-interface CrumbItemProps {
+export interface CrumbItemProps {
     icon: ReactNode;
     text: string;
 }

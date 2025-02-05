@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Card, Space, Typography, Button } from "antd";
-import { ProfileDelete } from "../ProfileDelete/ProfileDelete";
 import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
+import { ProfileDelete } from "../ProfileDelete/ProfileDelete";
 import cls from "./ProfileInfo.module.scss";
 
 const { Text, Title } = Typography;

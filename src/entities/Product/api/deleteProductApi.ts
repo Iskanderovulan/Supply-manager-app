@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { ProductSchema } from "../model/types/ProductSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { ProductSchema } from "../model/types/ProductSchema";
 
 export const deleteProductApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({

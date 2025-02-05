@@ -1,21 +1,21 @@
 import { FC, useMemo } from "react";
-import { ProductSchema } from "@entities/Product/model/types/ProductSchema";
+import { Flex } from "antd";
+import { useTranslation } from "react-i18next";
 import { generateColumns } from "@shared/lib/helpers/generateColumns/generateColumns";
 import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
 import { TableComponent } from "@shared/ui/TableComponent";
-import { ProductEdit } from "../ProductEdit/ProductEdit";
-import { ProductDelete } from "../ProductDelete/ProductDelete";
-import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
-import { Flex } from "antd";
 import { ColumnManager } from "@shared/ui/ColumnManager";
 import { useColumns } from "@shared/lib/hooks/useColumns";
 import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { RowDensity, selectSpacing } from "@shared/ui/RowDensity";
+import { ProductSchema } from "@entities/Product/model/types/ProductSchema";
 import { ProductClassificatorsSchema } from "@entities/Product/model/types/ProductClassificatorsSchema";
 import { ProductNavigate } from "../ProductNavigate/ProductNavigate";
+import { ProductEdit } from "../ProductEdit/ProductEdit";
+import { ProductDelete } from "../ProductDelete/ProductDelete";
 
 interface ProductsTableProps extends ProductClassificatorsSchema {
     dataSource: ProductSchema[];
@@ -120,6 +120,7 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
                 rowSpacing={rowSpacing}
                 dataSource={dataSource}
                 rowKey="id"
+                data-testid="product-table"
                 expandable={{
                     expandedRowRender,
                     expandIcon: showExpandIcon ? undefined : () => null,

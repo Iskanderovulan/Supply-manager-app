@@ -1,4 +1,13 @@
 import { FC } from "react";
+import { Flex } from "antd";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import {
+    ResetQueries,
+    SortByDate,
+    PaginationControl,
+    ItemsPerPageControl,
+    Search,
+} from "@shared/ui/CommonControl";
 import {
     PackCreate,
     PacksTable,
@@ -9,15 +18,6 @@ import {
     usePackData,
     useGetPacksQuery,
 } from "@entities/Pack";
-import { Flex } from "antd";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import {
-    ResetQueries,
-    SortByDate,
-    PaginationControl,
-    ItemsPerPageControl,
-    Search,
-} from "@shared/ui/CommonControl";
 import cls from "./Pack.module.scss";
 
 export const Pack: FC = () => {
@@ -39,7 +39,7 @@ export const Pack: FC = () => {
     const { totalPages, totalResults, results } = usePackData(packs);
 
     return (
-        <Flex gap="middle" vertical>
+        <Flex gap="middle" vertical  data-testid="PackWidget">
             <Flex justify="space-between">
                 <Search updateSearchParams={updateSearchParams} searchTerm={name} />
                 <PackCrumb />

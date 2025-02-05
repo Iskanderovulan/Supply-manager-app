@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+yarn-c.md
 
 # Editor directories and files
 .vscode/*
@@ -26,3 +27,5 @@ dist-ssr
 # Macos
 .DS_Store
 __MACOSX/
+
+*storybook.log

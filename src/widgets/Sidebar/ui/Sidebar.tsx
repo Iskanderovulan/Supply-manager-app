@@ -1,10 +1,10 @@
+import { useRef } from "react";
 import { Layout, Menu, Typography } from "antd";
-import { useCollapsed } from "@app/providers/CollapseProvider";
+import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { selectIsAuthenticated } from "@entities/Auth";
+import { useCollapsed } from "@app/providers/CollapseProvider";
 import { getMenuItems } from "../model/menuItems";
-import { useTranslation } from "react-i18next";
-import { useRef } from "react";
 import { useAdjustHeight } from "../lib/useAdjustHeight";
 import { useActiveMenuItem } from "../lib/useActiveMenuItem";
 import cls from "./Sidebar.module.scss";
@@ -38,10 +38,10 @@ export const Sidebar = () => {
                 CRM
             </Title>
             <Menu
-                defaultSelectedKeys={["1"]}
+                defaultOpenKeys={["sub1"]}
                 selectedKeys={[pathname]}
                 mode="inline"
-                className={cls["custom-menu"]}
+                className={cls.customMenu}
                 items={items}
             />
         </Sider>

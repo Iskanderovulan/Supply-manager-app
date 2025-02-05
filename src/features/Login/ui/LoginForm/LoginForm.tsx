@@ -1,34 +1,35 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Form, Input, Button, Typography, Checkbox } from "antd";
 import { useTranslation } from "react-i18next";
-import { LoginSchema } from "@features/Login/model/types/loginSchema";
 import { emailPattern, passwordPattern } from "@shared/lib/validators/authValidators";
 import { TranslationId } from "@shared/const/translation";
+import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
 import { RememberMeSchema } from "@entities/Auth";
+import { LoginSchema } from "@features/Login/model/loginSchema";
 import cls from "./LoginForm.module.scss";
 
 const { Title } = Typography;
 
-interface LoginFormProps {
+export interface LoginFormProps {
     onFinish: (values: LoginSchema & RememberMeSchema) => void;
     isLoading: boolean;
 }
 
 export const LoginForm: FC<LoginFormProps> = ({ onFinish, isLoading }) => {
-    const { t, i18n } = useTranslation(TranslationId.AUTH);
+    const { t } = useTranslation(TranslationId.AUTH);
     const [form] = Form.useForm<LoginSchema & RememberMeSchema>();
 
-    useEffect(() => {
-        form.getFieldsError().forEach(({ name, errors }) => {
-            if (errors.length > 0) {
-                form.validateFields([name]);
-            }
-        });
-    }, [i18n.language, form]);
+    useForceTranslate({ form });
 
     return (
-        <div className={cls.wrap}>
-            <Form layout="vertical" form={form} onFinish={onFinish} className={cls.content}>
+        <div className={cls.wrap} data-testid="LoginForm">
+            <Form
+                layout="vertical"
+                form={form}
+                onFinish={onFinish}
+                className={cls.content}
+                initialValues={{ rememberMe: true }}
+            >
                 <Title className={cls.title} level={3}>
                     {t("loginToYourAccount")}
                 </Title>

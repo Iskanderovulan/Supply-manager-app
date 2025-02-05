@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Row, Col, Card, Statistic, Divider } from "antd";
-import type { Stats } from "@entities/Chart/model/chartSchema";
 import { TFunction } from "i18next";
+import type { Stats } from "@entities/Chart/model/chartSchema";
 import cls from "./ChartStatistics.module.scss";
 
 interface ChartStatisticsProps {

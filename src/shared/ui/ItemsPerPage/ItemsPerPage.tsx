@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Select } from "antd";
-import { pageSizeOptions } from "@shared/const/pageSizeOptions";
 import { useTranslation } from "react-i18next";
+import { pageSizeOptions } from "@shared/const/pageSizeOptions";
 
-interface ItemsPerPageProps {
+export interface ItemsPerPageProps {
     limit: number;
     onLimitChange: (newLimit: number) => void;
 }

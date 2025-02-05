@@ -1,4 +1,4 @@
-import { Material } from "@widgets/Material/ui/Material";
+import { Material } from "@widgets/Material";
 
 const MaterialPage = () => {
     return <Material />;

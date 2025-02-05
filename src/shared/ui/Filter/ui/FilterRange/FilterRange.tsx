@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Slider, Button, Flex } from "antd";
-import cls from "./FilterRange.module.scss";
 import { TFunction } from "i18next";
 
 interface FilterRangeProps {
@@ -32,7 +31,6 @@ export const FilterRange: FC<FilterRangeProps> = (props) => {
                 max={max}
                 value={selectedValue || [0, 0]}
                 onChange={handleRangeChange}
-                className={cls.slider}
             />
             <Flex justify="end" gap="small">
                 <Button type="dashed" size="small" onClick={handleReset}>

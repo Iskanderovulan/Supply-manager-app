@@ -1,11 +1,11 @@
 import { Button, Layout } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
+import { selectIsAuthenticated } from "@entities/Auth";
 import { LangSwitcher } from "@features/LangSwitcher";
 import { ThemeSwitcher } from "@features/ThemeSwitcher";
-import { useCollapsed } from "@app/providers/CollapseProvider";
-import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Logout } from "@features/Logout";
-import { selectIsAuthenticated } from "@entities/Auth";
+import { useCollapsed } from "@app/providers/CollapseProvider";
 import cls from "./Navbar.module.scss";
 
 const { Header } = Layout;

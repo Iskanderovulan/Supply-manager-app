@@ -1,7 +1,7 @@
 import { baseApi } from "@shared/api/rtkApi";
-import { PackSchema } from "../model/types/packSchema";
 import { TagTypes } from "@shared/const/tagTypes";
 import { API_ENDPOINTS } from "@shared/config/apiConfig/apiConfig";
+import { PackSchema } from "../model/types/packSchema";
 
 export const updatePackApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({

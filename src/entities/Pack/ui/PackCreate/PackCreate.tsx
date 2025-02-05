@@ -1,15 +1,15 @@
 import { FC, useEffect, memo } from "react";
 import { Modal, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { useModal } from "@shared/lib/hooks/useModal";
 import { DynamicForm } from "@shared/ui/DynamicForm";
-import { createPackFormConfig } from "@entities/Pack/model/config/createPackFormConfig";
-import { PackSchema } from "@entities/Pack/model/types/packSchema";
-import { useCreatePackMutation } from "@entities/Pack/api";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { TranslationId } from "@shared/const/translation";
-import { useTranslation } from "react-i18next";
+import { createPackFormConfig } from "@entities/Pack/config/createPackFormConfig";
+import { PackSchema } from "@entities/Pack/model/types/packSchema";
+import { useCreatePackMutation } from "@entities/Pack/api";
 
 export const PackCreate: FC = memo(() => {
     const { isModalOpen, showModal, hideModal } = useModal();
@@ -42,6 +42,7 @@ export const PackCreate: FC = memo(() => {
                 title={t("createPack")}
                 open={isModalOpen}
                 onCancel={hideModal}
+                destroyOnClose
                 footer={[
                     <Button key="cancel" onClick={hideModal}>
                         {global("cancel")}

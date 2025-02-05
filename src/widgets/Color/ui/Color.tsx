@@ -1,4 +1,13 @@
 import { FC } from "react";
+import { Flex } from "antd";
+import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
+import {
+    ResetQueries,
+    SortByDate,
+    PaginationControl,
+    ItemsPerPageControl,
+    Search,
+} from "@shared/ui/CommonControl";
 import {
     useGetColorsQuery,
     ColorCreate,
@@ -9,15 +18,6 @@ import {
     useColorData,
     useColorFilters,
 } from "@entities/Color";
-import { useFilterSearchParams } from "@shared/lib/hooks/useFilterSearchParams";
-import {
-    ResetQueries,
-    SortByDate,
-    PaginationControl,
-    ItemsPerPageControl,
-    Search,
-} from "@shared/ui/CommonControl";
-import { Flex } from "antd";
 import cls from "./Color.module.scss";
 
 export const Color: FC = () => {
@@ -39,7 +39,7 @@ export const Color: FC = () => {
     const { totalPages, totalResults, results } = useColorData(colors);
 
     return (
-        <Flex gap="middle" vertical>
+        <Flex gap="middle" vertical data-testid="ColorWidget">
             <Flex justify="space-between">
                 <Search updateSearchParams={updateSearchParams} searchTerm={name} />
                 <ColorCrumb />

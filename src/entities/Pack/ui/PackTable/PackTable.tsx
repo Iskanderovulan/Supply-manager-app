@@ -1,20 +1,20 @@
 import { FC, useMemo } from "react";
-import { PackSchema } from "@entities/Pack/model/types/packSchema";
+import { Flex } from "antd";
+import { useTranslation } from "react-i18next";
 import { generateColumns } from "@shared/lib/helpers/generateColumns/generateColumns";
-import { typeOptions } from "@entities/Pack/model/const/typeOptions";
 import { generateDate } from "@shared/lib/helpers/generateDate/generateDate";
 import { TableComponent } from "@shared/ui/TableComponent";
-import { PackEdit } from "../PackEdit/PackEdit";
-import { PackDelete } from "../PackDelete/PackDelete";
-import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
-import { Flex } from "antd";
 import { ColumnManager } from "@shared/ui/ColumnManager";
 import { useColumns } from "@shared/lib/hooks/useColumns";
 import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { RowDensity, selectSpacing } from "@shared/ui/RowDensity";
+import { PackSchema } from "@entities/Pack/model/types/packSchema";
+import { typeOptions } from "@entities/Pack/model/const/typeOptions";
+import { PackEdit } from "../PackEdit/PackEdit";
+import { PackDelete } from "../PackDelete/PackDelete";
 
 interface PacksTableProps {
     dataSource: PackSchema[];

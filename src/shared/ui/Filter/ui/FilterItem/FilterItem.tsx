@@ -1,9 +1,9 @@
 import { FC } from "react";
+import { TFunction } from "i18next";
 import { FilterConfig, FilterType } from "../../model/types/filterConfig";
 import { ValueGroup, Value } from "../../model/types/valueGroup";
 import { FilterCheckbox } from "../FilterCheckbox/FilterCheckbox";
 import { FilterRange } from "../FilterRange/FilterRange";
-import { TFunction } from "i18next";
 
 interface FilterItemProps {
     filter: FilterConfig;
