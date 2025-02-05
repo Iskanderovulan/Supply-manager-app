@@ -39,12 +39,19 @@ export const ProductDelete: FC<ProductDeleteProps> = ({ product }) => {
             okType: "danger",
             cancelText: global("cancel"),
             className: "modal-custom",
+            okButtonProps: { "data-testid": "confirm-delete" }, 
             onOk: handleDelete,
         });
     };
 
     return (
-        <Button danger icon={<DeleteOutlined />} onClick={showDeleteConfirm} loading={isLoading}>
+        <Button
+            danger
+            icon={<DeleteOutlined />}
+            onClick={showDeleteConfirm}
+            loading={isLoading}
+            data-testid={`delete-product-${product.id}`}
+        >
             {global("delete")}
         </Button>
     );

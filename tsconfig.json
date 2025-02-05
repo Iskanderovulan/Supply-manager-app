@@ -37,6 +37,7 @@
         "vite.config.ts",
         "**/*.ts",
         "**/*.tsx",
+        "cypress/**/*.ts",
         "node_modules/@types/node/globals.d.ts",
         "node_modules/@types/node/globals.d.ts"
     ],

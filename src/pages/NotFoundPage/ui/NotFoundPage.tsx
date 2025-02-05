@@ -15,7 +15,7 @@ export const NotFoundPage: FC<NotFoundPageProps> = () => {
     const navigate = useNavigate();
 
     return (
-        <div className={cls.notFoundPage}>
+        <div className={cls.notFoundPage}  data-testid="NotFoundPage">
             <Space direction="vertical" align="center" className={cls.content} size="large">
                 <Title level={1} className={cls.errorCode}>
                     {global("errorCode")}

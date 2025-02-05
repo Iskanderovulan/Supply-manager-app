@@ -22,8 +22,14 @@ export const RegisterForm: FC<RegisterFormProps> = ({ onFinish, isLoading }) => 
     useForceTranslate({ form });
 
     return (
-        <div className={cls.wrap}>
-            <Form layout="vertical" form={form} onFinish={onFinish} className={cls.content}>
+        <div className={cls.wrap} data-testid="RegisterForm">
+            <Form
+                layout="vertical"
+                form={form}
+                onFinish={onFinish}
+                className={cls.content}
+                initialValues={{ rememberMe: true }}
+            >
                 <Title className={cls.title} level={3}>
                     {t("registerNewAccount")}
                 </Title>

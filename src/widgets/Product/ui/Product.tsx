@@ -69,7 +69,7 @@ export const Product: FC = () => {
     if (errorClassificators) return <ErrorMessage error={errorClassificators} />;
 
     return (
-        <Flex gap="middle" vertical>
+        <Flex gap="middle" vertical data-testid="ProductWidget">
             <Flex justify="space-between">
                 <Search updateSearchParams={updateSearchParams} searchTerm={name} />
                 <ProductCrumb />
