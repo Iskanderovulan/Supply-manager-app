@@ -120,6 +120,7 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
                 rowSpacing={rowSpacing}
                 dataSource={dataSource}
                 rowKey="id"
+                data-testid="product-table"
                 expandable={{
                     expandedRowRender,
                     expandIcon: showExpandIcon ? undefined : () => null,

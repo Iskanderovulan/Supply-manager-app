@@ -64,7 +64,12 @@ export const ProductEdit: FC<ProductEditProps> = ({
 
     return (
         <>
-            <Button type="primary" icon={<EditOutlined />} onClick={showModal}>
+            <Button
+                type="primary"
+                icon={<EditOutlined />}
+                onClick={showModal}
+                data-testid={`edit-product-${product.id}`}
+            >
                 {global("edit")}
             </Button>
             <Modal

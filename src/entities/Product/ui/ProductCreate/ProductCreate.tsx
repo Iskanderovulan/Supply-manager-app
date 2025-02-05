@@ -47,7 +47,12 @@ export const ProductCreate: FC<ProductCreateProps> = memo(
 
         return (
             <>
-                <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
+                <Button
+                    type="primary"
+                    icon={<PlusOutlined />}
+                    onClick={showModal}
+                    data-testid="open-create-modal"
+                >
                     {t("createProduct")}
                 </Button>
                 <Modal
