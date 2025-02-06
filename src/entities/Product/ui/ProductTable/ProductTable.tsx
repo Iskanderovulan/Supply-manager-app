@@ -7,7 +7,6 @@ import { TableComponent } from "@shared/ui/TableComponent";
 import { TranslationId } from "@shared/const/translation";
 import { ColumnManager } from "@shared/ui/ColumnManager";
 import { useColumns } from "@shared/lib/hooks/useColumns";
-import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { RowDensity, selectSpacing } from "@shared/ui/RowDensity";
@@ -19,12 +18,12 @@ import { ProductDelete } from "../ProductDelete/ProductDelete";
 
 interface ProductsTableProps extends ProductClassificatorsSchema {
     dataSource: ProductSchema[];
-    isLoading: boolean;
+    isFetching: boolean;
     error: unknown;
 }
 
 export const ProductsTable: FC<ProductsTableProps> = (props) => {
-    const { dataSource, isLoading, error, materialOptions, colorOptions, packOptions } = props;
+    const { dataSource, isFetching, error, materialOptions, colorOptions, packOptions } = props;
     const { t } = useTranslation(TranslationId.PRODUCT);
     const rowSpacing = useAppSelector(selectSpacing);
     const allColumns = useMemo(
@@ -106,9 +105,6 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
 
     const showExpandIcon = visibleColumns.includes("actions");
 
-    if (isLoading) {
-        return <Loader />;
-    }
     if (error) {
         return <ErrorMessage error={error} />;
     }
@@ -119,6 +115,7 @@ export const ProductsTable: FC<ProductsTableProps> = (props) => {
                 columns={filteredColumns}
                 rowSpacing={rowSpacing}
                 dataSource={dataSource}
+                loading={isFetching}
                 rowKey="id"
                 data-testid="product-table"
                 expandable={{

@@ -32,7 +32,6 @@ export const ProductFilter: FC<ProductFilterProps> = (props) => {
                 number | null,
                 number | null,
             ];
-            console.log(priceMin, priceMax);
             updatedParams.priceMin = priceMin === 0 ? null : priceMin?.toString() || null;
             updatedParams.priceMax = priceMax === 0 ? null : priceMax?.toString() || null;
         }

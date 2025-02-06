@@ -31,5 +31,6 @@
     "relaxed": "90 свободный",
     "errorScreenText": "Произошла непредвиденная ошибка",
     "errorScreenBtn": "Обновить страницу",
-    "goBack": "Назад"
+    "goBack": "Назад",
+    "noDataAvailable": "Данные отсутствуют"
 }

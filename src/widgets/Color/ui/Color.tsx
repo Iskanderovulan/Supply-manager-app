@@ -26,7 +26,7 @@ export const Color: FC = () => {
 
     const {
         data: colors,
-        isLoading,
+        isFetching,
         error,
     } = useGetColorsQuery({
         page,
@@ -61,7 +61,7 @@ export const Color: FC = () => {
                 />
             </Flex>
 
-            <ColorsTable dataSource={results} isLoading={isLoading} error={error} />
+            <ColorsTable dataSource={results} isFetching={isFetching} error={error} />
             <Flex align="center" gap="middle">
                 <PaginationControl
                     totalResults={totalResults}
