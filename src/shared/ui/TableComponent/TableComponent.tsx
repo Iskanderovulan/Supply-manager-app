@@ -2,6 +2,8 @@
 // as class-based styling was not effective in overriding Ant Design defaults
 
 import { Table, TableProps, Empty } from "antd";
+
+
 import { useTranslation } from "react-i18next";
 
 interface TableComponentProps<T extends object> extends TableProps<T> {

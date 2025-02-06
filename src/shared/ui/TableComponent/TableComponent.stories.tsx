@@ -11,6 +11,8 @@ export default {
 const Template: StoryFn<typeof TableComponent> = (args) => <TableComponent {...args} />;
 
 export const Light = Template.bind({});
+
+
 Light.args = {
     columns: [
         { title: "Material Name", dataIndex: "materialName", key: "materialName" },
