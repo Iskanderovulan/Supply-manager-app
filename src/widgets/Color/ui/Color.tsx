@@ -39,7 +39,7 @@ export const Color: FC = () => {
     const { totalPages, totalResults, results } = useColorData(colors);
 
     return (
-        <Flex gap="middle" vertical data-testid="ColorWidget">
+        <Flex gap="middle" vertical>
             <Flex justify="space-between">
                 <Search updateSearchParams={updateSearchParams} searchTerm={name} />
                 <ColorCrumb />

@@ -27,12 +27,12 @@ export const Chart: FC = () => {
     }));
 
     return (
-        <div data-testid="ChartWidget">
+        <>
             <ChartCrumb t={t} />
             <ChartStatistics stats={stats} t={t} />
             <ChartProgress stats={stats} categories={categories} t={t} />
             <ChartAnalysis stats={stats} categories={categories} t={t} />
             <ChartBar data={pieData} t={t} />
-        </div>
+        </>
     );
 };

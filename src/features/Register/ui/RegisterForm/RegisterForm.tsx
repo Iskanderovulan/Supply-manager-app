@@ -22,7 +22,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({ onFinish, isLoading }) => 
     useForceTranslate({ form });
 
     return (
-        <div className={cls.wrap} data-testid="RegisterForm">
+        <div className={cls.wrap}>
             <Form
                 layout="vertical"
                 form={form}
