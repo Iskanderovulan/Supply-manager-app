@@ -39,7 +39,7 @@ export const Pack: FC = () => {
     const { totalPages, totalResults, results } = usePackData(packs);
 
     return (
-        <Flex gap="middle" vertical data-testid="PackWidget">
+        <Flex gap="middle" vertical>
             <Flex justify="space-between">
                 <Search updateSearchParams={updateSearchParams} searchTerm={name} />
                 <PackCrumb />

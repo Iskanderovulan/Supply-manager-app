@@ -39,7 +39,7 @@ export const Material: FC = () => {
     const { totalPages, totalResults, results } = useMaterialData(materials);
 
     return (
-        <Flex gap="middle" vertical data-testid="MaterialWidget">
+        <Flex gap="middle" vertical>
             <Flex justify="space-between">
                 <Search updateSearchParams={updateSearchParams} searchTerm={name} />
                 <MaterialCrumb />

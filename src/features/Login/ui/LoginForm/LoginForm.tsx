@@ -22,7 +22,7 @@ export const LoginForm: FC<LoginFormProps> = ({ onFinish, isLoading }) => {
     useForceTranslate({ form });
 
     return (
-        <div className={cls.wrap} data-testid="LoginForm">
+        <div className={cls.wrap}>
             <Form
                 layout="vertical"
                 form={form}

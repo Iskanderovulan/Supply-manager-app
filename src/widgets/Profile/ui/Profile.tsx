@@ -33,7 +33,7 @@ export const Profile: FC = () => {
     }
 
     return (
-        <div data-testid="ProfileWidget">
+        <>
             <ProfileCrumb />
             <Flex vertical gap="middle" className={cls.profile}>
                 {isModalOpen ? (
@@ -47,6 +47,6 @@ export const Profile: FC = () => {
                 )}
                 <ProfilePassword />
             </Flex>
-        </div>
+        </>
     );
 };

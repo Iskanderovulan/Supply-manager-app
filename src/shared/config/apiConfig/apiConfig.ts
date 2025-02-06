@@ -1,4 +1,4 @@
-export const SERVER_URL = "https://admin-panel-backend-1egy.onrender.com/";
+export const SERVER_URL = "https://express-js-supply-manager.vercel.app/";
 export const BASE_URL = `${SERVER_URL}v1/`;
 
 const API_PATH = {
