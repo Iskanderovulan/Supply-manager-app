@@ -49,7 +49,7 @@ export const Product: FC = () => {
 
     const {
         data: products,
-        isLoading: isLoadingProducts,
+        isFetching: isFetching,
         error: errorProducts,
     } = useGetProductsQuery({
         page,
@@ -100,7 +100,7 @@ export const Product: FC = () => {
 
             <ProductsTable
                 dataSource={results}
-                isLoading={isLoadingProducts}
+                isFetching={isFetching}
                 error={errorProducts}
                 materialOptions={materialOptions}
                 colorOptions={colorOptions}

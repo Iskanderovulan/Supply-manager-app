@@ -1,17 +1,18 @@
 import { Table, TableProps, Empty } from "antd";
+import { useTranslation } from "react-i18next";
 
 interface TableComponentProps<T extends object> extends TableProps<T> {
-    emptyMessage?: string;
     rowSpacing?: number;
 }
 
 export const TableComponent = <T extends object>({
     columns,
     dataSource,
-    emptyMessage = "No data available",
     rowSpacing,
     ...rest
 }: TableComponentProps<T>) => {
+    const { t: global } = useTranslation();
+
     const tableStyle: React.CSSProperties = {
         width: "100%",
         overflowX: "auto" as const,
@@ -38,7 +39,7 @@ export const TableComponent = <T extends object>({
                 pagination={false}
                 onRow={onRow}
                 locale={{
-                    emptyText: <Empty description={emptyMessage} />,
+                    emptyText: <Empty description={global("noDataAvailable")} />,
                 }}
                 {...rest}
             />

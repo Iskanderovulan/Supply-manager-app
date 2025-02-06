@@ -26,7 +26,7 @@ export const Material: FC = () => {
 
     const {
         data: materials,
-        isLoading,
+        isFetching,
         error,
     } = useGetMaterialsQuery({
         page,
@@ -61,7 +61,7 @@ export const Material: FC = () => {
                 />
             </Flex>
 
-            <MaterialsTable dataSource={results} isLoading={isLoading} error={error} />
+            <MaterialsTable dataSource={results} isFetching={isFetching} error={error} />
             <Flex align="center" gap="middle">
                 <PaginationControl
                     totalResults={totalResults}

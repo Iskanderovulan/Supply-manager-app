@@ -8,8 +8,6 @@ export const useProductFilters = () => {
     const { getSearchParam } = useFilterSearchParams();
 
     const page = Number(getSearchParam(FilterKeys.PAGE)) || 1;
-    console.log(page);
-
     const limit = Number(getSearchParam(FilterKeys.LIMIT)) || defaultPageSizeOption;
     const name = getSearchParam(FilterKeys.NAME) || "";
     const sortBy = getSearchParam(FilterKeys.SORT_BY);

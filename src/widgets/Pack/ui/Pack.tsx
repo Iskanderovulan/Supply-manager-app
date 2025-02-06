@@ -26,7 +26,7 @@ export const Pack: FC = () => {
 
     const {
         data: packs,
-        isLoading,
+        isFetching,
         error,
     } = useGetPacksQuery({
         page,
@@ -61,7 +61,7 @@ export const Pack: FC = () => {
                 />
             </Flex>
 
-            <PacksTable dataSource={results} isLoading={isLoading} error={error} />
+            <PacksTable dataSource={results} isFetching={isFetching} error={error} />
             <Flex align="center" gap="middle">
                 <PaginationControl
                     totalResults={totalResults}

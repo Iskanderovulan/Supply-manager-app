@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 import { TranslationId } from "@shared/const/translation";
 import { ColumnManager } from "@shared/ui/ColumnManager";
 import { useColumns } from "@shared/lib/hooks/useColumns";
-import { Loader } from "@shared/ui/Loader";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { RowDensity, selectSpacing } from "@shared/ui/RowDensity";
@@ -18,12 +17,12 @@ import { ColorDelete } from "../ColorDelete/ColorDelete";
 
 interface ColorsTableProps {
     dataSource: ColorSchema[];
-    isLoading: boolean;
+    isFetching: boolean;
     error: unknown;
 }
 
 export const ColorsTable: FC<ColorsTableProps> = (props) => {
-    const { dataSource, isLoading, error } = props;
+    const { dataSource, isFetching, error } = props;
     const { t } = useTranslation(TranslationId.COLOR);
     const rowSpacing = useAppSelector(selectSpacing);
 
@@ -88,9 +87,6 @@ export const ColorsTable: FC<ColorsTableProps> = (props) => {
 
     const showExpandIcon = visibleColumns.includes("actions");
 
-    if (isLoading) {
-        return <Loader />;
-    }
     if (error) {
         return <ErrorMessage error={error} />;
     }
@@ -102,6 +98,7 @@ export const ColorsTable: FC<ColorsTableProps> = (props) => {
                 rowSpacing={rowSpacing}
                 dataSource={dataSource}
                 rowKey="id"
+                loading={isFetching}
                 expandable={{
                     expandedRowRender,
                     expandIcon: showExpandIcon ? undefined : () => null,

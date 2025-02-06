@@ -31,5 +31,6 @@
     "relaxed": "90 relaxed",
     "errorScreenText": "An unexpected error occurred",
     "errorScreenBtn": "Reload Page",
-    "goBack": "Go Back"
+    "goBack": "Go Back",
+    "noDataAvailable": "No data available"
 }

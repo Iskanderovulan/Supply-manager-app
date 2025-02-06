@@ -14,9 +14,12 @@ export interface PaginationControlProps {
 export const PaginationControl: FC<PaginationControlProps> = memo((props) => {
     const { totalPages, updateSearchParams, ...rest } = props;
     const onPageChange = (newPage: number) => {
-        updateSearchParams({
-            page: getUpdatedValue(newPage, 1),
-        });
+        updateSearchParams(
+            {
+                page: getUpdatedValue(newPage, 1),
+            },
+            { replace: false },
+        );
     };
     return (
         <>
