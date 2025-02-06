@@ -35,7 +35,7 @@ export const Sidebar = () => {
             trigger={null}
         >
             <Title className={cls.title} level={collapsed ? 3 : 2}>
-                CRM
+                PSM
             </Title>
             <Menu
                 selectedKeys={[pathname]}
