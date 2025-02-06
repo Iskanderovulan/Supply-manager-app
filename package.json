@@ -3,6 +3,18 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "yarn test"
+        }
+    },
+    "lint-staged": {
+        "**/*.{js,ts,tsx}": [
+            "yarn lint:fix",
+            "yarn prettier:fix"
+        ]
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc -b && vite build",
@@ -17,7 +29,7 @@
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
         "e2e": "cypress open",
-        "e2e:run": "cypress run" 
+        "e2e:run": "cypress run"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.2.7",
@@ -70,7 +82,9 @@
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-react-refresh": "^0.4.7",
         "eslint-plugin-storybook": "^0.11.2",
+        "husky": "^9.1.7",
         "jsdom": "^25.0.1",
+        "lint-staged": "^15.4.3",
         "prettier": "^2.8.8",
         "sass": "^1.77.8",
         "storybook": "^8.4.7",
