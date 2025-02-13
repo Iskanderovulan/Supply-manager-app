@@ -112,7 +112,7 @@ High-level UI components combining multiple entities:
 -   **`Navbar/`** – Top navigation bar.
 -   **`Pack/`** – Packaging management widget.
 -   **`Product/`** – Full-featured product management UI.
--   **`Profile/`** – User profile display and edit.
+-   **`Profile/`** – User profile display, edit and password settings.
 -   **`Sidebar/`** – Collapsible sidebar with menu navigation.
 
 ### **Pages (`pages/`)**
