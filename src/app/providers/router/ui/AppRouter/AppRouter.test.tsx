@@ -13,22 +13,26 @@ import {
     getRouteLogin,
     getRouteRegister,
 } from "@shared/const/router";
-import { describe, vi, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
-vi.mock("@shared/ui/ProtectedRoute", () => ({
+vi.mock("@shared/lib/routing", () => ({
     ProtectedRoute: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
 vi.mock("@pages/ChartPage", () => ({
     ChartPage: () => <div>Chart Page Content</div>,
 }));
-
-vi.mock("@pages/NotFoundPage", () => ({
-    NotFoundPage: () => <div>Not Found Page</div>,
-}));
-
 vi.mock("@pages/DetailsPage", () => ({
     DetailsPage: () => <div>Details Page Content</div>,
+}));
+vi.mock("@pages/LoginPage", () => ({
+    LoginPage: () => <div>Login Page Content</div>,
+}));
+vi.mock("@pages/RegisterPage", () => ({
+    RegisterPage: () => <div>Register Page Content</div>,
+}));
+vi.mock("@pages/NotFoundPage", () => ({
+    NotFoundPage: () => <div>Not Found Page</div>,
 }));
 
 describe("AppRouter", () => {
@@ -49,13 +53,11 @@ describe("AppRouter", () => {
 
     it("should render NotFoundPage for undefined routes", () => {
         renderWithProviders(["/some-undefined-route"]);
-
         expect(screen.getByText("Not Found Page")).toBeInTheDocument();
     });
 
     it("should show ChartPage content for /chart route", async () => {
         renderWithProviders([getRouteChart()]);
-
         await waitFor(() => {
             expect(screen.getByText("Chart Page Content")).toBeInTheDocument();
         });
@@ -63,7 +65,6 @@ describe("AppRouter", () => {
 
     it("should render DetailsPage with dynamic id", async () => {
         renderWithProviders([getRouteDetails("123")]);
-
         await waitFor(() => {
             expect(screen.getByText("Details Page Content")).toBeInTheDocument();
         });
@@ -71,17 +72,15 @@ describe("AppRouter", () => {
 
     it("should render LoginPage for /login route", async () => {
         renderWithProviders([getRouteLogin()]);
-
         await waitFor(() => {
-            expect(screen.getByText(/login/i)).toBeInTheDocument();
+            expect(screen.getByText("Login Page Content")).toBeInTheDocument();
         });
     });
 
     it("should render RegisterPage for /register route", async () => {
         renderWithProviders([getRouteRegister()]);
-
         await waitFor(() => {
-            expect(screen.getByText(/register/i)).toBeInTheDocument();
+            expect(screen.getByText("Register Page Content")).toBeInTheDocument();
         });
     });
 });

@@ -7,22 +7,24 @@ import { NotFoundPage } from "@pages/NotFoundPage";
 import AppLayout from "../AppLayout/AppLayout";
 
 const AppRouter = () => (
-    <Routes>
-        <Route path="/" element={<AppLayout />}>
-            {Object.values(routeConfig).map(({ element, path, isProtected }) => (
-                <Route
-                    key={path}
-                    path={path}
-                    element={
-                        <ProtectedRoute reverseRedirect={!isProtected}>
-                            <Suspense fallback={<Loader />}>{element}</Suspense>
-                        </ProtectedRoute>
-                    }
-                />
-            ))}
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <Suspense fallback={<Loader />}>
+        <Routes>
+            <Route path="/" element={<AppLayout />}>
+                {Object.values(routeConfig).map(({ element, path, isProtected }) => (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={
+                            <ProtectedRoute reverseRedirect={!isProtected}>
+                                <Suspense fallback={<Loader />}>{element}</Suspense>
+                            </ProtectedRoute>
+                        }
+                    />
+                ))}
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+    </Suspense>
 );
 
 export default AppRouter;
