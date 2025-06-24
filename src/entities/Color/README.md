@@ -2,20 +2,21 @@
 
 ### Description
 
-`Color` manages color-related data, including filtering, creation, updating, deletion, and exporting color details.
+`Color` provides RTK Query API hooks, types, and a selector for working with color data responses.
 
 ### Public API
 
-#### Components
+#### API
 
--   **`ColorCreate`** - A modal for creating a new color entry.
--   **`ColorTable`** - Displays a table of colors with filtering and actions.
--   **`ColorFilter`** - Provides filtering options for colors.
--   **`ColorCrumb`** - Breadcrumb navigation for the color page.
--   **`ColorExcel`** - Enables exporting color data to Excel.
+-   **`useGetColorsQuery`** — Fetches color data from the API (`getColorsApi`).
+-   **`useCreateColorMutation`** — Creates a new color (`createColorApi`).
+-   **`useUpdateColorMutation`** — Updates an existing color (`updateColorApi`).
+-   **`useDeleteColorMutation`** — Deletes a color (`deleteColorApi`).
 
-#### Hooks
+#### Selectors
 
--   **`useColorData`** - Processes color-related API responses.
--   **`useColorFilters`** - Manages filter parameters for colors.
--   **`useGetColorsQuery`** - Fetches color data from the API.
+-   **`useColorData`** — Extracts `totalPages`, `totalResults`, and `results` from `ColorResponse`.
+
+#### Types
+
+-   **`ColorSchema`** — Defines a color entity with `intensity` and common fields.

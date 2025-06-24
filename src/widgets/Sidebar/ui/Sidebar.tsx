@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Layout, Menu, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
-import { selectIsAuthenticated } from "@entities/Auth";
+import { selectIsAuthenticated } from "@entities/auth";
 import { useCollapsed } from "@app/providers/CollapseProvider";
 import { getMenuItems } from "../model/menuItems";
 import { useAdjustHeight } from "../lib/useAdjustHeight";

@@ -2,9 +2,9 @@ import { FC, useEffect } from "react";
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
-import { authActions } from "@entities/Auth";
-import { LoginSchema } from "@features/Login/model/loginSchema";
-import { useLoginMutation } from "@features/Login/api";
+import { authActions } from "@entities/auth";
+import { LoginSchema } from "@features/login/model/loginSchema";
+import { useLoginMutation } from "@features/login/api";
 import { LoginForm } from "../LoginForm/LoginForm";
 
 export const Login: FC = () => {

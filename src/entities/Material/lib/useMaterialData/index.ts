@@ -1,1 +1,0 @@
-export { useMaterialData } from "./useMaterialData";

@@ -2,20 +2,21 @@
 
 ### Description
 
-`Material` manages material-related data, including filtering, creation, updating, deletion, and exporting material details.
+`Material` provides RTK Query API hooks, types, and a selector for working with material data responses.
 
 ### Public API
 
-#### Components
+#### API
 
--   **`MaterialCreate`** - A modal for creating a new material entry.
--   **`MaterialTable`** - Displays a table of materials with filtering and actions.
--   **`MaterialFilter`** - Provides filtering options for materials.
--   **`MaterialCrumb`** - Breadcrumb navigation for the material page.
--   **`MaterialExcel`** - Enables exporting material data to Excel.
+-   **`useGetMaterialsQuery`** — Fetches material data from the API (`getMaterialsApi`).
+-   **`useCreateMaterialMutation`** — Creates a new material (`createMaterialApi`).
+-   **`useUpdateMaterialMutation`** — Updates an existing material (`updateMaterialApi`).
+-   **`useDeleteMaterialMutation`** — Deletes a material (`deleteMaterialApi`).
 
-#### Hooks
+#### Selectors
 
--   **`useMaterialData`** - Processes material-related API responses.
--   **`useMaterialFilters`** - Manages filter parameters for materials.
--   **`useGetMaterialsQuery`** - Fetches material data from the API.
+-   **`useMaterialData`** — Extracts `totalPages`, `totalResults`, and `results` from `MaterialResponse`.
+
+#### Types
+
+-   **`MaterialSchema`** — Defines a material entity with common fields.

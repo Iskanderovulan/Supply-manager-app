@@ -2,17 +2,17 @@
 
 ### Description
 
-`Profile` manages user profile-related functionality, including viewing, editing, updating user information, and changing passwords.
+`Profile` manages user profile-related functionality, including viewing, editing, updating user information, deleting users, and changing passwords.
 
 ### Public API
 
-#### Components
+#### API
 
--   **`ProfileForm`** - A form for editing user profile information.
--   **`ProfileInfo`** - Displays user profile details such as name and email.
--   **`ProfilePassword`** - A form for changing the user password.
--   **`ProfileCrumb`** - Breadcrumb navigation for the profile page.
+-   **`useGetUserQuery`** — Fetches the current user profile (`getUserApi`).
+-   **`useUpdateUserMutation`** — Updates user profile data (`updateUserApi`).
+-   **`useChangePasswordMutation`** — Changes the user's password (`changePasswordApi`).
+-   **`useDeleteUserMutation`** — Deletes a user (`deleteUserApi`).
 
-#### Hooks
+#### Types
 
--   **`useGetUserQuery`** - Fetches user profile data from the API.
+-   **`UserSchema`** — Defines the user profile data structure.

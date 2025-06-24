@@ -2,8 +2,8 @@ import { StoryFn, Meta } from "@storybook/react";
 import { RegisterForm } from "./RegisterForm";
 import { ThemeDecorator } from "@shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "@shared/types/theme";
-import { RegisterSchema } from "@features/Register/model/registerSchema";
-import { RememberMeSchema } from "@entities/Auth";
+import { RegisterSchema } from "@features/register/model/registerSchema";
+import { RememberMeSchema } from "@entities/auth";
 
 export default {
     title: "features/RegisterForm",

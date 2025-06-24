@@ -1,1 +1,1 @@
-export { Material } from "./ui/Material";
+export { Material } from "./ui/Material/Material";

@@ -2,8 +2,8 @@ import { StoryFn, Meta } from "@storybook/react";
 import { LoginForm } from "./LoginForm";
 import { ThemeDecorator } from "@shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "@shared/types/theme";
-import { RememberMeSchema } from "@entities/Auth";
-import { LoginSchema } from "@features/Login/model/loginSchema";
+import { RememberMeSchema } from "@entities/auth";
+import { LoginSchema } from "@features/login/model/loginSchema";
 
 export default {
     title: "features/LoginForm",

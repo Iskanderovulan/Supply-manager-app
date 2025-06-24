@@ -1,1 +1,0 @@
-export { useColorData } from "./useColorData";

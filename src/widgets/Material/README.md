@@ -8,4 +8,4 @@
 
 #### Components
 
--   **`Material`** - A container component that integrates filtering, searching, sorting, table display, and export functionality for materials.
+-   **`Material`** — A container component that integrates filtering, searching, sorting, table display, and export functionality for materials.

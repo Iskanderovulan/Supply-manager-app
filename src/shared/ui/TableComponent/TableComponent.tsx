@@ -15,6 +15,7 @@ export const TableComponent = <T extends object>({
     dataSource,
     rowSpacing,
     emptyMessage,
+    loading,
     ...rest
 }: TableComponentProps<T>) => {
     const { t: global } = useTranslation();
@@ -42,6 +43,7 @@ export const TableComponent = <T extends object>({
                 scroll={{ x: "max-content", y: "calc(100vh - 400px)" }}
                 pagination={false}
                 onRow={onRow}
+                loading={loading}
                 locale={{
                     emptyText: <Empty description={emptyMessage || global("noDataAvailable")} />,
                 }}

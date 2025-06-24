@@ -1,10 +1,10 @@
 import { Button, Layout } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
-import { selectIsAuthenticated } from "@entities/Auth";
-import { LangSwitcher } from "@features/LangSwitcher";
-import { ThemeSwitcher } from "@features/ThemeSwitcher";
-import { Logout } from "@features/Logout";
+import { selectIsAuthenticated } from "@entities/auth";
+import { LangSwitcher } from "@features/langSwitcher";
+import { ThemeSwitcher } from "@features/themeSwitcher";
+import { Logout } from "@features/logout";
 import { useCollapsed } from "@app/providers/CollapseProvider";
 import cls from "./Navbar.module.scss";
 
