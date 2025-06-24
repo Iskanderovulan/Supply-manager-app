@@ -12,7 +12,7 @@
     "searchByName": "Поиск по названию",
     "items": "элементов",
     "cancel": "Отмена",
-    "ok": "Хорошо",
+    "ok": "OK",
     "manageColumns": "Управлять колонками",
     "reset": "Сбросить",
     "selectAll": "Выбрать все",
@@ -32,5 +32,5 @@
     "errorScreenText": "Произошла непредвиденная ошибка",
     "errorScreenBtn": "Обновить страницу",
     "goBack": "Назад",
-    "noDataAvailable": "Данные отсутствуют"
+    "noDataAvailable": "Данные пока отсутствуют"
 }

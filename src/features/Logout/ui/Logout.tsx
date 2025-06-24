@@ -6,8 +6,8 @@ import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
 import { useNotification } from "@shared/lib/hooks/useNotification";
 import { NotificationData } from "@shared/const/notifications";
 import { TranslationId } from "@shared/const/translation";
-import { selectRefreshToken } from "@entities/Auth";
-import { useLogoutEffect } from "@entities/Auth";
+import { selectRefreshToken } from "@entities/auth";
+import { useLogoutEffect } from "@entities/auth";
 import { useLogoutMutation } from "../api";
 
 export const Logout: FC = () => {

@@ -2,25 +2,22 @@
 
 ### Description
 
-`Product` manages product-related data, including filtering, creation, updating, deletion, and exporting product details. It also handles classifications such as materials, colors, and packs.
+`Product` manages product-related data, including listing, filtering, creation, updating, deletion, and exporting product details. It also handles related classifications such as materials, colors, and packs.
 
 ### Public API
 
-#### Components
+#### API
 
--   **`ProductCreate`** - A modal for creating a new product entry.
--   **`ProductsTable`** - Displays a table of products with filtering and actions.
--   **`ProductFilter`** - Provides filtering options for products.
--   **`ProductCrumb`** - Breadcrumb navigation for the product page.
--   **`ProductExcel`** - Enables exporting product data to Excel.
+-   **`useGetProductsQuery`** — Fetches a list of products (`getProductsApi`).
+-   **`useGetDetailsQuery`** — Fetches detailed product information (`detailsApi`).
+-   **`useCreateProductMutation`** — Creates a new product (`createProductApi`).
+-   **`useUpdateProductMutation`** — Updates an existing product (`updateProductApi`).
+-   **`useDeleteProductMutation`** — Deletes a product (`deleteProductApi`).
 
-#### Hooks
+#### Selectors
 
--   **`useGetProductsQuery`** - Fetches product data from the API.
--   **`useClassificators`** - Retrieves available classifications (materials, colors, and packs) for product filtering.
--   **`useProductFilters`** - Manages filter parameters for products.
--   **`useProductData`** - Processes product-related API responses.
+-   **`useProductData`** — Extracts `totalPages`, `totalResults`, and `results` from `ProductResponse`.
 
 #### Types
 
--   **`ProductSchema`** - Defines the structure of a product, including its description, price, and associated classifications (material, color, pack).
+-   **`ProductSchema`** — Defines the structure of a product, including its description, price, and associated classifications (material, color, pack).

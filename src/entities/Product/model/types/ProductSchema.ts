@@ -1,6 +1,6 @@
-import { MaterialSchema } from "@entities/Material/model/types/materialSchema";
-import { ColorSchema } from "@entities/Color/model/types/colorSchema";
-import { PackSchema } from "@entities/Pack/model/types/packSchema";
+import { MaterialSchema } from "@entities/material/model/types/materialSchema";
+import { ColorSchema } from "@entities/color/model/types/colorSchema";
+import { PackSchema } from "@entities/pack/model/types/packSchema";
 import { CommonSchema } from "@shared/ui/CommonControl";
 
 export interface ProductSchema extends CommonSchema {

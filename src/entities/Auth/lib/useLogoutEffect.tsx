@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
 import { baseApi } from "@shared/api/rtkApi";
-import { authActions } from "@entities/Auth";
+import { authActions } from "@entities/auth";
 
 interface UseLogoutEffectProps {
     isSuccess: boolean;

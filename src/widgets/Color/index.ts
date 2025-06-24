@@ -1,1 +1,1 @@
-export { Color } from "./ui/Color";
+export { Color } from "./ui/Color/Color";

@@ -1,1 +1,0 @@
-export { useProductData } from "./useProductData";

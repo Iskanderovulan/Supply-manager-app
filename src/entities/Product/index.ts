@@ -1,10 +1,3 @@
-export { ProductCreate } from "./ui/ProductCreate/ProductCreate";
-export { ProductsTable } from "./ui/ProductTable/ProductTable";
-export { ProductFilter } from "./ui/ProductFilter/ProductFilter";
-export { ProductCrumb } from "./ui/ProductCrumb/ProductCrumb";
-export { ProductExcel } from "./ui/ProductExcel/ProductExcel";
-export { useGetProductsQuery } from "./api";
-export { useClassificators } from "./lib/hooks/useClassificators";
-export { useProductFilters } from "./lib/hooks/useProductFilters";
-export { useProductData } from "./lib/hooks/useProductData/useProductData";
+export * from "./api";
+export * from "./model/selectors/selectors";
 export type { ProductSchema } from "./model/types/ProductSchema";

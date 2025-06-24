@@ -1,10 +1,20 @@
-# Packing supply management app
+# Packing Supply Manager app
 
 ## Overview
 
-The **Packing supply management app** is a high-performance, scalable, and modular web application built using modern frontend technologies. The project follows industry best practices, adhering to **clean architecture, feature-sliced design (FSD)**, and **enterprise-grade TypeScript and React development standards**.
+The **Packing Supply Manager app** is a high-performance, scalable, and modular web application built using modern frontend technologies. The project follows industry best practices, adhering to **clean architecture, feature-sliced design (FSD)**, and **enterprise-grade TypeScript and React development standards**.
 
 It is designed for **product and inventory management**, providing extensive capabilities such as **dynamic filtering, pagination, sorting, role-based access control, API-driven data interactions**, and **real-time updates**. The system ensures an intuitive UI/UX through **Ant Design components**, **theme customization**, and **globalization (i18n support)**.
+
+---
+
+## Quick Start
+
+1. Install dependencies  
+   yarn install
+
+2. Start the development server
+   yarn run dev
 
 ---
 
@@ -70,24 +80,26 @@ It is designed for **product and inventory management**, providing extensive cap
 
 Reusable domain-specific components and logic:
 
--   **`Auth/`** – Authentication state management.
--   **`Product/`** – Product management (CRUD operations, API, UI).
--   **`Material/`** – Material entity and data handling.
--   **`Color/`** – Color entity and filtering.
--   **`Pack/`** – Packaging entity.
--   **`Chart/`** – Analytics and statistics.
--   **`Profile/`** – User profile and settings.
--   **`Details/`** – Product details entity.
+-   **`auth/`** – authentication state management.
+-   **`product/`** – product management (CRUD operations, API, UI).
+-   **`material/`** – material entity and data handling.
+-   **`color/`** – color entity and filtering.
+-   **`pack/`** – packaging entity.
+-   **`chart/`** – analytics and statistics.
+-   **`profile/`** – user profile and settings.
 
 ### **Features (`features/`)**
 
 Self-contained functionalities:
 
--   **`Login/`** – Login logic and UI.
--   **`Register/`** – User registration form.
--   **`Logout/`** – Logout functionality.
--   **`ThemeSwitcher/`** – Dark mode switch.
--   **`LangSwitcher/`** – Language switcher.
+-   **`login/`** – login logic and UI.
+-   **`register/`** – user registration form.
+-   **`logout/`** – logout functionality.
+-   **`themeSwitcher/`** – dark mode switch.
+-   **`langSwitcher/`** – language switcher.
+-   **`columnManager/`** – column visibility and ordering controls.
+-   **`filter/`** – filtering options for data tables.
+-   **`rowDensity/`** – table row spacing adjustment.
 
 ### **Shared Utilities (`shared/`)**
 
@@ -129,3 +141,16 @@ Page-level components:
 -   **`ProfilePage/`** – User profile page.
 -   **`PackPage/`** – Packaging management page.
 -   **`NotFoundPage/`** – 404 error page.
+
+## Contributing
+
+We welcome your contributions! To get started, please follow these steps:
+
+1. **Fork the repository**  
+   Click “Fork” in the top-right corner of this page to create your own copy.
+
+2. **Clone your fork**
+    ```bash
+    git clone https://github.com/Iskanderovulan/Supply-manager-app.git
+    cd packing-supply-manager
+    ```

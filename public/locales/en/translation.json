@@ -32,5 +32,5 @@
     "errorScreenText": "An unexpected error occurred",
     "errorScreenBtn": "Reload Page",
     "goBack": "Go Back",
-    "noDataAvailable": "No data available"
+    "noDataAvailable": "Data is currently unavailable"
 }

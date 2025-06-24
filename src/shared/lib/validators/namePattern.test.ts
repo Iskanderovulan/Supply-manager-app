@@ -19,14 +19,14 @@ describe("namePattern", () => {
 
     it("should not match invalid names", () => {
         const invalidNames = [
-            "J", // меньше 2 символов
-            "ThisNameIsWayTooLongToBeValidForTestingPurposes", // больше 30 символов
-            "1234", // числа
-            "John@Doe", // спецсимволы
-            "Anna_Marie", // подчеркивание
-            "Élise", // не латинская буква
-            "    ", // только пробелы
-            "", // пустая строка
+            "J",
+            "ThisNameIsWayTooLongToBeValidForTestingPurposes",
+            "1234",
+            "John@Doe",
+            "Anna_Marie",
+            "Élise",
+            "    ",
+            "",
         ];
 
         invalidNames.forEach((name) => {
@@ -35,11 +35,11 @@ describe("namePattern", () => {
     });
 
     it("should handle edge cases", () => {
-        expect(namePattern.test("John")).toBe(true); // простой валидный
-        expect(namePattern.test("Anna-Marie")).toBe(true); // дефис
-        expect(namePattern.test("O'Connor")).toBe(true); // апостроф
-        expect(namePattern.test("123")).toBe(false); // числа
-        expect(namePattern.test("John@Doe")).toBe(false); // спецсимволы
-        expect(namePattern.test("Élise")).toBe(false); // не латинский символ
+        expect(namePattern.test("John")).toBe(true);
+        expect(namePattern.test("Anna-Marie")).toBe(true);
+        expect(namePattern.test("O'Connor")).toBe(true);
+        expect(namePattern.test("123")).toBe(false);
+        expect(namePattern.test("John@Doe")).toBe(false);
+        expect(namePattern.test("Élise")).toBe(false);
     });
 });

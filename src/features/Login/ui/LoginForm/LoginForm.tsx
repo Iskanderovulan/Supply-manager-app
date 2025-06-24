@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { emailPattern, passwordPattern } from "@shared/lib/validators/authValidators";
 import { TranslationId } from "@shared/const/translation";
 import { useForceTranslate } from "@shared/lib/hooks/useForceTranslate";
-import { RememberMeSchema } from "@entities/Auth";
-import { LoginSchema } from "@features/Login/model/loginSchema";
+import { RememberMeSchema } from "@entities/auth";
+import { LoginSchema } from "@features/login/model/loginSchema";
 import cls from "./LoginForm.module.scss";
 
 const { Title } = Typography;
