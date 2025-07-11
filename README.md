@@ -154,3 +154,51 @@ We welcome your contributions! To get started, please follow these steps:
     git clone https://github.com/Iskanderovulan/Supply-manager-app.git
     cd packing-supply-manager
     ```
+
+## Run PSM-SaaS Locally with Docker
+
+This project comes with a ready-to-use Docker setup. Anyone can run the production build without installing Node.js or Yarn manually.
+
+1. **Build the Docker image**
+   Run in your project root:
+
+    ```bash
+    docker build -t psm-saas .
+    ```
+
+2. **Run the container**
+   Start the container and map it to your local port:
+
+    ```bash
+    docker run -p 8080:80 psm-saas
+    ```
+
+    This maps your local localhost:8080 to the internal container port 80 where NGINX serves the static build.
+
+3. **Open your app**
+   Open your browser and go to:
+
+    ```
+    http://localhost:8080
+    ```
+
+    You will see the production version of Packing Supply Manager running.
+
+4. **Stop the container**
+
+    If you started it in the foreground, press Ctrl + C in your terminal.
+    If you started it in detached mode, stop it with:
+
+    ```bash
+    docker ps
+    docker stop <container_id_or_name>
+    ```
+
+    Example with a custom name:
+
+    ```bash
+    docker run -d --name psm-saas-prod -p 8080:80 psm-saas
+    docker stop psm-saas-prod
+    ```
+
+The PSM-SaaS app is now fully containerized and portable — no local dependency mess, no version conflicts, and it works the same for everyone, everywhere.
